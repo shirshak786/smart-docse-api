@@ -1,19 +1,22 @@
 <?php
 
+namespace Modules\Meta\Database\Seeders;
+
 use App\Models\Meta;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Model;
 
-class MetasTableSeeder extends Seeder
+class MetaDatabaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      *
-     * @throws \InvalidArgumentException
-     * @throws \Illuminate\Database\Eloquent\MassAssignmentException
+     * @return void
      */
     public function run()
     {
-        /** @var Meta $meta */
+        Model::unguard();
+
         $meta = factory(Meta::class)->make();
         $meta->route = 'home';
         $meta->save();
