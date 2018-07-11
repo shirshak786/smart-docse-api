@@ -6,11 +6,14 @@
     "active": 1,
     "order": 0,
     "providers": [
-        "Modules\\Core\\Providers\\CoreServiceProvider"
+        "Modules\\Core\\Providers\\CoreServiceProvider",
+        "Modules\\Core\\Providers\\PurifyServiceProvider",
+        "Modules\\Core\\Providers\\ViewServiceProvider"
     ],
     "aliases": {},
     "files": [
-        "start.php"
+        "start.php",
+        "helpers.php"
     ],
     "requires": []
 }

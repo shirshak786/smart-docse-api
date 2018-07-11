@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Traits;
+namespace Modules\Core\Models\Traits;
 
 trait TranslatableJson
 {

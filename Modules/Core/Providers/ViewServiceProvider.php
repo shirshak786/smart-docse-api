@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Modules\Core\Providers;
 
 use Collective\Html\FormFacade;
 use Collective\Html\HtmlFacade;

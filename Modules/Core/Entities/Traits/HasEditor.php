@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Traits;
+namespace Modules\Core\Models\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;

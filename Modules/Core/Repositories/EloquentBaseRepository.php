@@ -1,13 +1,10 @@
 <?php
 
-namespace App\Repositories;
+namespace Modules\Core\Repositories;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Repositories\Contracts\BaseRepository;
 
-/**
- * Class EloquentBaseRepository.
- */
 class EloquentBaseRepository implements BaseRepository
 {
     protected $model;

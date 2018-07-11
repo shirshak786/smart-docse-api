@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Modules\Core\Providers;
 
 use HTMLPurifier_HTMLDefinition;
 use Stevebauman\Purify\Facades\Purify;

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Utils;
+namespace Modules\Core\Utils;
 
 use Illuminate\Http\Request;
-use App\Exports\DataTableExport;
+use Module\Core\Exports\DataTableExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
