@@ -35,7 +35,12 @@ class RoleServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+
+        $this->app->bind(
+            RoleRepository::class,
+            EloquentRoleRepository::class
+        );
+
     }
 
     /**
@@ -91,7 +96,7 @@ class RoleServiceProvider extends ServiceProvider
 
     /**
      * Register an additional directory of factories.
-     * 
+     *
      * @return void
      */
     public function registerFactories()

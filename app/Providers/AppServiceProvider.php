@@ -37,10 +37,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        Relation::morphMap([
-            'post' => Post::class,
-            'user' => User::class,
-        ]);
 
         if (config('app.url_force_https')) {
             // Force SSL if isSecure does not detect HTTPS
@@ -58,49 +54,5 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(DuskServiceProvider::class);
         }
 
-        $this->app->bind(
-            UserRepository::class,
-            EloquentUserRepository::class
-        );
-
-        $this->app->bind(
-            AccountRepository::class,
-            EloquentAccountRepository::class
-        );
-
-        $this->app->bind(
-            RoleRepository::class,
-            EloquentRoleRepository::class
-        );
-
-        $this->app->bind(
-            MetaRepository::class,
-            EloquentMetaRepository::class
-        );
-
-        $this->app->bind(
-            FormSettingRepository::class,
-            EloquentFormSettingRepository::class
-        );
-
-        $this->app->bind(
-            FormSubmissionRepository::class,
-            EloquentFormSubmissionRepository::class
-        );
-
-        $this->app->bind(
-            RedirectionRepository::class,
-            EloquentRedirectionRepository::class
-        );
-
-        $this->app->bind(
-            PostRepository::class,
-            EloquentPostRepository::class
-        );
-
-        $this->app->bind(
-            TagRepository::class,
-            EloquentTagRepository::class
-        );
     }
 }

@@ -35,7 +35,11 @@ class MetaServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(
+            MetaRepository::class,
+            EloquentMetaRepository::class
+        );
+
     }
 
     /**
@@ -91,7 +95,7 @@ class MetaServiceProvider extends ServiceProvider
 
     /**
      * Register an additional directory of factories.
-     * 
+     *
      * @return void
      */
     public function registerFactories()

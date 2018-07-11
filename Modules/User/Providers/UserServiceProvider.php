@@ -2,6 +2,7 @@
 
 namespace Modules\User\Providers;
 
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
 
@@ -26,6 +27,11 @@ class UserServiceProvider extends ServiceProvider
         $this->registerViews();
         $this->registerFactories();
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+
+        Relation::morphMap([
+           // 'post' => Post::class,
+            'user' => User::class,
+        ]);
     }
 
     /**
@@ -35,7 +41,16 @@ class UserServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(
+            UserRepository::class,
+            EloquentUserRepository::class
+        );
+
+        $this->app->bind(
+            AccountRepository::class,
+            EloquentAccountRepository::class
+        );
+
     }
 
     /**
@@ -91,7 +106,7 @@ class UserServiceProvider extends ServiceProvider
 
     /**
      * Register an additional directory of factories.
-     * 
+     *
      * @return void
      */
     public function registerFactories()
