@@ -28,9 +28,9 @@ class PostsTableSeeder extends Seeder
         // Get User ids with roles (those can create posts)
         $userIds = $user->select('id')->has('roles')->get();
 
-        // 200 random posts
+        // 4 random posts
         /** @var \Illuminate\Database\Eloquent\Collection $posts */
-        $posts = factory(Post::class)->times(200)->create();
+        $posts = factory(Post::class)->times(4)->create();
 
         /** @var \Illuminate\Database\Eloquent\Collection $tags */
         $tags = factory(Tag::class)->times(20)->create();

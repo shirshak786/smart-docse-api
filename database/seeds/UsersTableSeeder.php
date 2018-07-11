@@ -12,7 +12,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         // Default password
-        $defaultPassword = app()->environment('production') ? str_random() : 'secret';
+        $defaultPassword = app()->environment('production') ? str_random() : 'admin123';
         $this->command->getOutput()->writeln("<info>Default password:</info> $defaultPassword");
 
         // Create super admin user
@@ -21,7 +21,7 @@ class UsersTableSeeder extends Seeder
 
         $user->create([
             'name'      => 'Super admin',
-            'email'     => 'superadmin@example.com',
+            'email'     => 'superadmin@admin.com',
             'password'  => bcrypt($defaultPassword),
             'active'    => true,
             'confirmed' => true,
