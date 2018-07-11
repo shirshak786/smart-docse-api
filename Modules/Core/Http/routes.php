@@ -8,3 +8,9 @@ Route::group(['middleware' => ['web', 'locale', 'auth', 'can:access backend'], '
     Route::post('images/upload', 'AjaxController@imageUpload')->name('images.upload');
 
 });
+
+Route::middleware(['web', 'metas', 'locale', 'localize'])->group(function(){
+    Route::get('/', 'FrontendController@index')->name('home');
+    Route::get('robots.txt', 'SeoController@robots');
+    Route::get('sitemap.xml', 'SeoController@sitemap');
+});

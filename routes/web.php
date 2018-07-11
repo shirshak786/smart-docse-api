@@ -11,5 +11,3 @@
 |
 */
 
-Route::get('robots.txt', 'SeoController@robots');
-Route::get('sitemap.xml', 'SeoController@sitemap');
