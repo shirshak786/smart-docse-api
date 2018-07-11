@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace Modules\Redirection\Entities;
 
 use League\Csv\Reader;
 use App\Models\Redirection;

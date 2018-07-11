@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use Exception;
-use App\Models\User;
+use Modules\User\Entities\User;
 use App\Events\UserCreated;
 use App\Events\UserDeleted;
 use App\Events\UserUpdated;
@@ -72,7 +72,7 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
      *
      * @throws \App\Exceptions\GeneralException
      *
-     * @return \App\Models\User
+     * @return \Modules\User\Entities\User
      */
     public function store(array $input, $confirmed = false)
     {
@@ -108,7 +108,7 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
      * @throws Exception
      * @throws \Exception|\Throwable
      *
-     * @return \App\Models\User
+     * @return \Modules\User\Entities\User
      */
     public function update(User $user, array $input)
     {
@@ -132,7 +132,7 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
     }
 
     /**
-     * @param \App\Models\User $user
+     * @param \Modules\User\Entities\User $user
      * @param array            $input
      *
      * @throws \App\Exceptions\GeneralException

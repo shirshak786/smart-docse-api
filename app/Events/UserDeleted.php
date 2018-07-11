@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use App\Models\User;
+use Modules\User\Entities\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;

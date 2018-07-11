@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace Modules\User\Entities;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Notifications\Notifiable;

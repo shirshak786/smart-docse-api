@@ -4,7 +4,7 @@ namespace App\Repositories\Contracts;
 
 use App\Models\Tag;
 use App\Models\Post;
-use App\Models\User;
+use Modules\User\Entities\User;
 use Illuminate\Http\UploadedFile;
 
 /**
@@ -25,7 +25,7 @@ interface PostRepository extends BaseRepository
     public function publishedByTag(Tag $tag);
 
     /**
-     * @param \App\Models\User $user
+     * @param \Modules\User\Entities\User $user
      *
      * @return mixed
      *

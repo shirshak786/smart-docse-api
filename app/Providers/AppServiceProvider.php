@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Post;
-use App\Models\User;
+use Modules\User\Entities\User;
 use Illuminate\Support\Facades\URL;
 use Laravel\Dusk\DuskServiceProvider;
 use Illuminate\Support\Facades\Schema;

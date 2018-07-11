@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Tag;
 use App\Models\Post;
-use App\Models\User;
+use Modules\User\Entities\User;
 use Illuminate\Support\Facades\Response;
 use App\Repositories\Contracts\TagRepository;
 use App\Repositories\Contracts\PostRepository;

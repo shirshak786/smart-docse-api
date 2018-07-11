@@ -1,72 +1,212 @@
 <?php
 
-namespace Modules\User\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
+use Modules\User\Entities\User;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Routing\Controller;
+use App\Utils\RequestSearchQuery;
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
+use App\Repositories\Contracts\RoleRepository;
+use App\Repositories\Contracts\UserRepository;
 
-class UserController extends Controller
+class UserController extends BackendController
 {
     /**
-     * Display a listing of the resource.
-     * @return Response
+     * @var UserRepository
      */
-    public function index()
+    protected $users;
+
+    /**
+     * @var RoleRepository
+     */
+    protected $roles;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @param UserRepository                             $users
+     * @param \App\Repositories\Contracts\RoleRepository $roles
+     */
+    public function __construct(UserRepository $users, RoleRepository $roles)
     {
-        return view('user::index');
+        $this->users = $users;
+        $this->roles = $roles;
+    }
+
+    public function getActiveUserCounter()
+    {
+        return $this->users->query()->whereActive(true)->count();
     }
 
     /**
-     * Show the form for creating a new resource.
-     * @return Response
+     * Show the application dashboard.
+     *
+     * @param Request $request
+     *
+     * @throws \Exception
+     *
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Symfony\Component\HttpFoundation\BinaryFileResponse
      */
-    public function create()
+    public function search(Request $request)
     {
-        return view('user::create');
+        $requestSearchQuery = new RequestSearchQuery($request, $this->users->query(), [
+            'name',
+            'email',
+        ]);
+
+        if ($request->get('exportData')) {
+            return $requestSearchQuery->export([
+                'name',
+                'email',
+                'active',
+                'confirmed',
+                'last_access_at',
+                'created_at',
+                'updated_at',
+            ],
+                [
+                    __('validation.attributes.name'),
+                    __('validation.attributes.email'),
+                    __('validation.attributes.active'),
+                    __('validation.attributes.confirmed'),
+                    __('labels.last_access_at'),
+                    __('labels.created_at'),
+                    __('labels.updated_at'),
+                ],
+                'users');
+        }
+
+        return $requestSearchQuery->result([
+            'id',
+            'name',
+            'email',
+            'active',
+            'confirmed',
+            'last_access_at',
+            'created_at',
+            'updated_at',
+        ]);
     }
 
     /**
-     * Store a newly created resource in storage.
-     * @param  Request $request
-     * @return Response
+     * @param User $user
+     *
+     * @return User
      */
-    public function store(Request $request)
+    public function show(User $user)
     {
+        if (! $user->can_edit) {
+            // Only Super admin can access himself
+            abort(403);
+        }
+
+        return $user;
+    }
+
+    public function getRoles()
+    {
+        return $this->roles->getAllowedRoles();
     }
 
     /**
-     * Show the specified resource.
-     * @return Response
+     * @param StoreUserRequest $request
+     *
+     * @return mixed
      */
-    public function show()
+    public function store(StoreUserRequest $request)
     {
-        return view('user::show');
+        $this->authorize('create users');
+
+        $this->users->store($request->input());
+
+        return $this->redirectResponse($request, __('alerts.backend.users.created'));
     }
 
     /**
-     * Show the form for editing the specified resource.
-     * @return Response
+     * @param User              $user
+     * @param UpdateUserRequest $request
+     *
+     * @throws \Illuminate\Database\Eloquent\MassAssignmentException
+     *
+     * @return mixed
      */
-    public function edit()
+    public function update(User $user, UpdateUserRequest $request)
     {
-        return view('user::edit');
+        $this->authorize('edit users');
+
+        $this->users->update($user, $request->input());
+
+        return $this->redirectResponse($request, __('alerts.backend.users.updated'));
     }
 
     /**
-     * Update the specified resource in storage.
-     * @param  Request $request
-     * @return Response
+     * @param User    $user
+     * @param Request $request
+     *
+     * @return mixed
      */
-    public function update(Request $request)
+    public function destroy(User $user, Request $request)
     {
+        $this->authorize('delete users');
+
+        $this->users->destroy($user);
+
+        return $this->redirectResponse($request, __('alerts.backend.users.deleted'));
     }
 
     /**
-     * Remove the specified resource from storage.
-     * @return Response
+     * @param User $user
+     *
+     * @return mixed
      */
-    public function destroy()
+    public function impersonate(User $user)
     {
+        $this->authorize('impersonate users');
+
+        return $this->users->impersonate($user);
+    }
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
+    public function batchAction(Request $request)
+    {
+        $action = $request->get('action');
+        $ids = $request->get('ids');
+
+        switch ($action) {
+            case 'destroy':
+                $this->authorize('delete users');
+
+                $this->users->batchDestroy($ids);
+
+                return $this->redirectResponse($request, __('alerts.backend.users.bulk_destroyed'));
+                break;
+            case 'enable':
+                $this->authorize('edit users');
+
+                $this->users->batchEnable($ids);
+
+                return $this->redirectResponse($request, __('alerts.backend.users.bulk_enabled'));
+                break;
+            case 'disable':
+                $this->authorize('edit users');
+
+                $this->users->batchDisable($ids);
+
+                return $this->redirectResponse($request, __('alerts.backend.users.bulk_disabled'));
+                break;
+        }
+
+        return $this->redirectResponse($request, __('alerts.backend.actions.invalid'), 'error');
+    }
+
+    public function activeToggle(User $user)
+    {
+        $this->authorize('edit users');
+        $user->update(['active' => ! $user->active]);
     }
 }

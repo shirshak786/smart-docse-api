@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use Exception;
 use Carbon\Carbon;
-use App\Models\User;
+use Modules\User\Entities\User;
 use App\Models\SocialLogin;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
@@ -48,7 +48,7 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
      * @throws \Throwable
      * @throws \Exception
      *
-     * @return \App\Models\User
+     * @return \Modules\User\Entities\User
      */
     public function register(array $input)
     {
@@ -64,7 +64,7 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
      *
      * @throws \App\Exceptions\GeneralException
      *
-     * @return \App\Models\User
+     * @return \Modules\User\Entities\User
      */
     public function login(Authenticatable $user)
     {
@@ -210,7 +210,7 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
     }
 
     /**
-     * @param \App\Models\User $user
+     * @param \Modules\User\Entities\User $user
      */
     private function sendConfirmationToUser(User $user)
     {

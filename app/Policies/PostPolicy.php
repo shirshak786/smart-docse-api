@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\Post;
-use App\Models\User;
+use Modules\User\Entities\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PostPolicy
@@ -18,7 +18,7 @@ class PostPolicy
      *
      * @return mixed
      *
-     * @internal param \App\Models\User $user
+     * @internal param \Modules\User\Entities\User $user
      */
     public function view(User $authenticatedUser, Post $post)
     {
@@ -41,7 +41,7 @@ class PostPolicy
      *
      * @return mixed
      *
-     * @internal param \App\Models\User $user
+     * @internal param \Modules\User\Entities\User $user
      */
     public function update(User $authenticatedUser, Post $post)
     {
@@ -64,7 +64,7 @@ class PostPolicy
      *
      * @return mixed
      *
-     * @internal param \App\Models\User $user
+     * @internal param \Modules\User\Entities\User $user
      */
     public function delete(User $authenticatedUser, Post $post)
     {

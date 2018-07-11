@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
+use Modules\User\Entities\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Laravel\Socialite\AbstractUser;
