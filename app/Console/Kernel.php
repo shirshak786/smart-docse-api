@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        AutoPublishPostTrigger::class,
+      //  AutoPublishPostTrigger::class,
     ];
 
     /**
@@ -24,7 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('posts:publish');
+       // $schedule->command('posts:publish');
     }
 
     /**
