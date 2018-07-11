@@ -4,52 +4,33 @@ namespace Modules\User\Repositories;
 
 use Exception;
 use Carbon\Carbon;
+use Modules\Core\Exceptions\GeneralException;
+use Modules\Core\Repositories\EloquentBaseRepository;
+use Modules\User\Contracts\AccountRepository;
+use Modules\User\Contracts\UserRepository;
+use Modules\User\Entities\SocialLogin;
 use Modules\User\Entities\User;
-use App\Models\SocialLogin;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Laravel\Socialite\AbstractUser;
-use App\Exceptions\GeneralException;
 use Illuminate\Support\Facades\Hash;
-use App\Notifications\SendConfirmation;
-use App\Repositories\Contracts\UserRepository;
 use Illuminate\Contracts\Auth\Authenticatable;
-use App\Repositories\Contracts\AccountRepository;
+use Modules\User\Notifications\SendConfirmation;
 
 /**
  * Class EloquentAccountRepository.
  */
 class EloquentAccountRepository extends EloquentBaseRepository implements AccountRepository
 {
-    /**
-     * @var UserRepository
-     */
     protected $users;
 
-    /**
-     * EloquentUserRepository constructor.
-     *
-     * @param User                                       $user
-     * @param \App\Repositories\Contracts\UserRepository $users
-     *
-     * @internal param \Mcamara\LaravelLocalization\LaravelLocalization
-     *           $localization
-     * @internal param \Illuminate\Contracts\Config\Repository $config
-     */
+
     public function __construct(User $user, UserRepository $users)
     {
         parent::__construct($user);
         $this->users = $users;
     }
 
-    /**
-     * @param array $input
-     *
-     * @throws \Throwable
-     * @throws \Exception
-     *
-     * @return \Modules\User\Entities\User
-     */
     public function register(array $input)
     {
         $user = $this->users->store(Arr::only($input, ['name', 'email', 'password']));
@@ -59,13 +40,7 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
         return $user;
     }
 
-    /**
-     * @param Authenticatable $user
-     *
-     * @throws \App\Exceptions\GeneralException
-     *
-     * @return \Modules\User\Entities\User
-     */
+
     public function login(Authenticatable $user)
     {
         /* @var User $user */
@@ -80,14 +55,7 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
         return $user;
     }
 
-    /**
-     * @param              $provider
-     * @param AbstractUser $data
-     *
-     * @throws \App\Exceptions\GeneralException
-     *
-     * @return User
-     */
+
     public function findOrCreateSocial($provider, AbstractUser $data)
     {
         // Email can be not provided, so set default provider email.
@@ -121,12 +89,6 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
         return $user;
     }
 
-    /**
-     * @param \Illuminate\Contracts\Auth\Authenticatable $user
-     * @param                                            $name
-     *
-     * @return bool
-     */
     public function hasPermission(Authenticatable $user, $name)
     {
         /** @var User $user */
@@ -145,14 +107,6 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
         return $permissions->contains($name);
     }
 
-    /**
-     * @param $input
-     *
-     * @throws \Illuminate\Database\Eloquent\MassAssignmentException
-     * @throws \App\Exceptions\GeneralException
-     *
-     * @return mixed
-     */
     public function update(array $input)
     {
         if (! config('account.updating_enabled')) {
@@ -172,14 +126,7 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
         return $user->save();
     }
 
-    /**
-     * @param $oldPassword
-     * @param $newPassword
-     *
-     * @throws \App\Exceptions\GeneralException
-     *
-     * @return mixed
-     */
+
     public function changePassword($oldPassword, $newPassword)
     {
         if (! config('account.updating_enabled')) {
@@ -238,11 +185,6 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
         }
     }
 
-    /**
-     * @throws \App\Exceptions\GeneralException|Exception
-     *
-     * @return mixed
-     */
     public function delete()
     {
         /** @var User $user */

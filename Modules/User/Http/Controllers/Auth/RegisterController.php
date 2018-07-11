@@ -2,13 +2,13 @@
 
 namespace Modules\User\Http\Controllers\Auth;
 
+use Modules\User\Contracts\AccountRepository;
 use Modules\User\Entities\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Arcanedev\NoCaptcha\Rules\CaptchaRule;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use App\Repositories\Contracts\AccountRepository;
 
 class RegisterController extends Controller
 {
@@ -25,16 +25,8 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
-    /**
-     * @var \App\Repositories\Contracts\AccountRepository
-     */
     protected $account;
 
-    /**
-     * RegisterController constructor.
-     *
-     * @param AccountRepository $account
-     */
     public function __construct(AccountRepository $account)
     {
         $this->middleware('guest');

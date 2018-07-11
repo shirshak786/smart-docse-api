@@ -5,7 +5,7 @@ namespace Modules\Core\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-abstract class BackendController extends Controller
+abstract class AdminController extends Controller
 {
     /**
      * Show admin home.

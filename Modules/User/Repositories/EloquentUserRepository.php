@@ -3,18 +3,19 @@
 namespace Modules\User\Repositories;
 
 use Exception;
+use Modules\Core\Repositories\EloquentBaseRepository;
 use Modules\User\Entities\User;
-use App\Events\UserCreated;
-use App\Events\UserDeleted;
-use App\Events\UserUpdated;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
-use App\Exceptions\GeneralException;
+use Modules\Core\Exceptions\GeneralException;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Contracts\Config\Repository;
 use App\Repositories\Contracts\RoleRepository;
-use App\Repositories\Contracts\UserRepository;
+use Modules\User\Contracts\UserRepository;
 use Mcamara\LaravelLocalization\LaravelLocalization;
+use Modules\User\Events\UserCreated;
+use Modules\User\Events\UserDeleted;
+use Modules\User\Events\UserUpdated;
 
 /**
  * Class EloquentUserRepository.
@@ -70,7 +71,7 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
      * @param array $input
      * @param bool  $confirmed
      *
-     * @throws \App\Exceptions\GeneralException
+     * @throws GeneralException
      *
      * @return \Modules\User\Entities\User
      */
@@ -131,14 +132,6 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
         return $user;
     }
 
-    /**
-     * @param \Modules\User\Entities\User $user
-     * @param array            $input
-     *
-     * @throws \App\Exceptions\GeneralException
-     *
-     * @return bool
-     */
     private function save(User $user, array $input)
     {
         if (isset($input['password']) && ! empty($input['password'])) {
@@ -166,13 +159,6 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
         return true;
     }
 
-    /**
-     * @param User $user
-     *
-     * @throws \Exception|\Throwable
-     *
-     * @return bool|null
-     */
     public function destroy(User $user)
     {
         if (! $user->can_delete) {

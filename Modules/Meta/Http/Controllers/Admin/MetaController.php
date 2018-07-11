@@ -9,7 +9,7 @@ use App\Http\Requests\StoreMetaRequest;
 use App\Http\Requests\UpdateMetaRequest;
 use App\Repositories\Contracts\MetaRepository;
 
-class MetaController extends BackendController
+class MetaController extends AdminController
 {
     /**
      * @var MetaRepository

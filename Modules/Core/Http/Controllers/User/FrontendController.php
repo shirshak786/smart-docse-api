@@ -9,7 +9,7 @@ use App\Repositories\Contracts\TagRepository;
 use App\Repositories\Contracts\PostRepository;
 use App\Repositories\Contracts\UserRepository;
 
-abstract class FrontendController extends Controller
+abstract class UserController extends Controller
 {
     /**
      * Create a new controller instance.

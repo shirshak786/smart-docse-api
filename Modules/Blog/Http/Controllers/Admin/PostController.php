@@ -11,7 +11,7 @@ use App\Http\Requests\UpdatePostRequest;
 use Illuminate\Database\Eloquent\Builder;
 use App\Repositories\Contracts\PostRepository;
 
-class PostController extends BackendController
+class PostController extends AdminController
 {
     /**
      * @var PostRepository

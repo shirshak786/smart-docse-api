@@ -7,7 +7,7 @@ use Arcanedev\NoCaptcha\Rules\CaptchaRule;
 use App\Repositories\Contracts\FormSettingRepository;
 use App\Repositories\Contracts\FormSubmissionRepository;
 
-class PagesController extends FrontendController
+class PagesController extends UserController
 {
     /**
      * @var FormSubmissionRepository

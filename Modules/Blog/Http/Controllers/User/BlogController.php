@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Gate;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use App\Repositories\Contracts\PostRepository;
 
-class BlogController extends FrontendController
+class BlogController extends UserController
 {
     /**
      * @var PostRepository

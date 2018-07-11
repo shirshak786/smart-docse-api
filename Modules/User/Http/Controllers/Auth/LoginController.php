@@ -2,15 +2,15 @@
 
 namespace Modules\User\Http\Controllers\Auth;
 
+use Modules\Core\Exceptions\GeneralException;
+use Modules\User\Contracts\AccountRepository;
 use Modules\User\Entities\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Laravel\Socialite\AbstractUser;
-use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
 use Laravel\Socialite\Facades\Socialite;
 use Arcanedev\NoCaptcha\Rules\CaptchaRule;
-use App\Repositories\Contracts\AccountRepository;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -32,16 +32,8 @@ class LoginController extends Controller
 
     protected $decayMinutes = 10;
 
-    /**
-     * @var \App\Repositories\Contracts\AccountRepository
-     */
     protected $account;
 
-    /**
-     * RegisterController constructor.
-     *
-     * @param AccountRepository $account
-     */
     public function __construct(AccountRepository $account)
     {
         $this->middleware('guest')->except('logout', 'adminLogout');

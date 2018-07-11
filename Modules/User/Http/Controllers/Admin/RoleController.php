@@ -2,39 +2,23 @@
 
 namespace Modules\User\Http\Controllers\Admin;
 
-use App\Models\Role;
 use Illuminate\Http\Request;
-use App\Utils\RequestSearchQuery;
-use App\Http\Requests\StoreRoleRequest;
-use App\Http\Requests\UpdateRoleRequest;
 use App\Repositories\Contracts\RoleRepository;
+use Modules\Core\Http\Controllers\Backend\AdminController;
+use Modules\Core\Utils\RequestSearchQuery;
+use Modules\Role\Entities\Role;
+use Modules\User\Http\Requests\StoreRoleRequest;
+use Modules\User\Http\Requests\UpdateRoleRequest;
 
-class RoleController extends BackendController
+class RoleController extends AdminController
 {
-    /**
-     * @var RoleRepository
-     */
     protected $roles;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @param RoleRepository $roles
-     */
     public function __construct(RoleRepository $roles)
     {
         $this->roles = $roles;
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @param Request $request
-     *
-     * @throws \Exception
-     *
-     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Symfony\Component\HttpFoundation\BinaryFileResponse
-     */
     public function search(Request $request)
     {
         $query = $this->roles->query();
@@ -72,11 +56,6 @@ class RoleController extends BackendController
         ]);
     }
 
-    /**
-     * @param Role $role
-     *
-     * @return Role
-     */
     public function show(Role $role)
     {
         return $role;
@@ -87,11 +66,6 @@ class RoleController extends BackendController
         return config('permissions');
     }
 
-    /**
-     * @param StoreRoleRequest $request
-     *
-     * @return mixed
-     */
     public function store(StoreRoleRequest $request)
     {
         $this->authorize('create roles');
@@ -101,12 +75,6 @@ class RoleController extends BackendController
         return $this->redirectResponse($request, __('alerts.backend.roles.created'));
     }
 
-    /**
-     * @param Role              $role
-     * @param UpdateRoleRequest $request
-     *
-     * @return mixed
-     */
     public function update(Role $role, UpdateRoleRequest $request)
     {
         $this->authorize('edit roles');
@@ -116,12 +84,6 @@ class RoleController extends BackendController
         return $this->redirectResponse($request, __('alerts.backend.roles.updated'));
     }
 
-    /**
-     * @param Role    $role
-     * @param Request $request
-     *
-     * @return mixed
-     */
     public function destroy(Role $role, Request $request)
     {
         $this->authorize('delete roles');

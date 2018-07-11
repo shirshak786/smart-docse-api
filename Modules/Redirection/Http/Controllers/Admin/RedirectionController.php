@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Http\Requests\UpdateRedirectionRequest;
 use App\Repositories\Contracts\RedirectionRepository;
 
-class RedirectionController extends BackendController
+class RedirectionController extends AdminController
 {
     /**
      * @var RedirectionRepository
