@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace Modules\User\Http\Controllers\Admin;
 
 use App\Models\Role;
 use Illuminate\Http\Request;

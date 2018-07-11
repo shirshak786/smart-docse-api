@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Listeners;
+namespace Modules\User\Listeners;
 
 use Illuminate\Auth\Events\Login;
 use App\Repositories\Contracts\AccountRepository;

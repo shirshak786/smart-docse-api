@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Modules\User\Providers;
 
 use Illuminate\Auth\Events\Login;
 use App\Listeners\UserEventListener;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Modules\User\Providers;
 
 use App\Models\Post;
 use Modules\User\Entities\User;

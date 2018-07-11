@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Listeners;
+namespace Modules\User\Listeners;
 
 use App\Events\UserCreated;
 use App\Events\UserDeleted;
