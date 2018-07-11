@@ -1,0 +1,16 @@
+{
+    "name": "SEO",
+    "alias": "seo",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\SEO\\Providers\\SEOServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}
