@@ -19,7 +19,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies
         = [
-
+            User::class => UserPolicy::class,
+            Post::class => PostPolicy::class,
         ];
 
     /**
@@ -30,5 +31,13 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+
+        $accountRepository = $this->app->make(AccountRepository::class);
+
+        foreach (config('permissions') as $key => $permissions) {
+            Gate::define($key, function (User $user) use ($accountRepository, $key) {
+                return $accountRepository->hasPermission($user, $key);
+            });
+        }
     }
 }

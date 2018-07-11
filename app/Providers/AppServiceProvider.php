@@ -37,7 +37,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-
         if (config('app.url_force_https')) {
             // Force SSL if isSecure does not detect HTTPS
             URL::forceScheme('https');

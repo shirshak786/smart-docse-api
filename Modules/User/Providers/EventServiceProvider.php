@@ -16,6 +16,9 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
+        Login::class => [
+            LoginEventListener::class,
+        ],
     ];
 
     /**
@@ -24,6 +27,7 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $subscribe = [
+        UserEventListener::class,
     ];
 
     /**
