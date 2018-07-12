@@ -7,13 +7,13 @@
     "order": 0,
     "providers": [
         "Modules\\Core\\Providers\\CoreServiceProvider",
-        "Modules\\Core\\Providers\\PurifyServiceProvider",
+        "Modules\\Core\\Providers\\PurifySetupProvider",
         "Modules\\Core\\Providers\\ViewServiceProvider"
     ],
     "aliases": {},
     "files": [
-        "start.php",
-        "helpers.php"
+        "helpers.php",
+        "start.php"
     ],
     "requires": []
 }
