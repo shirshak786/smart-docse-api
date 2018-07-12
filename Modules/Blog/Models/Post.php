@@ -45,7 +45,7 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
  * @property mixed                                                      $state
  * @property mixed                                                      $status_label
  * @property \App\Models\Meta                                           $meta
- * @property \Modules\User\Entities\User|null                                      $owner
+ * @property \Modules\User\Models\User|null                                      $owner
  * @property \Illuminate\Database\Eloquent\Collection|\App\Models\Tag[] $tags
  *
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post published()
@@ -66,7 +66,7 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post withMedia($tags = array(), $match_all = false)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post withMediaMatchAll($tags = array())
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post withOwner(\Modules\User\Entities\User $user)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post withOwner(\Modules\User\Models\User $user)
  * @mixin \Eloquent
  */
 class Post extends Model implements HasMedia
@@ -286,7 +286,7 @@ class Post extends Model implements HasMedia
 
     /**
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \Modules\User\Entities\User                      $user
+     * @param \Modules\User\Models\User                      $user
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */

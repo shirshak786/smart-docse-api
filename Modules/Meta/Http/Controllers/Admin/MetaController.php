@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Models\Meta;
 use Illuminate\Http\Request;
-use App\Utils\RequestSearchQuery;
+use Module\Core\Utils\RequestSearchQuery;
 use App\Http\Requests\StoreMetaRequest;
 use App\Http\Requests\UpdateMetaRequest;
 use App\Repositories\Contracts\MetaRepository;

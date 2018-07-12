@@ -2,7 +2,7 @@
 
 namespace Modules\User\Contracts;
 
-use Modules\User\Entities\User;
+use Modules\User\Models\User;
 use Laravel\Socialite\AbstractUser;
 use Illuminate\Contracts\Auth\Authenticatable;
 

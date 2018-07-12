@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Tag;
 use App\Models\Post;
-use Modules\User\Entities\User;
+use Modules\User\Models\User;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
@@ -51,7 +51,7 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
     }
 
     /**
-     * @param \Modules\User\Entities\User $user
+     * @param \Modules\User\Models\User $user
      *
      * @return mixed
      */

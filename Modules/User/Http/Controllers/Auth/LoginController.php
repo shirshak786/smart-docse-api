@@ -4,7 +4,7 @@ namespace Modules\User\Http\Controllers\Auth;
 
 use Modules\Core\Exceptions\GeneralException;
 use Modules\User\Contracts\AccountRepository;
-use Modules\User\Entities\User;
+use Modules\User\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Laravel\Socialite\AbstractUser;

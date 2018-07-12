@@ -5,43 +5,23 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Tag;
 use App\Models\Post;
-use Modules\User\Entities\User;
+use Modules\User\Models\User;
 use Illuminate\Support\Facades\Response;
-use App\Repositories\Contracts\TagRepository;
-use App\Repositories\Contracts\PostRepository;
-use App\Repositories\Contracts\UserRepository;
+
 use Mcamara\LaravelLocalization\LaravelLocalization;
 
 class SeoController extends Controller
 {
-    /**
-     * @var LaravelLocalization
-     */
     protected $localization;
 
-    /**
-     * @var \App\Repositories\Contracts\PostRepository
-     */
     protected $posts;
 
-    /**
-     * @var TagRepository
-     */
+
     protected $tags;
 
-    /**
-     * @var \App\Repositories\Contracts\UserRepository
-     */
+
     protected $users;
 
-    /**
-     * SeoController constructor.
-     *
-     * @param LaravelLocalization                        $localization
-     * @param TagRepository                              $tags
-     * @param \App\Repositories\Contracts\UserRepository $users
-     * @param \App\Repositories\Contracts\PostRepository $posts
-     */
     public function __construct(LaravelLocalization $localization, TagRepository $tags, UserRepository $users, PostRepository $posts)
     {
         $this->localization = $localization;

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Models\Tag;
 use App\Models\Post;
-use Modules\User\Entities\User;
+use Modules\User\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Artesaos\SEOTools\Facades\SEOMeta;

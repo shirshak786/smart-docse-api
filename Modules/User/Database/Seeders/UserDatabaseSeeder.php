@@ -4,7 +4,7 @@ namespace Modules\User\Database\Seeders;
 
 
 use App\Models\Role;
-use Modules\User\Entities\User;
+use Modules\User\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 

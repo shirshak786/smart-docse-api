@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App\Repositories\Contracts\RedirectionRepository;
+use Module\Redirection\Contracts\RedirectionRepository;
 
 class Redirect
 {

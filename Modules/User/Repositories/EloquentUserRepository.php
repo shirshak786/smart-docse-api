@@ -4,7 +4,7 @@ namespace Modules\User\Repositories;
 
 use Exception;
 use Modules\Core\Repositories\EloquentBaseRepository;
-use Modules\User\Entities\User;
+use Modules\User\Models\User;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Modules\Core\Exceptions\GeneralException;
@@ -73,7 +73,7 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
      *
      * @throws GeneralException
      *
-     * @return \Modules\User\Entities\User
+     * @return \Modules\User\Models\User
      */
     public function store(array $input, $confirmed = false)
     {
@@ -109,7 +109,7 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
      * @throws Exception
      * @throws \Exception|\Throwable
      *
-     * @return \Modules\User\Entities\User
+     * @return \Modules\User\Models\User
      */
     public function update(User $user, array $input)
     {

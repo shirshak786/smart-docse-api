@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Traits\TranslatableJson;
+use  Modules\Core\Models\Traits\TranslatableJson;
 
 class Tag extends \Spatie\Tags\Tag
 {

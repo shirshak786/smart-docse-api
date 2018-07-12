@@ -3,7 +3,7 @@
 namespace Modules\User\Providers;
 
 use App\Models\Post;
-use Modules\User\Entities\User;
+use Modules\User\Models\User;
 use App\Policies\PostPolicy;
 use App\Policies\UserPolicy;
 use Illuminate\Support\Facades\Gate;

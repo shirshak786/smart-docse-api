@@ -3,7 +3,7 @@
 namespace Modules\User\Http\Controllers\Auth;
 
 use Modules\User\Contracts\AccountRepository;
-use Modules\User\Entities\User;
+use Modules\User\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;

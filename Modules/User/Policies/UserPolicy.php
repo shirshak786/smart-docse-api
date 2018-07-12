@@ -2,7 +2,7 @@
 
 namespace Modules\User\Policies;
 
-use Modules\User\Entities\User;
+use Modules\User\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class UserPolicy

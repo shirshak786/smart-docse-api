@@ -2,7 +2,7 @@
 
 namespace Modules\User\Contracts;
 
-use Modules\User\Entities\User;
+use Modules\User\Models\User;
 
 /**
  * Interface UserRepository.

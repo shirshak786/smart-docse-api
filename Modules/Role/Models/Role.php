@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Role\Entities;
+namespace Modules\Role\Models;
 
 use Illuminate\Support\Facades\Gate;
 use App\Models\Traits\TranslatableJson;

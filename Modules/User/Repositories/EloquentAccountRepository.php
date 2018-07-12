@@ -8,8 +8,8 @@ use Modules\Core\Exceptions\GeneralException;
 use Modules\Core\Repositories\EloquentBaseRepository;
 use Modules\User\Contracts\AccountRepository;
 use Modules\User\Contracts\UserRepository;
-use Modules\User\Entities\SocialLogin;
-use Modules\User\Entities\User;
+use Modules\User\Models\SocialLogin;
+use Modules\User\Models\User;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Laravel\Socialite\AbstractUser;
@@ -157,7 +157,7 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
     }
 
     /**
-     * @param \Modules\User\Entities\User $user
+     * @param \Modules\User\Models\User $user
      */
     private function sendConfirmationToUser(User $user)
     {

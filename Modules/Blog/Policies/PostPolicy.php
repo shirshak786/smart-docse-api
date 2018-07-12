@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\Post;
-use Modules\User\Entities\User;
+use Modules\User\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PostPolicy

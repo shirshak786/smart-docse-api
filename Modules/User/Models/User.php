@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\User\Entities;
+namespace Modules\User\Models;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Notifications\ResetPassword as ResetPasswordNotification;
+use Modules\User\Notifications\ResetPassword as ResetPasswordNotification;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable  implements JWTSubject
