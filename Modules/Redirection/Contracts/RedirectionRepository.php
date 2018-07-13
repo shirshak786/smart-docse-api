@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Contracts;
+namespace Modules\Redirection\Repositories\Contracts;
 
 use Modules\Core\Contracts\BaseRepository;
 use Modules\Redirection\Models\Redirection;

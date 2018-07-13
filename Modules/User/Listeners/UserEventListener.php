@@ -2,10 +2,11 @@
 
 namespace Modules\User\Listeners;
 
-use App\Events\UserCreated;
-use App\Events\UserDeleted;
-use App\Events\UserUpdated;
+
 use Illuminate\Support\Facades\Log;
+use Modules\User\Events\UserCreated;
+use Modules\User\Events\UserDeleted;
+use Modules\User\Events\UserUpdated;
 
 class UserEventListener
 {
@@ -42,17 +43,17 @@ class UserEventListener
     {
         $events->listen(
             UserCreated::class,
-            'App\Listeners\UserEventListener@onCreated'
+            'Modules\User\Listeners\UserEventListener@onCreated'
         );
 
         $events->listen(
             UserUpdated::class,
-            'App\Listeners\UserEventListener@onUpdated'
+            'Modules\User\Listeners\UserEventListener@onUpdated'
         );
 
         $events->listen(
             UserDeleted::class,
-            'App\Listeners\UserEventListener@onDeleted'
+            'Modules\User\Listeners\UserEventListener@onDeleted'
         );
     }
 }

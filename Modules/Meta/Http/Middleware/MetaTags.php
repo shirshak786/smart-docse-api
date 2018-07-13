@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace Modules\Meta\Http\Middleware;
 
 use Closure;
 use Artesaos\SEOTools\Facades\SEOMeta;
-use Module\Meta\Repositories\MetaRepository;
+use Modules\Meta\Contracts\MetaRepository;
 
 class MetaTags
 {

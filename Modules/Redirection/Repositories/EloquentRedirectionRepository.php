@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Repositories;
+namespace Modules\Redirection\Repositories;
 
 use Illuminate\Support\Facades\DB;
-use App\Repositories\Contracts\RedirectionRepository;
 use Modules\Core\Exceptions\GeneralException;
 use Modules\Core\Repositories\EloquentBaseRepository;
 use Modules\Redirection\Models\Redirection;
+use Modules\Redirection\Repositories\Contracts\RedirectionRepository;
 
 class EloquentRedirectionRepository extends EloquentBaseRepository implements RedirectionRepository
 {

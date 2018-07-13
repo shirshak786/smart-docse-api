@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Requests;
+namespace Modules\Meta\Http\Requests;
 
-use App\Models\Meta;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateMetaRequest extends FormRequest

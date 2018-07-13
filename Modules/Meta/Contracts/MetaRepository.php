@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Contracts;
+namespace Modules\Meta\Contracts;
 
 use Modules\Core\Contracts\BaseRepository;
 use Modules\Meta\Models\Meta;

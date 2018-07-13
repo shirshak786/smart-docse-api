@@ -2,13 +2,11 @@
 
 namespace Modules\Blog\Repositories;
 
-use App\Models\Tag;
-use App\Repositories\Contracts\TagRepository;
 use Mcamara\LaravelLocalization\LaravelLocalization;
+use Modules\Blog\Contracts\TagRepository;
+use Modules\Blog\Models\Tag;
+use Modules\Core\Repositories\EloquentBaseRepository;
 
-/**
- * Class EloquentTagRepository.
- */
 class EloquentTagRepository extends EloquentBaseRepository implements TagRepository
 {
     /**

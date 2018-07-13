@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace Module\Redirection\Http\Middleware;
 
-use App\Repositories\Contracts\RedirectionRepository;
 use Closure;
+use Modules\Redirection\Repositories\Contracts\RedirectionRepository;
 
 class Redirect
 {

@@ -3,72 +3,23 @@
 namespace Modules\Blog\Models;
 
 use Carbon\Carbon;
+use Modules\Core\Models\Traits\HasEditor;
+use Modules\Core\Models\Traits\HasTranslatableSlug;
+use Modules\Core\Models\Traits\TranslatableJson;
+use Modules\Meta\Models\Traits\Metable;
+use Modules\User\Models\User;
 use Spatie\Tags\HasTags;
 use Laravel\Scout\Searchable;
-use App\Models\Traits\Metable;
-use App\Models\Traits\HasEditor;
 use Illuminate\Support\Facades\Gate;
 use Spatie\MediaLibrary\Models\Media;
 use Stevebauman\Purify\Facades\Purify;
-use App\Models\Traits\TranslatableJson;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Builder;
-use App\Models\Traits\HasTranslatableSlug;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-/**
- * App\Models\Post.
- *
- * @property int                                                        $id
- * @property int|null                                                   $user_id
- * @property int                                                        $status
- * @property bool                                                       $promoted
- * @property bool                                                       $pinned
- * @property array                                                      $title
- * @property array                                                      $summary
- * @property array                                                      $body
- * @property array                                                      $slug
- * @property \Carbon\Carbon|null                                        $published_at
- * @property \Carbon\Carbon|null                                        $unpublished_at
- * @property \Carbon\Carbon|null                                        $created_at
- * @property \Carbon\Carbon|null                                        $updated_at
- * @property mixed                                                      $can_delete
- * @property mixed                                                      $can_edit
- * @property mixed                                                      $has_featured_image
- * @property mixed                                                      $featured_image_path
- * @property mixed                                                      $thumbnail_image_path
- * @property mixed                                                      $meta_description
- * @property mixed                                                      $meta_title
- * @property mixed                                                      $published
- * @property mixed                                                      $state
- * @property mixed                                                      $status_label
- * @property \App\Models\Meta                                           $meta
- * @property \Modules\User\Models\User|null                                      $owner
- * @property \Illuminate\Database\Eloquent\Collection|\App\Models\Tag[] $tags
- *
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post published()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereBody($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereHasMedia($tags, $match_all = false)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereHasMediaMatchAll($tags)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post wherePinned($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post wherePromoted($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post wherePublishedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereSummary($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereUnpublishedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereUserId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post withMedia($tags = array(), $match_all = false)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post withMediaMatchAll($tags = array())
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post withOwner(\Modules\User\Models\User $user)
- * @mixin \Eloquent
- */
+
 class Post extends Model implements HasMedia
 {
     use Searchable;

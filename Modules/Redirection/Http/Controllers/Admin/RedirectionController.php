@@ -9,8 +9,8 @@ use Modules\Core\Utils\RequestSearchQuery;
 use Modules\Redirection\Http\Requests\StoreRedirectionRequest;
 use Modules\Redirection\Http\Requests\UpdateRedirectionRequest;
 use Modules\Redirection\Models\Redirection;
+use Modules\Redirection\Repositories\Contracts\RedirectionRepository;
 use Symfony\Component\HttpFoundation\Response;
-use App\Repositories\Contracts\RedirectionRepository;
 
 class RedirectionController extends AdminController
 {

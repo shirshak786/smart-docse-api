@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Repositories;
+namespace Modules\Meta\Repositories;
 
 use Illuminate\Support\Facades\DB;
-use App\Repositories\Contracts\MetaRepository;
 use Modules\Core\Exceptions\GeneralException;
 use Modules\Core\Repositories\EloquentBaseRepository;
+use Modules\Meta\Contracts\MetaRepository;
 use Modules\Meta\Models\Meta;
 
 /**

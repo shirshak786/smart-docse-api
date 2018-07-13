@@ -2,19 +2,17 @@
 
 namespace Modules\Blog\Repositories;
 
-use App\Models\Tag;
-use App\Models\Post;
+use Modules\Blog\Contracts\PostRepository;
+use Modules\Blog\Models\Post;
+use Modules\Blog\Models\Tag;
+use Modules\Core\Exceptions\GeneralException;
+use Modules\Core\Repositories\EloquentBaseRepository;
 use Modules\User\Models\User;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
-use App\Exceptions\GeneralException;
 use Illuminate\Support\Facades\Gate;
 use Spatie\MediaLibrary\Models\Media;
-use App\Repositories\Contracts\PostRepository;
 
-/**
- * Class EloquentPostRepository.
- */
 class EloquentPostRepository extends EloquentBaseRepository implements PostRepository
 {
     /**
@@ -40,45 +38,24 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
             ->orderByDesc('updated_at');
     }
 
-    /**
-     * @param Tag $tag
-     *
-     * @return mixed
-     */
+
     public function publishedByTag(Tag $tag)
     {
         return $this->published()->withAnyTags($tag->name);
     }
 
-    /**
-     * @param \Modules\User\Models\User $user
-     *
-     * @return mixed
-     */
     public function publishedByOwner(User $user)
     {
         return $this->published()->withOwner($user);
     }
 
-    /**
-     * @param string $slug
-     *
-     * @return mixed
-     */
+
     public function findBySlug($slug)
     {
         return $this->query()->whereSlug($slug)->first();
     }
 
-    /**
-     * @param Post                               $post
-     * @param array                              $input
-     * @param \Illuminate\Http\UploadedFile|null $image
-     *
-     * @throws \App\Exceptions\GeneralException|\Exception|\Throwable
-     *
-     * @return mixed
-     */
+
     public function saveAndPublish(Post $post, array $input, UploadedFile $image = null)
     {
         $post->status = Post::PUBLISHED;
@@ -86,15 +63,7 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
         return $this->save($post, $input, $image);
     }
 
-    /**
-     * @param Post                               $post
-     * @param array                              $input
-     * @param \Illuminate\Http\UploadedFile|null $image
-     *
-     * @throws \App\Exceptions\GeneralException|\Exception|\Throwable
-     *
-     * @return mixed
-     */
+
     public function saveAsDraft(Post $post, array $input, UploadedFile $image = null)
     {
         $post->status = Post::DRAFT;
@@ -102,15 +71,7 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
         return $this->save($post, $input, $image);
     }
 
-    /**
-     * @param Post                               $post
-     * @param array                              $input
-     * @param \Illuminate\Http\UploadedFile|null $image
-     *
-     * @throws \App\Exceptions\GeneralException|\Exception|\Throwable
-     *
-     * @return mixed
-     */
+
     private function save(Post $post, array $input, UploadedFile $image = null)
     {
         if ($post->exists) {
@@ -255,6 +216,7 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
 
             throw new GeneralException(__('exceptions.backend.posts.update'));
         });
+        return true;
     }
 
     /**
