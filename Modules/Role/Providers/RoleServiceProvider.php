@@ -4,6 +4,8 @@ namespace Modules\Role\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Role\Repositories\Contracts\RoleRepository;
+use Modules\Role\Repositories\EloquentRoleRepository;
 
 class RoleServiceProvider extends ServiceProvider
 {

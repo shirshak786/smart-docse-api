@@ -2,8 +2,14 @@
 
 namespace Modules\Blog\Providers;
 
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Blog\Contracts\PostRepository;
+use Modules\Blog\Contracts\TagRepository;
+use Modules\Blog\Models\Post;
+use Modules\Blog\Repositories\EloquentPostRepository;
+use Modules\Blog\Repositories\EloquentTagRepository;
 
 class BlogServiceProvider extends ServiceProvider
 {
@@ -26,6 +32,10 @@ class BlogServiceProvider extends ServiceProvider
         $this->registerViews();
         $this->registerFactories();
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+
+        Relation::morphMap([
+             'post' => Post::class,
+        ]);
     }
 
     /**
@@ -35,7 +45,15 @@ class BlogServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(
+            PostRepository::class,
+            EloquentPostRepository::class
+        );
+
+        $this->app->bind(
+            TagRepository::class,
+            EloquentTagRepository::class
+        );
     }
 
     /**
@@ -91,7 +109,7 @@ class BlogServiceProvider extends ServiceProvider
 
     /**
      * Register an additional directory of factories.
-     * 
+     *
      * @return void
      */
     public function registerFactories()

@@ -4,6 +4,8 @@ namespace Modules\Meta\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Meta\Contracts\MetaRepository;
+use Modules\Meta\Repositories\EloquentMetaRepository;
 
 class MetaServiceProvider extends ServiceProvider
 {

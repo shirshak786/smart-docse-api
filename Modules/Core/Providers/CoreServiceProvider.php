@@ -4,6 +4,8 @@ namespace Modules\Core\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Core\Contracts\BaseRepository;
+use Modules\Core\Repositories\EloquentBaseRepository;
 
 class CoreServiceProvider extends ServiceProvider
 {
@@ -35,7 +37,7 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(BaseRepository::class,EloquentBaseRepository::class);
     }
 
     /**
@@ -91,7 +93,7 @@ class CoreServiceProvider extends ServiceProvider
 
     /**
      * Register an additional directory of factories.
-     * 
+     *
      * @return void
      */
     public function registerFactories()

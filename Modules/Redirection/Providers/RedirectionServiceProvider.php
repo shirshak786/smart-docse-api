@@ -4,6 +4,8 @@ namespace Modules\Redirection\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Redirection\Repositories\Contracts\RedirectionRepository;
+use Modules\Redirection\Repositories\EloquentRedirectionRepository;
 
 class RedirectionServiceProvider extends ServiceProvider
 {

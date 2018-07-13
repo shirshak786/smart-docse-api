@@ -5,6 +5,11 @@ namespace Modules\User\Providers;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\User\Contracts\AccountRepository;
+use Modules\User\Contracts\UserRepository;
+use Modules\User\Models\User;
+use Modules\User\Repositories\EloquentAccountRepository;
+use Modules\User\Repositories\EloquentUserRepository;
 
 class UserServiceProvider extends ServiceProvider
 {
@@ -29,7 +34,6 @@ class UserServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
 
         Relation::morphMap([
-           // 'post' => Post::class,
             'user' => User::class,
         ]);
     }
