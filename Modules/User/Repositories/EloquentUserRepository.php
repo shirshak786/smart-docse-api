@@ -4,47 +4,26 @@ namespace Modules\User\Repositories;
 
 use Exception;
 use Modules\Core\Repositories\EloquentBaseRepository;
+use Modules\Role\Repositories\Contracts\RoleRepository;
 use Modules\User\Models\User;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Modules\Core\Exceptions\GeneralException;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Contracts\Config\Repository;
-use App\Repositories\Contracts\RoleRepository;
 use Modules\User\Contracts\UserRepository;
 use Mcamara\LaravelLocalization\LaravelLocalization;
 use Modules\User\Events\UserCreated;
 use Modules\User\Events\UserDeleted;
 use Modules\User\Events\UserUpdated;
 
-/**
- * Class EloquentUserRepository.
- */
 class EloquentUserRepository extends EloquentBaseRepository implements UserRepository
 {
-    /**
-     * @var \Mcamara\LaravelLocalization\LaravelLocalization
-     */
     protected $localization;
-
-    /**
-     * @var \Illuminate\Contracts\Config\Repository
-     */
     protected $config;
 
-    /**
-     * @var RoleRepository
-     */
     protected $roles;
 
-    /**
-     * EloquentUserRepository constructor.
-     *
-     * @param User                                             $user
-     * @param \App\Repositories\Contracts\RoleRepository       $roles
-     * @param \Mcamara\LaravelLocalization\LaravelLocalization $localization
-     * @param \Illuminate\Contracts\Config\Repository          $config
-     */
     public function __construct(
         User $user,
         RoleRepository $roles,

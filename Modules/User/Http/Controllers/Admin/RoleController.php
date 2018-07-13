@@ -3,10 +3,10 @@
 namespace Modules\User\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Repositories\Contracts\RoleRepository;
-use Modules\Core\Http\Controllers\Backend\AdminController;
+use Modules\Core\Http\Controllers\Admin\AdminController;
 use Modules\Core\Utils\RequestSearchQuery;
 use Modules\Role\Models\Role;
+use Modules\Role\Repositories\Contracts\RoleRepository;
 use Modules\User\Http\Requests\StoreRoleRequest;
 use Modules\User\Http\Requests\UpdateRoleRequest;
 

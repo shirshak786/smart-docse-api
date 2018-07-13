@@ -2,13 +2,13 @@
 
 namespace Modules\User\Providers;
 
-use App\Models\Post;
+use Modules\Blog\Models\Post;
+use Modules\Blog\Policies\PostPolicy;
+use Modules\User\Contracts\AccountRepository;
 use Modules\User\Models\User;
-use App\Policies\PostPolicy;
-use App\Policies\UserPolicy;
 use Illuminate\Support\Facades\Gate;
-use App\Repositories\Contracts\AccountRepository;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Modules\User\Policies\UserPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {

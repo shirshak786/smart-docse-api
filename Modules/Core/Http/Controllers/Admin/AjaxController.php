@@ -7,20 +7,14 @@ use Illuminate\Routing\Route;
 use App\Http\Controllers\Controller;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
-use App\Repositories\Contracts\TagRepository;
-use App\Repositories\Contracts\PostRepository;
 use Mcamara\LaravelLocalization\LaravelLocalization;
+use Modules\Blog\Contracts\PostRepository;
+use Modules\Blog\Contracts\TagRepository;
 
 class AjaxController extends Controller
 {
-    /**
-     * @var PostRepository
-     */
-    protected $posts;
 
-    /**
-     * @var TagRepository
-     */
+    protected $posts;
     protected $tags;
 
     /**
@@ -28,13 +22,7 @@ class AjaxController extends Controller
      */
     protected $localization;
 
-    /**
-     * AjaxController constructor.
-     *
-     * @param \App\Repositories\Contracts\PostRepository       $posts
-     * @param TagRepository                                    $tags
-     * @param \Mcamara\LaravelLocalization\LaravelLocalization $localization
-     */
+
     public function __construct(PostRepository $posts, TagRepository $tags, LaravelLocalization $localization)
     {
         $this->posts = $posts;

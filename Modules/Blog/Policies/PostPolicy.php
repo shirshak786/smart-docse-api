@@ -2,7 +2,7 @@
 
 namespace Modules\Blog\Policies;
 
-use App\Models\Post;
+use Modules\Blog\Models\Post;
 use Modules\User\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -10,16 +10,6 @@ class PostPolicy
 {
     use HandlesAuthorization;
 
-    /**
-     * Determine whether the user can update the user.
-     *
-     * @param User             $authenticatedUser
-     * @param \App\Models\Post $post
-     *
-     * @return mixed
-     *
-     * @internal param \Modules\User\Entities\User $user
-     */
     public function view(User $authenticatedUser, Post $post)
     {
         if ($authenticatedUser->can('view posts')) {
@@ -33,16 +23,7 @@ class PostPolicy
         return false;
     }
 
-    /**
-     * Determine whether the user can update the post.
-     *
-     * @param User             $authenticatedUser
-     * @param \App\Models\Post $post
-     *
-     * @return mixed
-     *
-     * @internal param \Modules\User\Entities\User $user
-     */
+
     public function update(User $authenticatedUser, Post $post)
     {
         if ($authenticatedUser->can('edit posts')) {
@@ -56,16 +37,6 @@ class PostPolicy
         return false;
     }
 
-    /**
-     * Determine whether the user can delete the post.
-     *
-     * @param User             $authenticatedUser
-     * @param \App\Models\Post $post
-     *
-     * @return mixed
-     *
-     * @internal param \Modules\User\Entities\User $user
-     */
     public function delete(User $authenticatedUser, Post $post)
     {
         if ($authenticatedUser->can('delete posts')) {

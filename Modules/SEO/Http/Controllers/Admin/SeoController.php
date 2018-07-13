@@ -1,10 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Modules\SER\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Carbon\Carbon;
-use App\Models\Tag;
-use App\Models\Post;
+use Modules\Blog\Contracts\PostRepository;
+use Modules\Blog\Contracts\TagRepository;
+use Modules\Blog\Models\Post;
+use Modules\Blog\Models\Tag;
+use Modules\User\Contracts\UserRepository;
 use Modules\User\Models\User;
 use Illuminate\Support\Facades\Response;
 
