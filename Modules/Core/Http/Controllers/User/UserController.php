@@ -9,7 +9,7 @@ use Modules\Blog\Contracts\PostRepository;
 use Modules\Blog\Contracts\TagRepository;
 use Modules\User\Contracts\UserRepository;
 
-abstract class UserController extends Controller
+class UserController extends Controller
 {
     /**
      * Create a new controller instance.

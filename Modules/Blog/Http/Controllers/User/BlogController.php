@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Blog\Http\Controllers\Frontend;
+namespace Modules\Blog\Http\Controllers\User;
 
 use Modules\Blog\Contracts\PostRepository;
 use Modules\Blog\Models\Post;

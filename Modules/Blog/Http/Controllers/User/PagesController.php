@@ -1,9 +1,8 @@
 <?php
 
-namespace Modules\Blog\Http\Controllers\Frontend;
+namespace Modules\Blog\Http\Controllers\User;
 
 use Illuminate\Http\Request;
-use Arcanedev\NoCaptcha\Rules\CaptchaRule;
 use Modules\Core\Http\Controllers\User\UserController;
 
 class PagesController extends UserController

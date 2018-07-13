@@ -1,14 +1,14 @@
 <?php
 
-namespace Modules\Blog\Http\Controllers\Backend;
+namespace Modules\Blog\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Blog\Contracts\PostRepository;
 use Modules\Blog\Http\Requests\StorePostRequest;
 use Modules\Blog\Http\Requests\UpdatePostRequest;
 use Modules\Blog\Models\Post;
-use Modules\Blog\Repositories\Contracts\PostRepository;
 use Modules\Core\Http\Controllers\Admin\AdminController;
 use Modules\Core\Utils\RequestSearchQuery;
 
