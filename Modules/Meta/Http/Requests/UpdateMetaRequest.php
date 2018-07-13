@@ -24,7 +24,6 @@ class UpdateMetaRequest extends FormRequest
      */
     public function rules()
     {
-        /** @var Meta $meta */
         $meta = $this->route('meta');
 
         if (! $meta->metable_type) {

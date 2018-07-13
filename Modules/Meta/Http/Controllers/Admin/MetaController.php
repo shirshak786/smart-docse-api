@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace Modules\Meta\Http\Controllers\Admin;
 
-use App\Models\Meta;
 use Illuminate\Http\Request;
-use Module\Core\Utils\RequestSearchQuery;
 use App\Http\Requests\StoreMetaRequest;
 use App\Http\Requests\UpdateMetaRequest;
 use App\Repositories\Contracts\MetaRepository;
+use Modules\Core\Http\Controllers\Admin\AdminController;
+use Modules\Core\Utils\RequestSearchQuery;
+use Modules\Meta\Models\Meta;
 
 class MetaController extends AdminController
 {

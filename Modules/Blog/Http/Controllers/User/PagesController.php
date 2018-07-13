@@ -1,36 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace Modules\Blog\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use Arcanedev\NoCaptcha\Rules\CaptchaRule;
-use App\Repositories\Contracts\FormSettingRepository;
-use App\Repositories\Contracts\FormSubmissionRepository;
+use Modules\Core\Http\Controllers\User\UserController;
 
 class PagesController extends UserController
 {
-    /**
-     * @var FormSubmissionRepository
-     */
-    protected $formSubmissions;
 
-    /**
-     * @var FormSettingRepository
-     */
-    protected $formSettings;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @param \App\Repositories\Contracts\FormSubmissionRepository $formSubmissions
-     * @param \App\Repositories\Contracts\FormSettingRepository    $formSettings
-     */
-    public function __construct(FormSubmissionRepository $formSubmissions, FormSettingRepository $formSettings)
+    public function __construct()
     {
         parent::__construct();
-
-        $this->formSubmissions = $formSubmissions;
-        $this->formSettings = $formSettings;
     }
 
     public function about()
@@ -40,30 +21,11 @@ class PagesController extends UserController
 
     public function contact(Request $request)
     {
-        if ($request->isMethod('POST')) {
-            $this->validate($request, [
-                'name'                 => 'required',
-                'email'                => 'required|email',
-                'message'              => 'required',
-                'g-recaptcha-response' => ['required', new CaptchaRule()],
-            ]);
 
-            $this->formSubmissions->store('contact', $request->input());
-
-            return redirect(route('contact-sent'));
-        }
-
-        return view('frontend.pages.contact');
     }
 
     public function contactSent()
     {
-        $message = null;
-
-        if ($formSetting = $this->formSettings->find('contact')) {
-            $message = $formSetting->html_message;
-        }
-
         return view('frontend.pages.contact-sent', compact('message'));
     }
 

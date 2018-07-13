@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models\Traits;
+namespace Modules\Meta\Models\Traits;
 
-use App\Models\Meta;
+use Modules\Meta\Models\Meta;
 
 /**
  * Trait Metable.

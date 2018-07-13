@@ -2,6 +2,8 @@
 
 namespace Modules\Blog\Contracts;
 
+use Modules\Core\Contracts\BaseRepository;
+
 /**
  * Interface TagRepository.
  */

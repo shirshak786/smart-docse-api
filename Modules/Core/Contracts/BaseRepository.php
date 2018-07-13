@@ -2,9 +2,6 @@
 
 namespace Modules\Core\Contracts;
 
-/**
- * Interface BaseRepository.
- */
 interface BaseRepository
 {
     /**

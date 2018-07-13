@@ -2,7 +2,8 @@
 
 namespace App\Repositories\Contracts;
 
-use App\Models\Meta;
+use Modules\Core\Contracts\BaseRepository;
+use Modules\Meta\Models\Meta;
 
 /**
  * Interface MetaRepository.

@@ -2,11 +2,11 @@
 
 namespace App\Repositories;
 
-use Exception;
-use App\Models\Meta;
 use Illuminate\Support\Facades\DB;
-use App\Exceptions\GeneralException;
 use App\Repositories\Contracts\MetaRepository;
+use Modules\Core\Exceptions\GeneralException;
+use Modules\Core\Repositories\EloquentBaseRepository;
+use Modules\Meta\Models\Meta;
 
 /**
  * Class EloquentMetaRepository.
@@ -30,20 +30,11 @@ class EloquentMetaRepository extends EloquentBaseRepository implements MetaRepos
      */
     public function find($route)
     {
-        /* @var Meta $meta */
         return $this->query()->whereRoute($route)->first();
     }
 
-    /**
-     * @param array $input
-     *
-     * @throws \Exception|\Throwable
-     *
-     * @return \App\Models\Meta
-     */
     public function store(array $input)
     {
-        /** @var Meta $meta */
         $meta = $this->make($input);
 
         if ($this->find($meta->route)) {
@@ -57,15 +48,6 @@ class EloquentMetaRepository extends EloquentBaseRepository implements MetaRepos
         return $meta;
     }
 
-    /**
-     * @param Meta  $meta
-     * @param array $input
-     *
-     * @throws Exception
-     * @throws \Exception|\Throwable
-     *
-     * @return \App\Models\Meta
-     */
     public function update(Meta $meta, array $input)
     {
         if ($meta->route) {
