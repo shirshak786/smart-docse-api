@@ -2,7 +2,8 @@
 
 namespace App\Repositories\Contracts;
 
-use App\Models\Redirection;
+use Modules\Core\Contracts\BaseRepository;
+use Modules\Redirection\Models\Redirection;
 
 /**
  * Interface RedirectionRepository.

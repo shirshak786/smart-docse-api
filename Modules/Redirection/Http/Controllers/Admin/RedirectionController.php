@@ -1,14 +1,15 @@
 <?php
 
-namespace Modules\Redirection\Entities;
+namespace Modules\Redirection\Http\Controllers\Admin;
 
 use League\Csv\Reader;
-use App\Models\Redirection;
 use Illuminate\Http\Request;
-use App\Utils\RequestSearchQuery;
-use App\Http\Requests\StoreRedirectionRequest;
+use Modules\Core\Http\Controllers\Admin\AdminController;
+use Modules\Core\Utils\RequestSearchQuery;
+use Modules\Redirection\Http\Requests\StoreRedirectionRequest;
+use Modules\Redirection\Http\Requests\UpdateRedirectionRequest;
+use Modules\Redirection\Models\Redirection;
 use Symfony\Component\HttpFoundation\Response;
-use App\Http\Requests\UpdateRedirectionRequest;
 use App\Repositories\Contracts\RedirectionRepository;
 
 class RedirectionController extends AdminController
