@@ -3,6 +3,7 @@
 namespace Modules\User\Contracts;
 
 use Modules\User\Models\User;
+use Modules\Core\Contracts\BaseRepository;
 
 /**
  * Interface UserRepository.
