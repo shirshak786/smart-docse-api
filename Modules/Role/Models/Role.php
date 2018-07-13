@@ -3,33 +3,11 @@
 namespace Modules\Role\Models;
 
 use Illuminate\Support\Facades\Gate;
-use App\Models\Traits\TranslatableJson;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Core\Models\Traits\TranslatableJson;
 use Spatie\Translatable\HasTranslations;
 
-/**
- * App\Models\Role.
- *
- * @property int                                                               $id
- * @property string                                                            $name
- * @property array                                                             $display_name
- * @property array                                                             $description
- * @property int                                                               $order
- * @property \Carbon\Carbon|null                                               $created_at
- * @property \Carbon\Carbon|null                                               $updated_at
- * @property mixed                                                             $can_delete
- * @property mixed                                                             $can_edit
- * @property \Illuminate\Database\Eloquent\Collection|\App\Models\Permission[] $permissions
- *
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Role whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Role whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Role whereDisplayName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Role whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Role whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Role whereOrder($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Role whereUpdatedAt($value)
- * @mixin \Eloquent
- */
+
 class Role extends Model
 {
     use HasTranslations;

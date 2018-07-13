@@ -2,33 +2,21 @@
 
 namespace App\Repositories;
 
-use Exception;
-use App\Models\Role;
-use App\Exceptions\GeneralException;
-use App\Repositories\Contracts\RoleRepository;
+use Modules\Core\Exceptions\GeneralException;
+use Modules\Core\Repositories\EloquentBaseRepository;
+use Modules\Role\Models\Role;
+use Modules\Role\Repositories\Contracts\RoleRepository;
 
 /**
  * Class EloquentRoleRepository.
  */
 class EloquentRoleRepository extends EloquentBaseRepository implements RoleRepository
 {
-    /**
-     * EloquentRoleRepository constructor.
-     *
-     * @param Role $role
-     */
     public function __construct(Role $role)
     {
         parent::__construct($role);
     }
 
-    /**
-     * @param array $input
-     *
-     * @throws \Exception|\Throwable
-     *
-     * @return \App\Models\Role
-     */
     public function store(array $input)
     {
         /** @var Role $role */
@@ -41,15 +29,6 @@ class EloquentRoleRepository extends EloquentBaseRepository implements RoleRepos
         return $role;
     }
 
-    /**
-     * @param Role  $role
-     * @param array $input
-     *
-     * @throws Exception
-     * @throws \Exception|\Throwable
-     *
-     * @return \App\Models\Role
-     */
     public function update(Role $role, array $input)
     {
         $role->fill($input);
@@ -61,14 +40,6 @@ class EloquentRoleRepository extends EloquentBaseRepository implements RoleRepos
         return $role;
     }
 
-    /**
-     * @param \App\Models\Role $role
-     * @param array            $input
-     *
-     * @throws \App\Exceptions\GeneralException
-     *
-     * @return bool
-     */
     private function save(Role $role, array $input)
     {
         if (! $role->save($input)) {
@@ -86,13 +57,6 @@ class EloquentRoleRepository extends EloquentBaseRepository implements RoleRepos
         return true;
     }
 
-    /**
-     * @param Role $role
-     *
-     * @throws \Exception|\Throwable
-     *
-     * @return bool|null
-     */
     public function destroy(Role $role)
     {
         if (! $role->delete()) {
@@ -102,9 +66,6 @@ class EloquentRoleRepository extends EloquentBaseRepository implements RoleRepos
         return true;
     }
 
-    /**
-     * Get only roles than current can attribute to the others.
-     */
     public function getAllowedRoles()
     {
         $authenticatedUser = auth()->user();
@@ -119,7 +80,6 @@ class EloquentRoleRepository extends EloquentBaseRepository implements RoleRepos
             return $roles;
         }
 
-        /** @var \Illuminate\Support\Collection $permissions */
         $permissions = $authenticatedUser->getPermissions();
 
         $roles = $roles->filter(function (Role $role) use ($permissions) {
