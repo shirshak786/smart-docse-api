@@ -17,11 +17,6 @@ class MetaController extends AdminController
      */
     protected $metas;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @param MetaRepository $metas
-     */
     public function __construct(MetaRepository $metas)
     {
         $this->metas = $metas;

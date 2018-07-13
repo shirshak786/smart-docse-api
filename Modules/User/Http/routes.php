@@ -40,7 +40,7 @@ Route::group(['middleware' => ['web', 'locale', 'auth', 'can:access backend'] , 
 
 Route::namespace('Modules\User\Http\Controllers\Auth')->group(function(){
     // Auth Routes
-    Route::middleware(['web', 'metas', 'locale', 'localize'])->group(function() {
+    Route::middleware(['web', 'locale', 'localize'])->group(function() {
                 if (config('account.can_register')) {
                     // Registration Routes...
                     Route::get('register', 'RegisterController@showRegistrationForm')->name('register');
@@ -71,7 +71,7 @@ Route::namespace('Modules\User\Http\Controllers\Auth')->group(function(){
 
 Route::namespace('Modules\User\Http\Controllers\User')->group(function() {
 // User Routes
-    Route::middleware(['web', 'metas', 'locale', 'localize'])->group(function () {
+    Route::middleware(['web', 'locale', 'localize'])->group(function () {
         Route::group(
             [
                 'prefix'     => 'user',

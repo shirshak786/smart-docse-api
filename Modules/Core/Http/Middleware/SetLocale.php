@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\User\Http\Middleware;
+namespace Modules\Core\Http\Middleware;
 
 use Closure;
 use Carbon\Carbon;

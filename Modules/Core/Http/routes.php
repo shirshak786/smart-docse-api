@@ -10,7 +10,7 @@ Route::group(['middleware' => ['web', 'locale', 'auth', 'can:access backend'], '
 });
 
 Route::namespace('Modules\Core\Http\Controllers\User')->group(function(){
-    Route::middleware(['web', 'metas', 'locale', 'localize'])->group(function(){
+    Route::middleware(['web', 'locale', 'localize'])->group(function(){
         Route::get('/', 'UserController@index')->name('home');
     });
 });

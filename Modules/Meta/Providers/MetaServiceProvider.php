@@ -5,6 +5,7 @@ namespace Modules\Meta\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
 use Modules\Meta\Contracts\MetaRepository;
+use Modules\Meta\Http\Middleware\MetaTags;
 use Modules\Meta\Repositories\EloquentMetaRepository;
 
 class MetaServiceProvider extends ServiceProvider
@@ -37,11 +38,11 @@ class MetaServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app['router']->middleware('metas', MetaTags::class);
         $this->app->bind(
             MetaRepository::class,
             EloquentMetaRepository::class
         );
-
     }
 
     /**

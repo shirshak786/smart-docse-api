@@ -2,8 +2,10 @@
 
 namespace Modules\Redirection\Providers;
 
+use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Module\Redirection\Http\Middleware\Redirect;
 use Modules\Redirection\Repositories\Contracts\RedirectionRepository;
 use Modules\Redirection\Repositories\EloquentRedirectionRepository;
 
@@ -35,8 +37,10 @@ class RedirectionServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(Kernel $kernel)
     {
+        $kernel->prependMiddleware(Redirect::class);
+
         $this->app->bind(
             RedirectionRepository::class,
             EloquentRedirectionRepository::class

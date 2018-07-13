@@ -10,14 +10,14 @@
                 <a class="nav-link {{ active_class(if_route('home')) }}" href="{{ route('home') }}">
                     <i class="fa fa-home"></i>
                 </a>
-                <a class="nav-link {{ active_class(if_route('about')) }}"
-                   href="{{ route('about') }}">@lang('labels.frontend.titles.about')</a>
+                <a class="nav-link">
+                   href="">@lang('labels.frontend.titles.about')</a>
                 @if(config('blog.enabled'))
                     <a class="nav-link {{ active_class(if_route_pattern('blog.*')) }}"
                        href="{{ route('blog.index') }}">@lang('labels.frontend.titles.blog')</a>
                 @endif
-                <a class="nav-link {{ active_class(if_route('contact')) }}"
-                   href="{{ route('contact') }}">@lang('labels.frontend.titles.contact')</a>
+                <a class="nav-link }}"
+                   href="">@lang('labels.frontend.titles.contact')</a>
             </div>
 
             <div class="navbar-nav">

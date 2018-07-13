@@ -19,7 +19,6 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,
-        \App\Http\Middleware\Redirect::class,
     ];
     /**
      * The application's route middleware groups.
@@ -35,8 +34,8 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            \App\Http\Middleware\SetLocale::class,
-            \App\Http\Middleware\ReadOnly::class,
+            \Modules\Core\Http\Middleware\SetLocale::class,
+            \Modules\Core\Http\Middleware\ReadOnly::class,
         ],
         'api' => [
             'throttle:60,1',
@@ -60,10 +59,9 @@ class Kernel extends HttpKernel
         'bindings'      => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can'           => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest'         => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'guest'         => \Modules\Core\Http\Middleware\RedirectIfAuthenticated::class,
         'signed'        => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle'      => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'metas'         => \App\Http\Middleware\MetaTags::class,
         'localize'      => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
     ];
 }
