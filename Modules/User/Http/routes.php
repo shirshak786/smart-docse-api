@@ -1,6 +1,6 @@
 <?php
 // Admin Routes
-Route::group(['middleware' => ['web', 'locale', 'auth', 'can:access backend'] , 'prefix' => 'user', 'namespace' => 'Modules\User\Http\Controllers\Admin'], function()
+Route::group(['middleware' => ['web', 'locale', 'auth', 'can:access backend'] , 'prefix' => 'user', 'namespace' => 'Modules\User\Http\Controllers\Admin','as'=>'admin.'], function()
 {
     Route::group(
         ['middleware' => ['can:view users']],

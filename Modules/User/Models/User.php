@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Modules\Blog\Models\Post;
+use Modules\Role\Models\Role;
 use Modules\User\Notifications\ResetPassword as ResetPasswordNotification;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 

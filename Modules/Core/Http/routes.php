@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['middleware' => ['web', 'locale', 'auth', 'can:access backend'], 'prefix' => 'core', 'namespace' => 'Modules\Core\Http\Controllers\Admin'], function()
+Route::group(['middleware' => ['web', 'locale', 'auth', 'can:access backend'], 'prefix' => 'core', 'namespace' => 'Modules\Core\Http\Controllers\Admin','name'=>'admin.'], function()
 {
     Route::get('index/search', 'AjaxController@search')->name('search');
     Route::get('routes/search', 'AjaxController@routesSearch')->name('routes.search');
@@ -16,7 +16,7 @@ Route::namespace('Modules\Core\Http\Controllers\User')->group(function(){
 });
 
 
-Route::namespace('Modules\Core\Http\Controllers\Admin')->group(function (){
+Route::name('admin.')->prefix(config('app.admin_path'))->namespace('Modules\Core\Http\Controllers\Admin')->group(function (){
     Route::get('/{vue_capture?}', 'AdminController@index')
         ->where('vue_capture', '[\/\w\.-]*')
         ->name('home');

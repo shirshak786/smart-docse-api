@@ -5,7 +5,7 @@ Route::group(['middleware' => 'web', 'prefix' => 'blog', 'namespace' => 'Modules
     Route::get('/', 'BlogController@index');
 });
 
-Route::namespace('Modules\Blog\Http\Controllers\Admin')->group(function() {
+Route::as('admin.')->namespace('Modules\Blog\Http\Controllers\Admin')->group(function() {
     if (config('blog.enabled')) {
         Route::group(
             ['middleware' => ['can:view own posts']],
