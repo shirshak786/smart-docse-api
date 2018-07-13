@@ -1,13 +1,13 @@
 <?php
 
-namespace Modules\Core\Http\Controllers\Frontend;
+namespace Modules\Core\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Route;
-use App\Repositories\Contracts\TagRepository;
-use App\Repositories\Contracts\PostRepository;
-use App\Repositories\Contracts\UserRepository;
+use Modules\Blog\Contracts\PostRepository;
+use Modules\Blog\Contracts\TagRepository;
+use Modules\User\Contracts\UserRepository;
 
 abstract class UserController extends Controller
 {

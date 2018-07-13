@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace Modules\Blog\Console;
 
 use Carbon\Carbon;
 use App\Models\Post;

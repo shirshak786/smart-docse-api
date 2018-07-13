@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories;
+namespace Modules\Blog\Repositories;
 
 use App\Models\Tag;
 use App\Repositories\Contracts\TagRepository;

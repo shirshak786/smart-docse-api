@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Contracts;
+namespace Modules\Blog\Contracts;
 
 use App\Models\Tag;
 use App\Models\Post;

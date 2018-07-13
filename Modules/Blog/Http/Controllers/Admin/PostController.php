@@ -1,29 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace Modules\Blog\Http\Controllers\Backend;
 
-use App\Models\Post;
 use Illuminate\Http\Request;
-use App\Utils\RequestSearchQuery;
 use Illuminate\Support\Facades\Gate;
-use App\Http\Requests\StorePostRequest;
-use App\Http\Requests\UpdatePostRequest;
 use Illuminate\Database\Eloquent\Builder;
-use App\Repositories\Contracts\PostRepository;
+use Modules\Blog\Http\Requests\StorePostRequest;
+use Modules\Blog\Http\Requests\UpdatePostRequest;
+use Modules\Blog\Models\Post;
+use Modules\Blog\Repositories\Contracts\PostRepository;
+use Modules\Core\Http\Controllers\Admin\AdminController;
+use Modules\Core\Utils\RequestSearchQuery;
 
 class PostController extends AdminController
 {
-    /**
-     * @var PostRepository
-     */
     protected $posts;
 
-    /**
-     * Create a new controller instance.
-     *
-     *
-     * @param \App\Repositories\Contracts\PostRepository $posts
-     */
     public function __construct(PostRepository $posts)
     {
         $this->posts = $posts;
@@ -121,11 +113,7 @@ class PostController extends AdminController
         ]);
     }
 
-    /**
-     * @param Post $post
-     *
-     * @return Post
-     */
+
     public function show(Post $post)
     {
         $this->authorize('view', $post);
@@ -133,11 +121,6 @@ class PostController extends AdminController
         return $post;
     }
 
-    /**
-     * @param StorePostRequest $request
-     *
-     * @return mixed
-     */
     public function store(StorePostRequest $request)
     {
         $this->authorize('create posts');
@@ -156,14 +139,6 @@ class PostController extends AdminController
         return $this->redirectResponse($request, __('alerts.backend.posts.created'));
     }
 
-    /**
-     * @param Post              $post
-     * @param UpdatePostRequest $request
-     *
-     * @throws \Illuminate\Database\Eloquent\MassAssignmentException
-     *
-     * @return mixed
-     */
     public function update(Post $post, UpdatePostRequest $request)
     {
         $this->authorize('update', $post);
@@ -181,12 +156,7 @@ class PostController extends AdminController
         return $this->redirectResponse($request, __('alerts.backend.posts.updated'));
     }
 
-    /**
-     * @param Post    $post
-     * @param Request $request
-     *
-     * @return mixed
-     */
+
     public function destroy(Post $post, Request $request)
     {
         $this->authorize('delete', $post);
@@ -196,11 +166,7 @@ class PostController extends AdminController
         return $this->redirectResponse($request, __('alerts.backend.posts.deleted'));
     }
 
-    /**
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return array|\Illuminate\Http\RedirectResponse
-     */
+
     public function batchAction(Request $request)
     {
         $action = $request->get('action');

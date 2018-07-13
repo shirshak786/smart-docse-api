@@ -3,7 +3,7 @@
 namespace Modules\Core\Repositories;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Repositories\Contracts\BaseRepository;
+use Modules\Core\Contracts\BaseRepository;
 
 class EloquentBaseRepository implements BaseRepository
 {

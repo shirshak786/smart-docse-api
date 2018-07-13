@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace Modules\Blog\Models;
 
 use Carbon\Carbon;
 use Spatie\Tags\HasTags;
