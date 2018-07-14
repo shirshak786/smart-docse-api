@@ -17,6 +17,7 @@ const devServerUrl = process.env.DEV_SERVER_URL || 'http://localhost:8080'
 const publicPathFolder = production ? '/dist/' : '/build/'
 const publicPath = hmr ? `${devServerUrl}${publicPathFolder}` : publicPathFolder
 
+console.log('heyhey', path.resolve(__dirname, 'Modules/Blog/resources/assets/js'));
 function getEntryConfig (name, analyzerPort, alias = {}) {
   let plugins = [
     new VueLoaderPlugin(),

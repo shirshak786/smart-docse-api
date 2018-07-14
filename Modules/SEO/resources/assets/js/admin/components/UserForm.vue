@@ -124,7 +124,7 @@
 
 <script>
 import axios from 'axios'
-import form from '../mixins/form'
+import form from '@core/admin/mixins/form'
 
 export default {
   name: 'UserForm',
