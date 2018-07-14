@@ -1,6 +1,6 @@
 <?php
 
-namespace Module\Redirection\Http\Middleware;
+namespace Modules\Redirection\Http\Middleware;
 
 use Closure;
 use Modules\Redirection\Repositories\Contracts\RedirectionRepository;

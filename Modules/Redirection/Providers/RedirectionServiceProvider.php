@@ -5,7 +5,7 @@ namespace Modules\Redirection\Providers;
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
-use Module\Redirection\Http\Middleware\Redirect;
+use Modules\Redirection\Http\Middleware\Redirect;
 use Modules\Redirection\Repositories\Contracts\RedirectionRepository;
 use Modules\Redirection\Repositories\EloquentRedirectionRepository;
 
