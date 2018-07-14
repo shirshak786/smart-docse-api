@@ -39,7 +39,7 @@
             'isImpersonation' => session()->has('admin_user_id') && session()->has('temp_user_id'),
             'usurperName' => session()->get('admin_user_name'),
             'blogEnabled' => config('blog.enabled')
-        ]) !!}
+        ],JSON_PRETTY_PRINT) !!}
     </script>
 
     <!-- Named routes -->

@@ -6,7 +6,9 @@
     "active": 1,
     "order": 1,
     "providers": [
-        "Modules\\User\\Providers\\UserServiceProvider"
+        "Modules\\User\\Providers\\AuthServiceProvider",
+        "Modules\\User\\Providers\\UserServiceProvider",
+        "Modules\\User\\Providers\\EventServiceProvider"
     ],
     "aliases": {},
     "files": [
