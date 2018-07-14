@@ -1,37 +1,37 @@
 export default {
-  path: 'users',
+  path: 'posts',
   component: {
     render (c) {
       return c('router-view')
     }
   },
   meta: {
-    label: 'Users'
+    label: 'Post'
   },
   children: [
     {
       path: '/',
-      name: 'users',
-      component: import('@user/js/admin/components/UserList'),
+      name: 'posts',
+      component: import('@blog/js/admin/components/PostList'),
       meta: {
-        label: 'User List'
+        label: 'Post List'
       }
     },
     {
       path: 'create',
-      name: 'users_create',
-      component: import('@user/js/admin/components/UserForm'),
+      name: 'posts_create',
+      component: import('@blog/js/admin/components/PostForm'),
       meta: {
-        label: 'Create User'
+        label: 'Create Post'
       }
     },
     {
       path: ':id/edit',
-      name: 'users_edit',
-      component: import('@user/js/admin/components/UserForm'),
+      name: 'posts_edit',
+      component: import('@blog/js/admin/components/PostForm'),
       props: true,
       meta: {
-        label: 'Edit User'
+        label: 'Edit Post'
       }
     }
   ]

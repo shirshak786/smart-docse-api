@@ -1,37 +1,37 @@
 export default {
-  path: 'users',
+  path: 'redirections',
   component: {
     render (c) {
       return c('router-view')
     }
   },
   meta: {
-    label: 'Users'
+    label: 'Redirecction'
   },
   children: [
     {
       path: '/',
-      name: 'users',
-      component: import('@user/js/admin/components/UserList'),
+      name: 'redirections',
+      component: import('@redirection/js/admin/index'),
       meta: {
-        label: 'User List'
+        label: 'Redirection List'
       }
     },
     {
       path: 'create',
-      name: 'users_create',
-      component: import('@user/js/admin/components/UserForm'),
+      name: 'redirections_create',
+      component: import('@redirection/js/admin/components/RedirectionForm'),
       meta: {
-        label: 'Create User'
+        label: 'Create Redirections'
       }
     },
     {
       path: ':id/edit',
-      name: 'users_edit',
-      component: import('@user/js/admin/components/UserForm'),
+      name: 'redirections_edit',
+      component: import('@redirection/js/admin/components/RedirectionForm'),
       props: true,
       meta: {
-        label: 'Edit User'
+        label: 'Edit Redirections'
       }
     }
   ]

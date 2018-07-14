@@ -1,37 +1,37 @@
 export default {
-  path: 'users',
+  path: 'metas',
   component: {
     render (c) {
       return c('router-view')
     }
   },
   meta: {
-    label: 'Users'
+    label: 'Meta'
   },
   children: [
     {
       path: '/',
-      name: 'users',
-      component: import('@user/js/admin/components/UserList'),
+      name: 'metas',
+      component: import('@meta/js/admin/components/MetaList'),
       meta: {
-        label: 'User List'
+        label: 'Meta List'
       }
     },
     {
       path: 'create',
-      name: 'users_create',
-      component: import('@user/js/admin/components/UserForm'),
+      name: 'metas_create',
+      component: import('@meta/js/admin/components/MetaForm'),
       meta: {
-        label: 'Create User'
+        label: 'Create Meta'
       }
     },
     {
       path: ':id/edit',
-      name: 'users_edit',
-      component: import('@user/js/admin/components/UserForm'),
+      name: 'metas_edit',
+      component: import('@meta/js/admin/components/MetaForm'),
       props: true,
       meta: {
-        label: 'Edit User'
+        label: 'Meta Edit'
       }
     }
   ]
