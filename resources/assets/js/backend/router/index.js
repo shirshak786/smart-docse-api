@@ -42,11 +42,11 @@ export function createRouter (base, i18n) {
               label: i18n.t('labels.backend.titles.dashboard')
             }
           },
-          import('@blog/js/admin/routes'),
-          import('@user/js/admin/routes'),
-          import('@role/js/admin/routes'),
-          import('@meta/js/admin/routes'),
-          import('@redirection/js/admin/routes')
+          require('@blog/admin/routes').default,
+          require('@user/admin/routes').default,
+          require('@role/admin/routes').default,
+          require('@meta/admin/routes').default,
+          require('@redirection/admin/routes').default
         ]
       }
     ]

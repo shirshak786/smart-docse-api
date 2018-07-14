@@ -12,7 +12,7 @@ export default {
     {
       path: '/',
       name: 'users',
-      component: import('@user/js/admin/components/UserList'),
+      component: require('@user/js/components/UserList').default,
       meta: {
         label: 'User List'
       }
@@ -20,7 +20,7 @@ export default {
     {
       path: 'create',
       name: 'users_create',
-      component: import('@user/js/admin/components/UserForm'),
+      component: require('@user/js/components/UserForm').default,
       meta: {
         label: 'Create User'
       }
@@ -28,7 +28,7 @@ export default {
     {
       path: ':id/edit',
       name: 'users_edit',
-      component: import('@user/js/admin/components/UserForm'),
+      component: require('@user/js/components/UserForm').default,
       props: true,
       meta: {
         label: 'Edit User'

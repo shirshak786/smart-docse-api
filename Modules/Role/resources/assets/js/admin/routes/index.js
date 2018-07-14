@@ -12,7 +12,7 @@ export default {
     {
       path: '/',
       name: 'roles',
-      component: import('@role/js/admin/components/RoleList'),
+      component: require('@role/js/components/RoleList').default,
       meta: {
         label: 'Role Index'
       }
@@ -20,7 +20,7 @@ export default {
     {
       path: 'create',
       name: 'roles_create',
-      component: import('@role/js/admin/components/RoleForm'),
+      component: require('@role/js/components/RoleForm').default,
       meta: {
         label: 'Create Role'
       }
@@ -28,7 +28,7 @@ export default {
     {
       path: ':id/edit',
       name: 'roles_edit',
-      component: import('@role/js/admin/components/RoleForm'),
+      component: require('@role/js/components/RoleForm').default,
       props: true,
       meta: {
         label: 'Edit Role'

@@ -12,7 +12,7 @@ export default {
     {
       path: '/',
       name: 'metas',
-      component: import('@meta/js/admin/components/MetaList'),
+      component: require('@meta/js/components/MetaList').default,
       meta: {
         label: 'Meta List'
       }
@@ -20,7 +20,7 @@ export default {
     {
       path: 'create',
       name: 'metas_create',
-      component: import('@meta/js/admin/components/MetaForm'),
+      component: require('@meta/js/components/MetaForm').default,
       meta: {
         label: 'Create Meta'
       }
@@ -28,7 +28,7 @@ export default {
     {
       path: ':id/edit',
       name: 'metas_edit',
-      component: import('@meta/js/admin/components/MetaForm'),
+      component: require('@meta/js/components/MetaForm').default,
       props: true,
       meta: {
         label: 'Meta Edit'

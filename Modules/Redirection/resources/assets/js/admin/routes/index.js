@@ -12,7 +12,7 @@ export default {
     {
       path: '/',
       name: 'redirections',
-      component: import('@redirection/js/admin/index'),
+      component: require('@redirection/js/index').default,
       meta: {
         label: 'Redirection List'
       }
@@ -20,7 +20,7 @@ export default {
     {
       path: 'create',
       name: 'redirections_create',
-      component: import('@redirection/js/admin/components/RedirectionForm'),
+      component: require('@redirection/js/components/RedirectionForm').default,
       meta: {
         label: 'Create Redirections'
       }
@@ -28,7 +28,7 @@ export default {
     {
       path: ':id/edit',
       name: 'redirections_edit',
-      component: import('@redirection/js/admin/components/RedirectionForm'),
+      component: require('@redirection/js/components/RedirectionForm').default,
       props: true,
       meta: {
         label: 'Edit Redirections'
