@@ -37,9 +37,9 @@ class RedirectionServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register(Kernel $kernel)
+    public function register()
     {
-        $kernel->prependMiddleware(Redirect::class);
+        app(Kernel::class)->prependMiddleware(Redirect::class);
 
         $this->app->bind(
             RedirectionRepository::class,

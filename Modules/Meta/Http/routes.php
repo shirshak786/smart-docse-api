@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['middleware' => ['web', 'locale', 'auth', 'can:access backend'], 'prefix' => 'meta', 'namespace' => 'Modules\Meta\Http\Controllers\Admin'], function()
+Route::group(['middleware' => ['web', 'locale', 'auth', 'can:access backend'], 'prefix' => 'meta', 'as' =>'admin.', 'namespace' => 'Modules\Meta\Http\Controllers\Admin'], function()
 {
     Route::group(
         ['middleware' => ['can:view metas']],

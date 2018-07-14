@@ -3,7 +3,7 @@
     "alias": "meta",
     "description": "",
     "keywords": [],
-    "active": 0,
+    "active": 1,
     "order": 1,
     "providers": [
         "Modules\\Meta\\Providers\\MetaServiceProvider"

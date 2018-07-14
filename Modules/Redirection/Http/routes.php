@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['middleware' => 'web', 'prefix' => 'redirection', 'namespace' => 'Modules\Redirection\Http\Controllers'], function()
+Route::group(['middleware' => 'web', 'prefix' => 'redirection','as'=>'admin.' ,'namespace' => 'Modules\Redirection\Http\Controllers\Admin'], function()
 {
     Route::get('/', 'RedirectionController@index');
 });
@@ -8,7 +8,8 @@ Route::group(['middleware' => 'web', 'prefix' => 'redirection', 'namespace' => '
 
 
 Route::group(
-    ['middleware' => ['can:view redirections']],
+    ['middleware' => ['can:view redirections'],'namespace'=> 'Modules\Redirection\Http\Controllers\Admin',],
+
     function () {
         Route::get('redirections/redirection_types', 'RedirectionController@getRedirectionTypes')->name('redirections.get_redirection_types');
 
