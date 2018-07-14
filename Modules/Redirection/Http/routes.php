@@ -8,8 +8,7 @@ Route::group(['middleware' => 'web', 'prefix' => 'redirection','as'=>'admin.' ,'
 
 
 Route::group(
-    ['middleware' => ['can:view redirections'],'namespace'=> 'Modules\Redirection\Http\Controllers\Admin',],
-
+    ['middleware' => ['web','auth','can:access backend','can:view redirections'],'namespace'=> 'Modules\Redirection\Http\Controllers\Admin','as'=>'admin.',],
     function () {
         Route::get('redirections/redirection_types', 'RedirectionController@getRedirectionTypes')->name('redirections.get_redirection_types');
 
