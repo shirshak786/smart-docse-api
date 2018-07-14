@@ -68,7 +68,7 @@ class RequestSearchQuery
      *
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function result($columns)
+    public function result($columns = null)
     {
         return $this->query->paginate($this->request->get('perPage'), $columns);
     }

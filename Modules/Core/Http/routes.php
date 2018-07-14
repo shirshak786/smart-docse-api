@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['middleware' => ['web', 'locale', 'auth', 'can:access backend'], 'prefix' => 'core', 'namespace' => 'Modules\Core\Http\Controllers\Admin','name'=>'admin.'], function()
+Route::group(['middleware' => ['web', 'locale', 'auth', 'can:access backend'], 'prefix' => 'core', 'namespace' => 'Modules\Core\Http\Controllers\Admin','as'=>'admin.'], function()
 {
     Route::get('index/search', 'AjaxController@search')->name('search');
     Route::get('routes/search', 'AjaxController@routesSearch')->name('routes.search');
