@@ -5,6 +5,7 @@ namespace Modules\Role\Models;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Core\Models\Traits\TranslatableJson;
+use Modules\User\Models\Permission;
 use Spatie\Translatable\HasTranslations;
 
 

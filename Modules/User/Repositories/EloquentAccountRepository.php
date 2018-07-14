@@ -43,13 +43,11 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
 
     public function login(Authenticatable $user)
     {
-        /* @var User $user */
         $user->last_access_at = Carbon::now();
 
         if (! $user->save()) {
             throw new GeneralException(__('exceptions.backend.users.update'));
         }
-
         session(['permissions' => $user->getPermissions()]);
 
         return $user;
@@ -91,13 +89,10 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
 
     public function hasPermission(Authenticatable $user, $name)
     {
-        /** @var User $user */
-        // First user is always super admin and cannot be deleted
         if ($user->is_super_admin) {
             return true;
         }
 
-        /** @var \Illuminate\Support\Collection $permissions */
         $permissions = session()->get('permissions');
 
         if ($permissions->isEmpty()) {

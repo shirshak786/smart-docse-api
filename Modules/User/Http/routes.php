@@ -119,3 +119,13 @@ Route::namespace('Modules\User\Http\Controllers\User')->group(function() {
         );
     });
 });
+
+Route::middleware('web')->group(function(){
+    Route::name('admin.')->prefix(config('app.admin_path'))->namespace('Modules\Core\Http\Controllers\Admin')->group(function (){
+        Route::get('/{vue_capture?}', 'AdminController@index')
+            ->where('vue_capture', '[\/\w\.-]*')
+            ->name('home');
+    });
+});
+
+

@@ -213,7 +213,6 @@ class LoginController extends Controller
      */
     public function handleProviderCallback($provider, Request $request)
     {
-        /** @var AbstractUser $user */
         $data = Socialite::driver($provider)->user();
 
         try {

@@ -12,7 +12,12 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\Models\User::class, function (Faker\Generator $faker) {
+
+use Modules\Blog\Models\Post;
+use Modules\Meta\Models\Meta;
+use Modules\User\Models\User;
+
+$factory->define(User::class, function (Faker\Generator $faker) {
     return [
         'name'      => $faker->name,
         'email'     => $faker->unique()->safeEmail,
@@ -24,7 +29,7 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Models\Meta::class, function (Faker\Generator $faker) {
+$factory->define(Meta::class, function (Faker\Generator $faker) {
     return [
         'title' => [
             'en' => $faker->sentence,
@@ -52,7 +57,7 @@ $factory->define(Spatie\Tags\Tag::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Models\Post::class, function (Faker\Generator $faker) {
+$factory->define(Post::class, function (Faker\Generator $faker) {
     $publishedDate = null;
     $unPublishedDate = null;
 
