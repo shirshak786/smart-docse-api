@@ -27,27 +27,6 @@ export default (app, i18n, newPostsCount, pendingPostsCount) => {
     },
     {
       title: true,
-      name: i18n.t('labels.backend.sidebar.forms'),
-      access: app.user.can('view form_submissions') || app.user.can('view form_settings')
-    },
-    {
-      name: i18n.t('labels.backend.form_submissions.titles.main'),
-      url: '/form-submissions',
-      icon: 'fe fe-list',
-      access: app.user.can('view form_submissions')
-    },
-    {
-      name: i18n.t('labels.backend.form_settings.titles.main'),
-      url: '/form-settings',
-      icon: 'fe fe-sliders',
-      access: app.user.can('view form_settings')
-    },
-    {
-      divider: true,
-      access: true
-    },
-    {
-      title: true,
       name: i18n.t('labels.backend.sidebar.access'),
       access: app.user.can('view users') || app.user.can('view roles')
     },

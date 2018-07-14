@@ -13,8 +13,6 @@ import FormSettingForm from '../views/FormSettingForm'
 import FormSettingList from '../views/FormSettingList'
 import FormSubmissionShow from '../views/FormSubmissionShow'
 import FormSubmissionList from '../views/FormSubmissionList'
-import UserForm from '../views/UserForm'
-import UserList from '../views/UserList'
 import RoleForm from '../views/RoleForm'
 import RoleList from '../views/RoleList'
 import MetaForm from '../views/MetaForm'
@@ -162,82 +160,8 @@ export function createRouter (base, i18n) {
               }
             ]
           },
-          {
-            path: 'users',
-            component: {
-              render (c) {
-                return c('router-view')
-              }
-            },
-            meta: {
-              label: i18n.t('labels.backend.users.titles.main')
-            },
-            children: [
-              {
-                path: '/',
-                name: 'users',
-                component: UserList,
-                meta: {
-                  label: i18n.t('labels.backend.users.titles.index')
-                }
-              },
-              {
-                path: 'create',
-                name: 'users_create',
-                component: UserForm,
-                meta: {
-                  label: i18n.t('labels.backend.users.titles.create')
-                }
-              },
-              {
-                path: ':id/edit',
-                name: 'users_edit',
-                component: UserForm,
-                props: true,
-                meta: {
-                  label: i18n.t('labels.backend.users.titles.edit')
-                }
-              }
-            ]
-          },
-          {
-            path: 'roles',
-            component: {
-              render (c) {
-                return c('router-view')
-              }
-            },
-            meta: {
-              label: i18n.t('labels.backend.roles.titles.main')
-            },
-            children: [
-              {
-                path: '/',
-                name: 'roles',
-                component: RoleList,
-                meta: {
-                  label: i18n.t('labels.backend.roles.titles.index')
-                }
-              },
-              {
-                path: 'create',
-                name: 'roles_create',
-                component: RoleForm,
-                meta: {
-                  label: i18n.t('labels.backend.roles.titles.create')
-                }
-              },
-              {
-                path: ':id/edit',
-                name: 'roles_edit',
-                component: RoleForm,
-                props: true,
-                meta: {
-                  label: i18n.t('labels.backend.roles.titles.edit')
-                }
-              }
-            ]
-          },
+          import('@user/js/admin/routes'),
+          import('@role/js/admin/routes'),
           {
             path: 'metas',
             component: {

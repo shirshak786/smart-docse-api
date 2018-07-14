@@ -162,7 +162,15 @@ function getEntryConfig (name, analyzerPort, alias = {}) {
       extensions: ['.js', '.vue', '.json'],
       alias: Object.assign({
         '@fortawesome/fontawesome-free-solid$': '@fortawesome/fontawesome-free-solid/shakable.es.js',
-        '@fortawesome/fontawesome-free-brands$': '@fortawesome/fontawesome-free-brands/shakable.es.js'
+        '@fortawesome/fontawesome-free-brands$': '@fortawesome/fontawesome-free-brands/shakable.es.js',
+        '@blog': path.resolve(__dirname, 'Modules/Blog/resources/assets/js'),
+        '@core': path.resolve(__dirname, 'Modules/Core/resources/assets/js'),
+        '@meta': path.resolve(__dirname, 'Modules/Meta/resources/assets/js'),
+        '@news': path.resolve(__dirname, 'Modules/News/resources/assets/js'),
+        '@redirection': path.resolve(__dirname, 'Modules/Redirection/resources/assets/js'),
+        '@role': path.resolve(__dirname, 'Modules/Role/resources/assets/js'),
+        '@seo': path.resolve(__dirname, 'Modules/SEO/resources/assets/js'),
+        '@user': path.resolve(__dirname, 'Modules/User/resources/assets/js')
       }, alias)
     },
     externals: {
