@@ -9,7 +9,7 @@ use Modules\News\Http\Resources\NewsResource;
 use Modules\News\Models\News;
 use function response;
 
-class AdminController extends Controller
+class NewsController extends Controller
 {
     public function index()
     {

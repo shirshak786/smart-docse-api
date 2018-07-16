@@ -10,12 +10,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\User\Models\User;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class News extends Eloquent implements HasMedia
 {
     use SoftDeletes;
     use HasMediaTrait;
-
+    use Sluggable;
 
     protected $table = 'news';
 
@@ -135,5 +136,19 @@ class News extends Eloquent implements HasMedia
 
     public function author() {
         return $this->belongsTo(User::class,'author_id');
+    }
+
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }
