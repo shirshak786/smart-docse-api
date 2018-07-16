@@ -1,1 +1,1 @@
-export default o => JSON.parse(JSON.stringify(o))
+export default (o) => JSON.parse(JSON.stringify(o))

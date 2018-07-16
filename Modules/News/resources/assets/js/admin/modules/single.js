@@ -28,10 +28,10 @@ function initialState () {
 }
 
 const getters = {
-  item: state => state.item,
-  loading: state => state.loading,
-  usersAll: state => state.usersAll,
-  things_to_selectEnum: state => state.things_to_selectEnum
+  item: (state) => state.item,
+  loading: (state) => state.loading,
+  usersAll: (state) => state.usersAll,
+  things_to_selectEnum: (state) => state.things_to_selectEnum
 }
 
 const actions = {
@@ -64,7 +64,7 @@ const actions = {
       if (state.item.cover_image === null) {
         params.delete('cover_image')
       }
-      params.set('uploaded_images', state.item.uploaded_images.map(o => o['id']))
+      params.set('uploaded_images', state.item.uploaded_images.map((o) => o['id']))
       if (!_.isEmpty(state.item.things_to_select) && typeof state.item.things_to_select === 'object') {
         params.set('things_to_select', state.item.things_to_select.value)
       }
@@ -87,11 +87,11 @@ const actions = {
       }
 
       axios.post('/api/v1/news', params)
-        .then(response => {
+        .then((response) => {
           commit('resetState')
           resolve()
         })
-        .catch(error => {
+        .catch((error) => {
           let message = error.response.data.message || error.message
           let errors = error.response.data.errors
 
@@ -137,7 +137,7 @@ const actions = {
       if (state.item.cover_image === null) {
         params.delete('cover_image')
       }
-      params.set('uploaded_images', state.item.uploaded_images.map(o => o['id']))
+      params.set('uploaded_images', state.item.uploaded_images.map((o) => o['id']))
       if (!_.isEmpty(state.item.things_to_select) && typeof state.item.things_to_select === 'object') {
         params.set('things_to_select', state.item.things_to_select.value)
       }
@@ -160,11 +160,11 @@ const actions = {
       }
 
       axios.post('/api/v1/news/' + state.item.id, params)
-        .then(response => {
+        .then((response) => {
           commit('setItem', response.data.data)
           resolve()
         })
-        .catch(error => {
+        .catch((error) => {
           let message = error.response.data.message || error.message
           let errors = error.response.data.errors
 
@@ -182,7 +182,7 @@ const actions = {
   },
   fetchData ({ commit, dispatch }, id) {
     axios.get('/api/v1/news/' + id)
-      .then(response => {
+      .then((response) => {
         commit('setItem', response.data.data)
       })
 
@@ -192,7 +192,7 @@ const actions = {
   },
   fetchUsersAll ({ commit }) {
     axios.get('/api/v1/users')
-      .then(response => {
+      .then((response) => {
         commit('setUsersAll', response.data.data)
       })
   },

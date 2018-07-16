@@ -3,64 +3,64 @@
     <SidebarToggler
       class="d-lg-none"
       display="md"
-      mobile/>
+      mobile></SidebarToggler>
     <b-link
       class="navbar-brand"
       to="#">
       <img
         class="navbar-brand-full"
-        src="../../../vendor/tabler/brand/logo.png"
+        src="@main/vendor/tabler/brand/logo.png"
         height="30"
         alt="Laravel Admin">
       <img
         class="navbar-brand-minimized"
-        src="../../../vendor/tabler/brand/logo-symbol.png"
+        src="@main/vendor/tabler/brand/logo-symbol.png"
         width="30"
         height="30"
         alt="Laravel Admin">
     </b-link>
     <SidebarToggler
       class="d-md-down-none"
-      display="lg"/>
+      display="lg"></SidebarToggler>
     <b-navbar-nav class="ml-auto">
       <HeaderDropdown
         right
         class="px-3 d-none d-md-block">
         <template slot="header">
           <span class="d-md-down-none">
-            <i class="fe fe-plus-circle"/>&nbsp;&nbsp;{{ $t('labels.add_new') }}
+            <i class="fe fe-plus-circle"></i>&nbsp;&nbsp;{{ $t('labels.add_new') }}
           </span>
         </template>
         <template slot="dropdown">
           <b-dropdown-item
             v-if="this.$app.user.can('create posts')"
             to="/posts/create">
-            <i class="fe fe-book"/>&nbsp;&nbsp;{{ $t('labels.backend.new_menu.post') }}
+            <i class="fe fe-book"></i>&nbsp;&nbsp;{{ $t('labels.backend.new_menu.post') }}
           </b-dropdown-item>
           <b-dropdown-item
             v-if="this.$app.user.can('create form_settings')"
             to="/form-settings/create">
-            <i class="fe fe-sliders"/>&nbsp;&nbsp;{{ $t('labels.backend.new_menu.form_setting') }}
+            <i class="fe fe-sliders"></i>&nbsp;&nbsp;{{ $t('labels.backend.new_menu.form_setting') }}
           </b-dropdown-item>
           <b-dropdown-item
             v-if="this.$app.user.can('create users')"
             to="/users/create">
-            <i class="fe fe-users"/>&nbsp;&nbsp;{{ $t('labels.backend.new_menu.user') }}
+            <i class="fe fe-users"></i>&nbsp;&nbsp;{{ $t('labels.backend.new_menu.user') }}
           </b-dropdown-item>
           <b-dropdown-item
             v-if="this.$app.user.can('create roles')"
             to="/roles/create">
-            <i class="fe fe-shield"/>&nbsp;&nbsp;{{ $t('labels.backend.new_menu.role') }}
+            <i class="fe fe-shield"></i>&nbsp;&nbsp;{{ $t('labels.backend.new_menu.role') }}
           </b-dropdown-item>
           <b-dropdown-item
             v-if="this.$app.user.can('create metas')"
             to="/metas/create">
-            <i class="fe fe-tag"/>&nbsp;&nbsp;{{ $t('labels.backend.new_menu.meta') }}
+            <i class="fe fe-tag"></i>&nbsp;&nbsp;{{ $t('labels.backend.new_menu.meta') }}
           </b-dropdown-item>
           <b-dropdown-item
             v-if="this.$app.user.can('create redirections')"
             to="/redirections/create">
-            <i class="fe fe-fast-forward"/>&nbsp;&nbsp;{{ $t('labels.backend.new_menu.redirection') }}
+            <i class="fe fe-fast-forward"></i>&nbsp;&nbsp;{{ $t('labels.backend.new_menu.redirection') }}
           </b-dropdown-item>
         </template>
       </HeaderDropdown>
@@ -94,15 +94,15 @@
         </template>
         <template slot="dropdown">
           <b-dropdown-item :href="$app.route('user.account')">
-            <i class="fe fe-user"/>&nbsp;&nbsp;{{ $t('labels.user.profile') }}
+            <i class="fe fe-user"></i>&nbsp;&nbsp;{{ $t('labels.user.profile') }}
           </b-dropdown-item>
           <b-dropdown-item :href="$app.route('admin.logout')">
-            <i class="fe fe-log-out"/>&nbsp;&nbsp;{{ $t('labels.user.logout') }}
+            <i class="fe fe-log-out"></i>&nbsp;&nbsp;{{ $t('labels.user.logout') }}
           </b-dropdown-item>
         </template>
       </HeaderDropdown>
     </b-navbar-nav>
-    <AsideToggler class="d-none d-lg-block"/>
+    <AsideToggler class="d-none d-lg-block"></AsideToggler>
   </Header>
 </template>
 

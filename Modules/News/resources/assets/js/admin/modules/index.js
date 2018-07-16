@@ -14,26 +14,26 @@ function initialState () {
 }
 
 const getters = {
-  data: state => {
+  data: (state) => {
     let rows = state.all
     if (state.query.sort) {
       rows = _.orderBy(state.all, state.query.sort, state.query.order)
     }
     return rows.slice(state.query.offset, state.query.offset + state.query.limit)
   },
-  total: state => state.all.length,
-  loading: state => state.loading,
-  relationships: state => state.relationships
+  total: (state) => state.all.length,
+  loading: (state) => state.loading,
+  relationships: (state) => state.relationships
 }
 
 const actions = {
   fetchData ({ commit, state }) {
     commit('setLoading', true)
     axios.get('/api/v1/news')
-      .then(response => {
+      .then((response) => {
         commit('setAll', response.data.data)
       })
-      .catch(error => {
+      .catch((error) => {
         let message = error.response.data.message || error.message
         commit('setError', message)
       })
@@ -43,12 +43,12 @@ const actions = {
   },
   destroyData ({ commit, state }, id) {
     axios.delete('/api/v1/news/' + id)
-      .then(response => {
-        commit('setAll', state.all.filter(item => {
+      .then((response) => {
+        commit('setAll', state.all.filter((item) => {
           return item.id !== id
         }))
       })
-      .catch(error => {
+      .catch((error) => {
         let message = error.response.data.message || error.message
         commit('setError', message)
       })

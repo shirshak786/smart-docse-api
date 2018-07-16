@@ -163,6 +163,7 @@ function getEntryConfig (name, analyzerPort, alias = {}) {
       alias: Object.assign({
         '@fortawesome/fontawesome-free-solid$': '@fortawesome/fontawesome-free-solid/shakable.es.js',
         '@fortawesome/fontawesome-free-brands$': '@fortawesome/fontawesome-free-brands/shakable.es.js',
+        '@main': path.resolve(__dirname, 'resources/assets'),
         '@blog': path.resolve(__dirname, 'Modules/Blog/resources/assets/js'),
         '@core': path.resolve(__dirname, 'Modules/Core/resources/assets/js'),
         '@meta': path.resolve(__dirname, 'Modules/Meta/resources/assets/js'),
