@@ -23,7 +23,7 @@ class AdminController extends Controller
 
     public function store(StoreNewsRequest $request)
     {
-        $this->authorize('store news');
+        $this->authorize('store',News::class);
 
         $news= News::create($request->all());
         $news->author_id = $request->user()->id();
@@ -36,7 +36,7 @@ class AdminController extends Controller
 
     public function update(UpdateNewsRequest $request,News $news)
     {
-        $this->authorize('update news');
+        $this->authorize('update',$news);
 
         $news->update($request->all());
         $news->author_id = $request->author_id;
@@ -57,7 +57,7 @@ class AdminController extends Controller
 
     public function destroy(News $news)
     {
-        $this->authorize('delete news');
+        $this->authorize('delete',$news);
 
         $news->delete();
 

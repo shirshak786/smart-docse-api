@@ -1,14 +1,10 @@
 <?php
 
-namespace Modules\User\Providers;
+namespace Modules\Blog\Providers;
 
 use Modules\Blog\Models\Post;
 use Modules\Blog\Policies\PostPolicy;
-use Modules\User\Contracts\AccountRepository;
-use Modules\User\Models\User;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Modules\User\Policies\UserPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -18,7 +14,6 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-            User::class => UserPolicy::class,
             Post::class => PostPolicy::class,
         ];
 
@@ -30,13 +25,5 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
-        $accountRepository = $this->app->make(AccountRepository::class);
-
-        foreach (config('permissions') as $key => $permissions) {
-            Gate::define($key, function (User $user) use ($accountRepository, $key) {
-                return $accountRepository->hasPermission($user, $key);
-            });
-        }
     }
 }
