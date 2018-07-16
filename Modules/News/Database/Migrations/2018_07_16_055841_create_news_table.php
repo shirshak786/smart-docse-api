@@ -19,7 +19,7 @@ class CreateNewsTable extends Migration
             $table->text('content');
             $table->integer('type');
             $table->integer('status');
-            $table->string('author_id')->index();
+            $table->unsignedInteger('author_id')->index();
             $table->foreign('author_id')->references('id')->on('users');
 
             $table->date('published_date');

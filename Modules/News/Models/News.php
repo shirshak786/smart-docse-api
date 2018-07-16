@@ -44,7 +44,8 @@ class News extends Eloquent implements HasMedia
           'content'=>'required|min:3',
           'type'=>'required|integer',
           'status'=>'required|integer',
-            'cover_image' => 'file|image|required'
+          'published_date' =>  'date_format:' . config('app.date_format') . '|max:191|nullable',
+          'cover_image' => 'file|image|required'
         ];
     }
 

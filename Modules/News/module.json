@@ -3,7 +3,7 @@
     "alias": "news",
     "description": "",
     "keywords": [],
-    "active": 0,
+    "active": 1,
     "order": 1,
     "providers": [
         "Modules\\News\\Providers\\NewsServiceProvider"
