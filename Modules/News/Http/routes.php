@@ -1,5 +1,6 @@
 <?php
 
-Route::group(['middleware' => 'web', 'prefix' => 'news', 'namespace' => 'Modules\News\Http\Controllers'], function()
+Route::group(['middleware' => 'web', 'prefix' => 'api/v1', 'namespace' => 'Modules\News\Http\Controllers'], function()
 {
+    Route::apiResource('news', 'NewsController');
 });
