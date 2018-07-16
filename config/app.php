@@ -159,6 +159,22 @@ return [
     'faker_locale' => env('FAKER_LOCALE', 'en_US'),
 
     /*
+     |--------------------------------------------------------------------------
+     | Application Date Format
+     |--------------------------------------------------------------------------
+     |
+     | Here you may specify the default date format for your application, which
+     | will be used with date and date-time functions.
+     |
+     */
+
+    'date_format' => 'Y-m-d',
+    'date_format_js' => 'yy-mm-dd',
+    'date_format_moment' => 'YYYY-MM-DD',
+    'time_format_moment' => 'HH:mm:ss',
+    'datetime_format_moment' => 'YYYY-MM-DD HH:mm:ss',
+
+    /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
     |--------------------------------------------------------------------------

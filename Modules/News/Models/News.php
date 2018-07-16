@@ -3,9 +3,11 @@
 namespace Modules\News\Models;
 
 use function array_key_exists;
+use Carbon\Carbon;
 use Eloquent;
 use Exception;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\User\Models\User;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
@@ -42,6 +44,18 @@ class News extends Eloquent implements HasMedia
           'content'=>'required|min:3',
           'type'=>'required|integer',
           'status'=>'required|integer',
+            'cover_image' => 'file|image|required'
+        ];
+    }
+
+    public static function updateValidation()
+    {
+        return [
+            'title' => 'required|min:3',
+            'content'=>'required|min:3',
+            'type'=>'required|integer',
+            'status'=>'required|integer',
+            'cover_image' => 'file|image|nullable'
         ];
     }
 
@@ -87,4 +101,38 @@ class News extends Eloquent implements HasMedia
         throw new Exception('The Type you supplied doesn\'t exist');
     }
 
+
+    public function setPublishedDateAttribute($input)
+    {
+        if ($input) {
+            $this->attributes['published_date'] = Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
+        }
+    }
+
+    public function gePublishedDateAttribute($output)
+    {
+        if ($output) {
+             return Carbon::createFromFormat('Y-m-d', $output)->format(config('app.date_format'));
+        }
+    }
+
+    public function getCoverImageAttribute()
+    {
+        return $this->getFirstMedia('cover_image');
+    }
+
+    public function getCoverImageLinkAttribute()
+    {
+        $file = $this->cover_image;
+
+        if (! $file) {
+            return null;
+        }
+
+        return '<a href="' . $file->getUrl() . '" target="_blank">' . $file->file_name . '</a>';
+    }
+
+    public function author() {
+        return $this->belongsTo(User::class,'author_id');
+    }
 }

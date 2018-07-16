@@ -22,7 +22,7 @@ class CreateNewsTable extends Migration
             $table->string('author_id')->index();
             $table->foreign('author_id')->references('id')->on('users');
 
-
+            $table->date('published_date');
             $table->softDeletes();
             $table->timestamps();
             $table->index('deleted_at');
