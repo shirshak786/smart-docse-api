@@ -15,7 +15,7 @@ module.exports = {
     'vue'
   ],
   rules: {
-    'arrow-parens': 'error',
+    'arrow-parens': ["error", "as-needed"],
     'generator-star-spacing': 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'prefer-arrow-callback': 'error',

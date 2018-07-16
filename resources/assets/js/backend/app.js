@@ -9,11 +9,11 @@ import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm'
 
 // Vendor plugins components
 import '../../vendor/coreui/components'
-import DataTable from './components/Plugins/DataTable'
-import RichTextEditor from './components/Plugins/RichTextEditor'
-import DateTimePicker from './components/Plugins/DateTimePicker'
-import Switch from './components/Plugins/Switch'
-import vSelect from './components/Plugins/Select'
+import DataTable from '@core/admin/components/Plugins/DataTable'
+import RichTextEditor from '@core/admin/components/Plugins/RichTextEditor'
+import DateTimePicker from '@core/admin/components/Plugins/DateTimePicker'
+import Switch from '@core/admin/components/Plugins/Switch'
+import vSelect from '@core/admin/components/Plugins/Select'
 
 import { createRouter } from './router'
 import { createStore } from './store'
@@ -54,7 +54,7 @@ export function createApp () {
    * Client-side permissions
    */
   if (Vue.prototype.$app.user) {
-    Vue.prototype.$app.user.can = (permission) => {
+    Vue.prototype.$app.user.can = permission => {
       if (Vue.prototype.$app.user.id === 1) {
         return true
       }
@@ -113,24 +113,24 @@ export function createApp () {
   }
 
   Vue.prototype.$app.noty = {
-    alert: (text) => {
+    alert: text => {
       noty('alert', text)
     },
-    success: (text) => {
+    success: text => {
       noty('success', text)
     },
-    error: (text) => {
+    error: text => {
       noty('error', text)
     },
-    warning: (text) => {
+    warning: text => {
       noty('warning', text)
     },
-    info: (text) => {
+    info: text => {
       noty('info', text)
     }
   }
 
-  Vue.prototype.$app.error = (error) => {
+  Vue.prototype.$app.error = error => {
     if (error instanceof String) {
       noty('error', error)
       return
@@ -163,7 +163,7 @@ export function createApp () {
     router,
     store,
     i18n,
-    render: (h) => h(App)
+    render: h => h(App)
   })
 
   return {app, router, store}

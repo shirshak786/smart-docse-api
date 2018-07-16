@@ -1,25 +1,17 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import { createActions } from './actions'
-import mutations from './mutations'
+import NewsIndex from '@news/admin/modules/index'
+import NewsSingle from '@news/admin/modules/single'
 
 Vue.use(Vuex)
 
-export function createStore (route) {
-  const actions = createActions(route)
+const debug = process.env.NODE_ENV !== 'production'
 
-  return new Vuex.Store({
-    state: {
-      counters: {
-        newPostsCount: 0,
-        pendingPostsCount: 0,
-        publishedPostsCount: 0,
-        activeUsersCount: 0,
-        formSubmissionsCount: 0
-      }
-    },
-    actions,
-    mutations
-  })
-}
+export default new Vuex.Store({
+  modules: {
+    NewsIndex,
+    NewsSingle
+  },
+  strict: debug
+})
