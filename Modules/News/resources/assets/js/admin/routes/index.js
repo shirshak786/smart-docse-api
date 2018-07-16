@@ -1,5 +1,5 @@
 export default {
-  path: 'users',
+  path: 'news',
   component: {
     render (c) {
       return c('router-view')
@@ -11,24 +11,24 @@ export default {
   children: [
     {
       path: '/',
-      name: 'users',
-      component: require('@user/admin/components/UserList').default,
+      name: 'news.index',
+      component: require('@user/admin/components/NewsList').default,
       meta: {
         label: 'User List'
       }
     },
     {
       path: 'create',
-      name: 'users_create',
-      component: require('@user/admin/components/UserForm').default,
+      name: 'news.create',
+      component: require('@user/admin/components/NewsForm').default,
       meta: {
         label: 'Create User'
       }
     },
     {
       path: ':id/edit',
-      name: 'users_edit',
-      component: require('@user/admin/components/UserForm').default,
+      name: 'news.edit',
+      component: require('@user/admin/components/NewsForm').default,
       props: true,
       meta: {
         label: 'Edit User'
