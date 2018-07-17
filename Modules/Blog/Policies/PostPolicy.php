@@ -23,7 +23,6 @@ class PostPolicy
         return false;
     }
 
-
     public function update(User $authenticatedUser, Post $post)
     {
         if ($authenticatedUser->can('edit posts')) {

@@ -2,11 +2,11 @@
 
 namespace Modules\Meta\Repositories;
 
+use Modules\Meta\Models\Meta;
 use Illuminate\Support\Facades\DB;
+use Modules\Meta\Contracts\MetaRepository;
 use Modules\Core\Exceptions\GeneralException;
 use Modules\Core\Repositories\EloquentBaseRepository;
-use Modules\Meta\Contracts\MetaRepository;
-use Modules\Meta\Models\Meta;
 
 /**
  * Class EloquentMetaRepository.

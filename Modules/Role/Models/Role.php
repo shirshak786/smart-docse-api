@@ -2,12 +2,11 @@
 
 namespace Modules\Role\Models;
 
+use Modules\User\Models\Permission;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Core\Models\Traits\TranslatableJson;
-use Modules\User\Models\Permission;
 use Spatie\Translatable\HasTranslations;
-
+use Modules\Core\Models\Traits\TranslatableJson;
 
 class Role extends Model
 {

@@ -5,8 +5,8 @@ namespace Modules\Core\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Route;
-use Modules\Blog\Contracts\PostRepository;
 use Modules\Blog\Contracts\TagRepository;
+use Modules\Blog\Contracts\PostRepository;
 use Modules\User\Contracts\UserRepository;
 
 class UserController extends Controller

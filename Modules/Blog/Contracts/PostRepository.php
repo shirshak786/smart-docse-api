@@ -2,8 +2,8 @@
 
 namespace Modules\Blog\Contracts;
 
-use Modules\Blog\Models\Post;
 use Modules\Blog\Models\Tag;
+use Modules\Blog\Models\Post;
 use Modules\User\Models\User;
 use Illuminate\Http\UploadedFile;
 use Modules\Core\Contracts\BaseRepository;

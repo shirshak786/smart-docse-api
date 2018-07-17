@@ -3,9 +3,9 @@
 namespace Modules\Core\Utils;
 
 use Illuminate\Http\Request;
-use Module\Core\Exports\DataTableExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Database\Eloquent\Model;
+use Module\Core\Exports\DataTableExport;
 use Illuminate\Database\Eloquent\Builder;
 
 class RequestSearchQuery

@@ -4,8 +4,8 @@ namespace Modules\Role\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
-use Modules\Role\Repositories\Contracts\RoleRepository;
 use Modules\Role\Repositories\EloquentRoleRepository;
+use Modules\Role\Repositories\Contracts\RoleRepository;
 
 class RoleServiceProvider extends ServiceProvider
 {
@@ -27,7 +27,7 @@ class RoleServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->registerFactories();
-        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../Database/Migrations');
     }
 
     /**
@@ -37,12 +37,10 @@ class RoleServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
         $this->app->bind(
             RoleRepository::class,
             EloquentRoleRepository::class
         );
-
     }
 
     /**
@@ -72,11 +70,11 @@ class RoleServiceProvider extends ServiceProvider
         $sourcePath = __DIR__.'/../Resources/views';
 
         $this->publishes([
-            $sourcePath => $viewPath
-        ],'views');
+            $sourcePath => $viewPath,
+        ], 'views');
 
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
-            return $path . '/modules/role';
+            return $path.'/modules/role';
         }, \Config::get('view.paths')), [$sourcePath]), 'role');
     }
 
@@ -92,7 +90,7 @@ class RoleServiceProvider extends ServiceProvider
         if (is_dir($langPath)) {
             $this->loadTranslationsFrom($langPath, 'role');
         } else {
-            $this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'role');
+            $this->loadTranslationsFrom(__DIR__.'/../Resources/lang', 'role');
         }
     }
 
@@ -104,7 +102,7 @@ class RoleServiceProvider extends ServiceProvider
     public function registerFactories()
     {
         if (! app()->environment('production')) {
-            app(Factory::class)->load(__DIR__ . '/../Database/factories');
+            app(Factory::class)->load(__DIR__.'/../Database/factories');
         }
     }
 

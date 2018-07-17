@@ -2,16 +2,16 @@
 
 namespace Modules\User\Models;
 
+use Modules\Blog\Models\Post;
+use Modules\Role\Models\Role;
 use Illuminate\Support\Facades\Gate;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Modules\Blog\Models\Post;
-use Modules\Role\Models\Role;
 use Modules\User\Notifications\ResetPassword as ResetPasswordNotification;
-use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable  implements JWTSubject
+class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 

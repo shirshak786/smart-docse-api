@@ -3,14 +3,13 @@
 namespace Modules\Redirection\Repositories;
 
 use Illuminate\Support\Facades\DB;
+use Modules\Redirection\Models\Redirection;
 use Modules\Core\Exceptions\GeneralException;
 use Modules\Core\Repositories\EloquentBaseRepository;
-use Modules\Redirection\Models\Redirection;
 use Modules\Redirection\Repositories\Contracts\RedirectionRepository;
 
 class EloquentRedirectionRepository extends EloquentBaseRepository implements RedirectionRepository
 {
-
     public function __construct(Redirection $redirection)
     {
         parent::__construct($redirection);
@@ -36,7 +35,6 @@ class EloquentRedirectionRepository extends EloquentBaseRepository implements Re
         return $redirection;
     }
 
-
     public function update(Redirection $redirection, array $input)
     {
         if (($existingRedirection = $this->find($redirection->source))
@@ -52,7 +50,6 @@ class EloquentRedirectionRepository extends EloquentBaseRepository implements Re
         return $redirection;
     }
 
-
     public function destroy(Redirection $redirection)
     {
         if (! $redirection->delete()) {
@@ -61,7 +58,6 @@ class EloquentRedirectionRepository extends EloquentBaseRepository implements Re
 
         return true;
     }
-
 
     public function batchDestroy(array $ids)
     {

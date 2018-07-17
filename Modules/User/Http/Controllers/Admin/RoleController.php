@@ -3,12 +3,12 @@
 namespace Modules\User\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use Modules\Core\Http\Controllers\Admin\AdminController;
-use Modules\Core\Utils\RequestSearchQuery;
 use Modules\Role\Models\Role;
-use Modules\Role\Repositories\Contracts\RoleRepository;
+use Modules\Core\Utils\RequestSearchQuery;
 use Modules\User\Http\Requests\StoreRoleRequest;
 use Modules\User\Http\Requests\UpdateRoleRequest;
+use Modules\Role\Repositories\Contracts\RoleRepository;
+use Modules\Core\Http\Controllers\Admin\AdminController;
 
 class RoleController extends AdminController
 {

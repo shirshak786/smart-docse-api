@@ -4,13 +4,13 @@ namespace Modules\Redirection\Http\Controllers\Admin;
 
 use League\Csv\Reader;
 use Illuminate\Http\Request;
-use Modules\Core\Http\Controllers\Admin\AdminController;
 use Modules\Core\Utils\RequestSearchQuery;
+use Modules\Redirection\Models\Redirection;
+use Symfony\Component\HttpFoundation\Response;
+use Modules\Core\Http\Controllers\Admin\AdminController;
 use Modules\Redirection\Http\Requests\StoreRedirectionRequest;
 use Modules\Redirection\Http\Requests\UpdateRedirectionRequest;
-use Modules\Redirection\Models\Redirection;
 use Modules\Redirection\Repositories\Contracts\RedirectionRepository;
-use Symfony\Component\HttpFoundation\Response;
 
 class RedirectionController extends AdminController
 {

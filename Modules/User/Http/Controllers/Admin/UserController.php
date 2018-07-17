@@ -3,13 +3,13 @@
 namespace Modules\User\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use Modules\Core\Http\Controllers\Admin\AdminController;
+use Modules\User\Models\User;
 use Modules\Core\Utils\RequestSearchQuery;
-use Modules\Role\Repositories\EloquentRoleRepository;
 use Modules\User\Http\Requests\StoreUserRequest;
 use Modules\User\Http\Requests\UpdateUserRequest;
-use Modules\User\Models\User;
+use Modules\Role\Repositories\EloquentRoleRepository;
 use Modules\User\Repositories\EloquentUserRepository;
+use Modules\Core\Http\Controllers\Admin\AdminController;
 
 class UserController extends AdminController
 {
@@ -26,7 +26,6 @@ class UserController extends AdminController
     {
         return $this->users->query()->whereActive(true)->count();
     }
-
 
     public function search(Request $request)
     {

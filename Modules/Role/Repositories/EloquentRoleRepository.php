@@ -2,9 +2,9 @@
 
 namespace Modules\Role\Repositories;
 
+use Modules\Role\Models\Role;
 use Modules\Core\Exceptions\GeneralException;
 use Modules\Core\Repositories\EloquentBaseRepository;
-use Modules\Role\Models\Role;
 use Modules\Role\Repositories\Contracts\RoleRepository;
 
 /**

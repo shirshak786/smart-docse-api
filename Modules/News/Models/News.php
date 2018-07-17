@@ -2,16 +2,16 @@
 
 namespace Modules\News\Models;
 
-use function array_key_exists;
-use Carbon\Carbon;
 use Eloquent;
 use Exception;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Gate;
+use Carbon\Carbon;
 use Modules\User\Models\User;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use function array_key_exists;
+use Illuminate\Support\Facades\Gate;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
 class News extends Eloquent implements HasMedia
 {
@@ -46,27 +46,28 @@ class News extends Eloquent implements HasMedia
     public static function storeValidation()
     {
         return [
-          'title' => 'required|min:3',
-          'content'=>'required|min:3',
-          'type'=>'required|integer',
-          'status'=>'required|integer',
-          'published_date' =>  'date_format:' . config('app.date_format') . '|max:191|nullable',
-          'cover_image_upload' => 'file|image|required'
+          'title'              => 'required|min:3',
+          'content'            => 'required|min:3',
+          'type'               => 'required|integer',
+          'status'             => 'required|integer',
+          'published_date'     => 'date_format:'.config('app.date_format').'|max:191|nullable',
+          'cover_image_upload' => 'file|image|required',
         ];
     }
 
     public static function updateValidation()
     {
         return [
-            'title' => 'required|min:3',
-            'content'=>'required|min:3',
-            'type'=>'required|integer',
-            'status'=>'required|integer',
-            'cover_image_upload' => 'nullable|file|image'
+            'title'              => 'required|min:3',
+            'content'            => 'required|min:3',
+            'type'               => 'required|integer',
+            'status'             => 'required|integer',
+            'cover_image_upload' => 'nullable|file|image',
         ];
     }
 
-    public function getStatusesAttribute() {
+    public function getStatusesAttribute()
+    {
         return [
             0 => 'Pending',
             1 => 'Waiting',
@@ -74,27 +75,29 @@ class News extends Eloquent implements HasMedia
         ];
     }
 
-    public function getStatusValueAttribute() {
+    public function getStatusValueAttribute()
+    {
         $status = $this->statuses;
 
-        if( array_key_exists($this->status, $status)){
+        if (array_key_exists($this->status, $status)) {
             return $status[$this->status];
         }
         throw new Exception('The Status you supplied doesn\'t exist');
     }
 
-    public function getTypesAttribute() {
+    public function getTypesAttribute()
+    {
         return [
-            0 => 'KU Related',
-            1 => 'DOCSE Related',
-            2 => 'DOCSE First Semester',
-            3 =>  'DOCSE Second Semester',
-            4 => 'DOCSE Third Semester',
-            5 => 'DOCSE Fourth Semester',
-            6 => 'DOCSE Fifth Semester',
-            7 => 'DOCSE Sixth Semester',
-            8 => 'DOCSE Seventh Semester',
-            9 => 'DOCSE Eight Semester',
+            0  => 'KU Related',
+            1  => 'DOCSE Related',
+            2  => 'DOCSE First Semester',
+            3  => 'DOCSE Second Semester',
+            4  => 'DOCSE Third Semester',
+            5  => 'DOCSE Fourth Semester',
+            6  => 'DOCSE Fifth Semester',
+            7  => 'DOCSE Sixth Semester',
+            8  => 'DOCSE Seventh Semester',
+            9  => 'DOCSE Eight Semester',
             10 => 'KUCC',
         ];
     }
@@ -102,13 +105,11 @@ class News extends Eloquent implements HasMedia
     public function getTypeValueAttribute()
     {
         $types = $this->types;
-
         if( array_key_exists($this->type, $types)){
             return $types[$this->type];
         }
         throw new Exception('The Type you supplied doesn\'t exist');
     }
-
 
     public function setPublishedDateAttribute($input)
     {
@@ -120,7 +121,7 @@ class News extends Eloquent implements HasMedia
     public function gePublishedDateAttribute($output)
     {
         if ($output) {
-             return Carbon::createFromFormat('Y-m-d', $output)->format(config('app.date_format'));
+            return Carbon::createFromFormat('Y-m-d', $output)->format(config('app.date_format'));
         }
     }
 
@@ -134,7 +135,7 @@ class News extends Eloquent implements HasMedia
         $file = $this->cover_image;
 
         if (! $file) {
-            return '/images/placeholder.png';;
+            return '/images/placeholder.png';
         }
 
         return $file->getUrl();
@@ -145,24 +146,27 @@ class News extends Eloquent implements HasMedia
         return image_template_url('small', $this->cover_image_url);
     }
 
-    public function author() {
-        return $this->belongsTo(User::class,'author_id');
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'author_id');
     }
 
-    public function getCanEditAttribute() {
-        return Gate::allows('update',$this);
+    public function getCanEditAttribute()
+    {
+        return Gate::allows('update', $this);
     }
 
-    public function getCanDeleteAttribute() {
-        return Gate::allows('delete',$this);
+    public function getCanDeleteAttribute()
+    {
+        return Gate::allows('delete', $this);
     }
 
     public function sluggable()
     {
         return [
             'slug' => [
-                'source' => 'title'
-            ]
+                'source' => 'title',
+            ],
         ];
     }
 

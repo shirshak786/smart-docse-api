@@ -3,14 +3,14 @@
 namespace Modules\Blog\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Modules\Blog\Models\Post;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Database\Eloquent\Builder;
 use Modules\Blog\Contracts\PostRepository;
+use Modules\Core\Utils\RequestSearchQuery;
 use Modules\Blog\Http\Requests\StorePostRequest;
 use Modules\Blog\Http\Requests\UpdatePostRequest;
-use Modules\Blog\Models\Post;
 use Modules\Core\Http\Controllers\Admin\AdminController;
-use Modules\Core\Utils\RequestSearchQuery;
 
 class PostController extends AdminController
 {
@@ -113,7 +113,6 @@ class PostController extends AdminController
         ]);
     }
 
-
     public function show(Post $post)
     {
         $this->authorize('view', $post);
@@ -156,7 +155,6 @@ class PostController extends AdminController
         return $this->redirectResponse($request, __('alerts.backend.posts.updated'));
     }
 
-
     public function destroy(Post $post, Request $request)
     {
         $this->authorize('delete', $post);
@@ -165,7 +163,6 @@ class PostController extends AdminController
 
         return $this->redirectResponse($request, __('alerts.backend.posts.deleted'));
     }
-
 
     public function batchAction(Request $request)
     {

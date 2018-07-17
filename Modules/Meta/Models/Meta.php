@@ -4,8 +4,8 @@ namespace Modules\Meta\Models;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Core\Models\Traits\TranslatableJson;
 use Spatie\Translatable\HasTranslations;
+use Modules\Core\Models\Traits\TranslatableJson;
 
 class Meta extends Model
 {

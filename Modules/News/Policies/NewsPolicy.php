@@ -2,9 +2,9 @@
 
 namespace Modules\News\Policies;
 
-use Illuminate\Auth\Access\HandlesAuthorization;
 use Modules\News\Models\News;
 use Modules\User\Models\User;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
 class NewsPolicy
 {
