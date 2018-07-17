@@ -2,16 +2,15 @@
 
 namespace Modules\SER\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Carbon\Carbon;
-use Modules\Blog\Contracts\PostRepository;
-use Modules\Blog\Contracts\TagRepository;
-use Modules\Blog\Models\Post;
 use Modules\Blog\Models\Tag;
-use Modules\User\Contracts\UserRepository;
+use Modules\Blog\Models\Post;
 use Modules\User\Models\User;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Response;
-
+use Modules\Blog\Contracts\TagRepository;
+use Modules\Blog\Contracts\PostRepository;
+use Modules\User\Contracts\UserRepository;
 use Mcamara\LaravelLocalization\LaravelLocalization;
 
 class SeoController extends Controller
@@ -20,9 +19,7 @@ class SeoController extends Controller
 
     protected $posts;
 
-
     protected $tags;
-
 
     protected $users;
 

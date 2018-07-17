@@ -2,14 +2,14 @@
 
 namespace Modules\Blog\Http\Controllers\User;
 
-use Modules\Blog\Contracts\PostRepository;
-use Modules\Blog\Models\Post;
-use Modules\Blog\Models\Tag;
-use Modules\Core\Http\Controllers\User\UserController;
-use Modules\User\Models\User;
 use Illuminate\Http\Request;
+use Modules\Blog\Models\Tag;
+use Modules\Blog\Models\Post;
+use Modules\User\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Artesaos\SEOTools\Facades\SEOMeta;
+use Modules\Blog\Contracts\PostRepository;
+use Modules\Core\Http\Controllers\User\UserController;
 
 class BlogController extends UserController
 {

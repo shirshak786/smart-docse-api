@@ -2,10 +2,10 @@
 
 namespace Modules\News\Providers;
 
-use Illuminate\Database\Eloquent\Relations\Relation;
+use Modules\News\Models\News;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
-use Modules\News\Models\News;
+use Illuminate\Database\Eloquent\Relations\Relation;
 
 class NewsServiceProvider extends ServiceProvider
 {
@@ -27,7 +27,7 @@ class NewsServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->registerFactories();
-        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../Database/Migrations');
 
         Relation::morphMap([
             'news' => News::class,
@@ -71,11 +71,11 @@ class NewsServiceProvider extends ServiceProvider
         $sourcePath = __DIR__.'/../Resources/views';
 
         $this->publishes([
-            $sourcePath => $viewPath
-        ],'views');
+            $sourcePath => $viewPath,
+        ], 'views');
 
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
-            return $path . '/modules/news';
+            return $path.'/modules/news';
         }, \Config::get('view.paths')), [$sourcePath]), 'news');
     }
 
@@ -91,7 +91,7 @@ class NewsServiceProvider extends ServiceProvider
         if (is_dir($langPath)) {
             $this->loadTranslationsFrom($langPath, 'news');
         } else {
-            $this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'news');
+            $this->loadTranslationsFrom(__DIR__.'/../Resources/lang', 'news');
         }
     }
 
@@ -103,7 +103,7 @@ class NewsServiceProvider extends ServiceProvider
     public function registerFactories()
     {
         if (! app()->environment('production')) {
-            app(Factory::class)->load(__DIR__ . '/../Database/factories');
+            app(Factory::class)->load(__DIR__.'/../Database/factories');
         }
     }
 

@@ -1,7 +1,6 @@
 <?php
 
-Route::group(['middleware' => ['web', 'locale', 'auth', 'can:access backend'], 'prefix' => 'meta', 'as' =>'admin.', 'namespace' => 'Modules\Meta\Http\Controllers\Admin'], function()
-{
+Route::group(['middleware' => ['web', 'locale', 'auth', 'can:access backend'], 'prefix' => 'meta', 'as' =>'admin.', 'namespace' => 'Modules\Meta\Http\Controllers\Admin'], function () {
     Route::group(
         ['middleware' => ['can:view metas']],
         function () {
@@ -15,8 +14,4 @@ Route::group(['middleware' => ['web', 'locale', 'auth', 'can:access backend'], '
             Route::post('metas/batch_action', 'MetaController@batchAction')->name('metas.batch_action');
         }
     );
-
 });
-
-
-

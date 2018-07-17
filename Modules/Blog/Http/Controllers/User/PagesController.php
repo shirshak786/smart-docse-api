@@ -7,7 +7,6 @@ use Modules\Core\Http\Controllers\User\UserController;
 
 class PagesController extends UserController
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -20,7 +19,6 @@ class PagesController extends UserController
 
     public function contact(Request $request)
     {
-
     }
 
     public function contactSent()

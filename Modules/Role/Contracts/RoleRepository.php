@@ -2,8 +2,8 @@
 
 namespace Modules\Role\Repositories\Contracts;
 
-use Modules\Core\Contracts\BaseRepository;
 use Modules\Role\Models\Role;
+use Modules\Core\Contracts\BaseRepository;
 
 interface RoleRepository extends BaseRepository
 {

@@ -8,7 +8,6 @@ use Modules\User\Contracts\UserRepository;
 
 class UserController extends Controller
 {
-
     protected $users;
 
     public function __construct(UserRepository $users)

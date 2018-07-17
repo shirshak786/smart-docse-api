@@ -3,12 +3,12 @@
 namespace Modules\Meta\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use Modules\Core\Http\Controllers\Admin\AdminController;
+use Modules\Meta\Models\Meta;
 use Modules\Core\Utils\RequestSearchQuery;
 use Modules\Meta\Contracts\MetaRepository;
 use Modules\Meta\Http\Requests\StoreMetaRequest;
 use Modules\Meta\Http\Requests\UpdateMetaRequest;
-use Modules\Meta\Models\Meta;
+use Modules\Core\Http\Controllers\Admin\AdminController;
 
 class MetaController extends AdminController
 {

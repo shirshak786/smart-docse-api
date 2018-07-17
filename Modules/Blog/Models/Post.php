@@ -3,22 +3,21 @@
 namespace Modules\Blog\Models;
 
 use Carbon\Carbon;
-use Modules\Core\Models\Traits\HasEditor;
-use Modules\Core\Models\Traits\HasTranslatableSlug;
-use Modules\Core\Models\Traits\TranslatableJson;
-use Modules\Meta\Models\Traits\Metable;
-use Modules\User\Models\User;
 use Spatie\Tags\HasTags;
 use Laravel\Scout\Searchable;
+use Modules\User\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Spatie\MediaLibrary\Models\Media;
 use Stevebauman\Purify\Facades\Purify;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Meta\Models\Traits\Metable;
 use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Core\Models\Traits\HasEditor;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-
+use Modules\Core\Models\Traits\TranslatableJson;
+use Modules\Core\Models\Traits\HasTranslatableSlug;
 
 class Post extends Model implements HasMedia
 {

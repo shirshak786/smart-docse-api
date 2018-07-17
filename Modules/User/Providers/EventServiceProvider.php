@@ -3,10 +3,9 @@
 namespace Modules\User\Providers;
 
 use Illuminate\Auth\Events\Login;
-
-use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Modules\User\Listeners\LoginEventListener;
 use Modules\User\Listeners\UserEventListener;
+use Modules\User\Listeners\LoginEventListener;
+use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 class EventServiceProvider extends ServiceProvider
 {

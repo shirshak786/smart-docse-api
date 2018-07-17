@@ -2,20 +2,19 @@
 
 namespace Modules\User\Repositories;
 
-use Exception;
 use Carbon\Carbon;
-use Modules\Core\Exceptions\GeneralException;
-use Modules\Core\Repositories\EloquentBaseRepository;
-use Modules\User\Contracts\AccountRepository;
-use Modules\User\Contracts\UserRepository;
-use Modules\User\Models\SocialLogin;
-use Modules\User\Models\User;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
+use Modules\User\Models\User;
 use Laravel\Socialite\AbstractUser;
 use Illuminate\Support\Facades\Hash;
+use Modules\User\Models\SocialLogin;
+use Modules\User\Contracts\UserRepository;
+use Modules\Core\Exceptions\GeneralException;
+use Modules\User\Contracts\AccountRepository;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Modules\User\Notifications\SendConfirmation;
+use Modules\Core\Repositories\EloquentBaseRepository;
 
 /**
  * Class EloquentAccountRepository.
@@ -23,7 +22,6 @@ use Modules\User\Notifications\SendConfirmation;
 class EloquentAccountRepository extends EloquentBaseRepository implements AccountRepository
 {
     protected $users;
-
 
     public function __construct(User $user, UserRepository $users)
     {
@@ -40,7 +38,6 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
         return $user;
     }
 
-
     public function login(Authenticatable $user)
     {
         $user->last_access_at = Carbon::now();
@@ -52,7 +49,6 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
 
         return $user;
     }
-
 
     public function findOrCreateSocial($provider, AbstractUser $data)
     {
@@ -120,7 +116,6 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
 
         return $user->save();
     }
-
 
     public function changePassword($oldPassword, $newPassword)
     {

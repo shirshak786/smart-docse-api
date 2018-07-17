@@ -28,7 +28,7 @@ class MetaServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->registerFactories();
-        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../Database/Migrations');
     }
 
     /**
@@ -72,11 +72,11 @@ class MetaServiceProvider extends ServiceProvider
         $sourcePath = __DIR__.'/../Resources/views';
 
         $this->publishes([
-            $sourcePath => $viewPath
-        ],'views');
+            $sourcePath => $viewPath,
+        ], 'views');
 
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
-            return $path . '/modules/meta';
+            return $path.'/modules/meta';
         }, \Config::get('view.paths')), [$sourcePath]), 'meta');
     }
 
@@ -92,7 +92,7 @@ class MetaServiceProvider extends ServiceProvider
         if (is_dir($langPath)) {
             $this->loadTranslationsFrom($langPath, 'meta');
         } else {
-            $this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'meta');
+            $this->loadTranslationsFrom(__DIR__.'/../Resources/lang', 'meta');
         }
     }
 
@@ -104,7 +104,7 @@ class MetaServiceProvider extends ServiceProvider
     public function registerFactories()
     {
         if (! app()->environment('production')) {
-            app(Factory::class)->load(__DIR__ . '/../Database/factories');
+            app(Factory::class)->load(__DIR__.'/../Database/factories');
         }
     }
 

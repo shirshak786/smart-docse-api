@@ -4,8 +4,8 @@ namespace Modules\User\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Mcamara\LaravelLocalization\LaravelLocalization;
 use Modules\User\Contracts\AccountRepository;
+use Mcamara\LaravelLocalization\LaravelLocalization;
 use Modules\User\Http\Requests\UpdateAccountRequest;
 
 class AccountController extends Controller
@@ -45,7 +45,6 @@ class AccountController extends Controller
             ->withFlashSuccess(__('labels.user.email_confirmation_sended'));
     }
 
-
     public function confirmEmail($token)
     {
         $this->account->confirmEmail($token);
@@ -53,7 +52,6 @@ class AccountController extends Controller
         return redirect()->route('user.account')
             ->withFlashSuccess(__('labels.user.email_confirmed'));
     }
-
 
     public function changePassword(Request $request)
     {

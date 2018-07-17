@@ -2,15 +2,14 @@
 
 namespace Modules\User\Http\Controllers\Auth;
 
-use Modules\Core\Exceptions\GeneralException;
-use Modules\User\Contracts\AccountRepository;
-use Modules\User\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Laravel\Socialite\AbstractUser;
+use Modules\User\Models\User;
 use App\Http\Controllers\Controller;
 use Laravel\Socialite\Facades\Socialite;
 use Arcanedev\NoCaptcha\Rules\CaptchaRule;
+use Modules\Core\Exceptions\GeneralException;
+use Modules\User\Contracts\AccountRepository;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
