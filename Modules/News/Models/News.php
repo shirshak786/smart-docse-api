@@ -105,7 +105,7 @@ class News extends Eloquent implements HasMedia
     public function getTypeValueAttribute()
     {
         $types = $this->types;
-        if( array_key_exists($this->type, $types)){
+        if (array_key_exists($this->type, $types)) {
             return $types[$this->type];
         }
         throw new Exception('The Type you supplied doesn\'t exist');
