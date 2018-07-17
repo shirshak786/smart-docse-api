@@ -2,8 +2,10 @@
 
 namespace Modules\News\Providers;
 
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\News\Models\News;
 
 class NewsServiceProvider extends ServiceProvider
 {
@@ -26,6 +28,10 @@ class NewsServiceProvider extends ServiceProvider
         $this->registerViews();
         $this->registerFactories();
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+
+        Relation::morphMap([
+            'news' => News::class,
+        ]);
     }
 
     /**
@@ -91,7 +97,7 @@ class NewsServiceProvider extends ServiceProvider
 
     /**
      * Register an additional directory of factories.
-     * 
+     *
      * @return void
      */
     public function registerFactories()

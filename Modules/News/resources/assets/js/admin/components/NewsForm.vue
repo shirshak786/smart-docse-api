@@ -78,7 +78,7 @@
               :feedback="feedback('cover_image')"
             >
               <div class="media">
-                <img class="mr-2" v-if="showData.cover_image_link" :src="showData.cover_image_link" alt="">
+                <img class="mr-2" ref="coverImageDisplayInput" v-if="showData.cover_image_thumbnail_url" :src="showData.cover_image_thumbnail_url" alt="">
 
                 <div class="media-body">
                   <h6>{{ $t('labels.upload_image') }}</h6>
@@ -185,6 +185,7 @@ export default {
   methods: {
     deleteCoverImage () {
       this.$refs.coverImageInput.reset()
+      this.$refs.coverImageDisplayInput.remove()
       this.model.cover_image = null
     }
   }

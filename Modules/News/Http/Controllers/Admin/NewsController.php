@@ -2,27 +2,19 @@
 
 namespace Modules\News\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Modules\Core\Http\Controllers\Admin\AdminController;
 use Modules\Core\Utils\RequestSearchQuery;
 use Modules\News\Http\Requests\StoreNewsRequest;
 use Modules\News\Http\Requests\UpdateNewsRequest;
-use Modules\News\Http\Resources\NewsResource;
 use Modules\News\Models\News;
 
 class NewsController extends AdminController
 {
-    public function index()
-    {
-        return new NewsResource(News::with('author')->get());
-    }
-
     public function show(News $news){
-        $this->authorize('view news');
-        return new NewsResource($news);
+        $this->authorize('show',$news);
+        return $news;
     }
-
 
     public function search(Request $request)
     {

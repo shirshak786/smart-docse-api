@@ -22,7 +22,7 @@ export default {
     config: {
       type: Object,
       default: () => ({
-        wrap: false
+        wrap: true
       })
     },
     placeholder: {

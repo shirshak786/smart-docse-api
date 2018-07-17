@@ -93,7 +93,8 @@ export default {
       actions: {
         destroy: 'Delete',
         publish: 'Publish',
-        wait: 'Waiting'
+        waiting: 'Waiting',
+        pending: 'Pending'
       }
     }
   },

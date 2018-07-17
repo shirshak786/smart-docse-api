@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Eloquent;
 use Exception;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Gate;
 use Modules\User\Models\User;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
@@ -20,6 +21,8 @@ class News extends Eloquent implements HasMedia
 
     protected $table = 'news';
 
+    protected $with = ['author'];
+
     protected $fillable = [
         'title',
         'content',
@@ -29,13 +32,15 @@ class News extends Eloquent implements HasMedia
     ];
 
     protected $appends = [
+        'can_edit',
+        'can_delete',
         'cover_image',
         'cover_image_url',
         'cover_image_thumbnail_url',
         'statuses',
         'status_value',
         'types',
-        'types_value',
+        'type_value',
     ];
 
     public static function storeValidation()
@@ -94,7 +99,7 @@ class News extends Eloquent implements HasMedia
         ];
     }
 
-    public function getTypesValueAttribute()
+    public function getTypeValueAttribute()
     {
         $type = $this->types;
 
@@ -142,6 +147,14 @@ class News extends Eloquent implements HasMedia
 
     public function author() {
         return $this->belongsTo(User::class,'author_id');
+    }
+
+    public function getCanEditAttribute() {
+        return Gate::allows('update',$this);
+    }
+
+    public function getCanDeleteAttribute() {
+        return Gate::allows('delete',$this);
     }
 
     public function sluggable()
