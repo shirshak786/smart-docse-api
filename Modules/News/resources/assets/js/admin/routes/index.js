@@ -6,7 +6,7 @@ export default {
     }
   },
   meta: {
-    label: 'Newss'
+    label: 'News'
   },
   children: [
     {

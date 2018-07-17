@@ -65,12 +65,12 @@ class NewsController extends AdminController
         $news->update($request->all());
         $news->author_id = $request->user()->id;
 
-        if (! $request->input('cover_image') && $news->getFirstMedia('cover_image')) {
+        if ($request->hasFile('cover_image_upload') && $news->getFirstMedia('cover_image')) {
             $news->getFirstMedia('cover_image')->delete();
         }
 
-        if ($request->hasFile('cover_image')) {
-            $news->addMedia($request->file('cover_image'))->toMediaCollection('cover_image');
+        if ($request->hasFile('cover_image_upload')) {
+            $news->addMedia($request->file('cover_image_upload'))->toMediaCollection('cover_image');
         }
         $news->saveOrFail();
 

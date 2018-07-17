@@ -51,7 +51,7 @@ class News extends Eloquent implements HasMedia
           'type'=>'required|integer',
           'status'=>'required|integer',
           'published_date' =>  'date_format:' . config('app.date_format') . '|max:191|nullable',
-          'cover_image' => 'file|image|required'
+          'cover_image_upload' => 'file|image|required'
         ];
     }
 
@@ -62,7 +62,7 @@ class News extends Eloquent implements HasMedia
             'content'=>'required|min:3',
             'type'=>'required|integer',
             'status'=>'required|integer',
-            'cover_image' => 'file|image|nullable'
+            'cover_image_upload' => 'nullable|file|image'
         ];
     }
 

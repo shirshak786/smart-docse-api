@@ -72,10 +72,10 @@
 
             <b-form-group
               label="Cover Image"
-              label-for="cover_image"
+              label-for="cover_image_upload"
               horizontal
               :label-cols="2"
-              :feedback="feedback('cover_image')"
+              :feedback="feedback('cover_image_upload')"
             >
               <div class="media">
                 <img class="mr-2" ref="coverImageDisplayInput" v-if="showData.cover_image_thumbnail_url" :src="showData.cover_image_thumbnail_url" alt="">
@@ -83,16 +83,16 @@
                 <div class="media-body">
                   <h6>{{ $t('labels.upload_image') }}</h6>
                   <b-form-file
-                    id="cover_image"
-                    name="cover_image"
+                    id="cover_image_upload"
+                    name="cover_image_upload"
                     ref="coverImageInput"
                     placeholder="Choose Image"
-                    v-model="model.cover_image"
-                    :state="state('cover_image')"
+                    v-model="model.cover_image_upload"
+                    :state="state('cover_image_upload')"
                     v-b-tooltip.hover
                     title="Cover Image (PNG, JPEG, GIF)"
                   ></b-form-file>
-                  <b-button variant="danger" class="d-block mt-1" v-if="model.cover_image" @click.prevent="deleteCoverImage">Delete This Image</b-button>
+                  <b-button variant="danger" class="d-block mt-1" v-if="model.cover_image_upload" @click.prevent="deleteCoverImage">Delete This Image</b-button>
                 </div>
               </div>
             </b-form-group>
@@ -177,7 +177,7 @@ export default {
         content: null,
         status: null,
         type: null,
-        cover_image: null,
+        cover_image_upload: null,
         published_date: null
       }
     }
@@ -186,7 +186,7 @@ export default {
     deleteCoverImage () {
       this.$refs.coverImageInput.reset()
       this.$refs.coverImageDisplayInput.remove()
-      this.model.cover_image = null
+      this.model.cover_image_upload = null
     }
   }
 }
