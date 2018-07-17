@@ -70,6 +70,56 @@
               </b-select>
             </b-form-group>
 
+            <b-form-group
+              label="Cover Image"
+              label-for="cover_image"
+              horizontal
+              :label-cols="2"
+              :feedback="feedback('cover_image')"
+            >
+              <div class="media">
+                <img class="mr-2" v-if="showData.cover_image_link" :src="showData.cover_image_link" alt="">
+
+                <div class="media-body">
+                  <h6>{{ $t('labels.upload_image') }}</h6>
+                  <b-form-file
+                    id="cover_image"
+                    name="cover_image"
+                    ref="coverImageInput"
+                    placeholder="Choose Image"
+                    v-model="model.cover_image"
+                    :state="state('cover_image')"
+                    v-b-tooltip.hover
+                    title="Cover Image (PNG, JPEG, GIF)"
+                  ></b-form-file>
+                  <b-button variant="danger" class="d-block mt-1" v-if="model.cover_image" @click.prevent="deleteCoverImage">Delete This Image</b-button>
+                </div>
+              </div>
+            </b-form-group>
+
+            <b-form-group
+              label="Published At"
+              label-for="published_date"
+              horizontal
+              :label-cols="2"
+            >
+              <b-input-group>
+                <p-datetimepicker
+                  id="published_date"
+                  name="published_date"
+                  v-model="model.published_date"
+                ></p-datetimepicker>
+                <b-input-group-append>
+                  <b-input-group-text data-toggle>
+                    <i class="fe fe-calendar"></i>
+                  </b-input-group-text>
+                  <b-input-group-text data-clear>
+                    <i class="fe fe-x-circle"></i>
+                  </b-input-group-text>
+                </b-input-group-append>
+              </b-input-group>
+            </b-form-group>
+
             <b-row slot="footer">
               <b-col md>
                 <b-button to="/news" exact variant="danger" size="sm">
@@ -126,11 +176,17 @@ export default {
         title: null,
         content: null,
         status: null,
-        type: null
+        type: null,
+        cover_image: null,
+        published_date: null
       }
     }
   },
   methods: {
+    deleteCoverImage () {
+      this.$refs.coverImageInput.reset()
+      this.model.cover_image = null
+    }
   }
 }
 </script>

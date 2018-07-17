@@ -24,14 +24,14 @@ class News extends Eloquent implements HasMedia
         'title',
         'content',
         'type',
+        'status',
+        'published_date',
     ];
 
     protected $appends = [
         'cover_image',
-        'cover_image_link',
-        'attachment',
-        'attachment_link',
-        'status_label',
+        'cover_image_url',
+        'cover_image_thumbnail_url',
         'statuses',
         'status_value',
         'types',
@@ -70,7 +70,7 @@ class News extends Eloquent implements HasMedia
     }
 
     public function getStatusValueAttribute() {
-        $status = $this->statuses();
+        $status = $this->statuses;
 
         if( array_key_exists($this->status, $status)){
             return $status[$this->status];
@@ -96,7 +96,7 @@ class News extends Eloquent implements HasMedia
 
     public function getTypesValueAttribute()
     {
-        $type = $this->types();
+        $type = $this->types;
 
         if( array_key_exists($this->type, $type)){
             return $type[$this->status];
@@ -124,15 +124,20 @@ class News extends Eloquent implements HasMedia
         return $this->getFirstMedia('cover_image');
     }
 
-    public function getCoverImageLinkAttribute()
+    public function getCoverImageURLAttribute()
     {
         $file = $this->cover_image;
 
         if (! $file) {
-            return null;
+            return '/images/placeholder.png';;
         }
 
         return $file->getUrl();
+    }
+
+    public function getCoverImageThumbnailUrlAttribute()
+    {
+        return image_template_url('small', $this->cover_image_url);
     }
 
     public function author() {

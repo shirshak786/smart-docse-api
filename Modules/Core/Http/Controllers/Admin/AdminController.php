@@ -14,7 +14,7 @@ class AdminController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index(Request $request)
+    public function index()
     {
         return view('backend.home');
     }

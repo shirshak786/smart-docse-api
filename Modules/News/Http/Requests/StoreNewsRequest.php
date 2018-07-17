@@ -2,10 +2,10 @@
 
 namespace Modules\News\Http\Requests;
 
-use Illuminate\Support\Facades\Request;
+use Illuminate\Foundation\Http\FormRequest;
 use Modules\News\Models\News;
 
-class StoreNewsRequest extends Request
+class StoreNewsRequest extends FormRequest
 {
     public function authorize()
     {
