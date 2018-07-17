@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import NewsIndex from '@news/admin/modules/index'
-import NewsSingle from '@news/admin/modules/single'
+import NewsIndex from '@news/js/admin/modules/index'
+import NewsSingle from '@news/js/admin/modules/single'
 
 Vue.use(Vuex)
 

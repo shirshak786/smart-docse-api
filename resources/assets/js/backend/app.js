@@ -9,11 +9,11 @@ import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm'
 
 // Vendor plugins components
 import '@main/vendor/coreui/components'
-import DataTable from '@core/admin/components/Plugins/DataTable'
-import RichTextEditor from '@core/admin/components/Plugins/RichTextEditor'
-import DateTimePicker from '@core/admin/components/Plugins/DateTimePicker'
-import Switch from '@core/admin/components/Plugins/Switch'
-import vSelect from '@core/admin/components/Plugins/Select'
+import DataTable from '@core/js/admin/components/Plugins/DataTable'
+import RichTextEditor from '@core/js/admin/components/Plugins/RichTextEditor'
+import DateTimePicker from '@core/js/admin/components/Plugins/DateTimePicker'
+import Switch from '@core/js/admin/components/Plugins/Switch'
+import vSelect from '@core/js/admin/components/Plugins/Select'
 
 import { createRouter } from './router'
 import store from './store'

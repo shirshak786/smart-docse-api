@@ -4,8 +4,8 @@
       <template slot="header">
         <h3 class="card-title">{{ $t('labels.backend.posts.titles.index') }}</h3>
         <div class="card-options" v-if="this.$app.user.can('create posts')">
-          <b-button to="/posts/create" variant="success" size="sm">
-            <i class="fe fe-plus-circle"></i> {{ $t('buttons.posts.create') }}
+          <b-button to="/news/create" variant="success" size="sm">
+            <i class="fe fe-plus-circle"></i> Create News
           </b-button>
         </div>
       </template>
@@ -34,26 +34,20 @@
             <b-form-checkbox :value="row.item.id" v-model="selected"></b-form-checkbox>
           </template>
           <template slot="image" slot-scope="row">
-            <router-link v-if="row.item.can_edit" :to="`/posts/${row.item.id}/edit`">
-              <img :src="row.item.thumbnail_image_path" :alt="row.item.title">
+            <router-link v-if="row.item.can_edit" :to="`/news/${row.item.slug}/edit`">
+              <img :src="row.item.cover_image_url" :alt="row.item.title">
             </router-link>
-            <img v-else :src="row.item.thumbnail_image_path" :alt="row.item.title">
+            <img v-else :src="row.item.cover_image_url" :alt="row.item.title">
           </template>
           <template slot="title" slot-scope="row">
-            <router-link v-if="row.item.can_edit" :to="`/posts/${row.item.id}/edit`" v-text="row.value"></router-link>
+            <router-link v-if="row.item.can_edit" :to="`/news/${row.item.slug}/edit`" v-text="row.value"></router-link>
             <span v-else v-text="row.value"></span>
           </template>
           <template slot="status" slot-scope="row">
-            <b-badge :variant="row.item.state">{{ $t(row.item.status_label) }}</b-badge>
+            <b-badge :variant="row.item.state">{{ $t(row.item.status_value) }}</b-badge>
           </template>
-          <template slot="pinned" slot-scope="row">
-            <c-switch v-if="row.item.can_edit" :checked="row.value" @change="onPinToggle(row.item.id)"></c-switch>
-          </template>
-          <template slot="promoted" slot-scope="row">
-            <c-switch v-if="row.item.can_edit" :checked="row.value" @change="onPromoteToggle(row.item.id)"></c-switch>
-          </template>
-          <template slot="owner" slot-scope="row">
-            <span v-if="row.item.owner">{{ row.item.owner.name }}</span>
+          <template slot="author" slot-scope="row">
+            <span v-if="row.item.author">{{ row.item.author.name }}</span>
             <span v-else>{{ $t('labels.anonymous') }}</span>
           </template>
           <template slot="posts.created_at" slot-scope="row">
@@ -63,10 +57,10 @@
             {{ row.item.updated_at }}
           </template>
           <template slot="actions" slot-scope="row">
-            <b-button size="sm" variant="success" :href="$app.route('blog.show', { post: row.item.slug})" target="_blank" v-b-tooltip.hover :title="$t('buttons.preview')" class="mr-1">
+            <b-button size="sm" variant="success" :href="$app.route('news.show', { post: row.item.slug})" target="_blank" v-b-tooltip.hover :title="$t('buttons.preview')" class="mr-1">
               <i class="fe fe-eye"></i>
             </b-button>
-            <b-button v-if="row.item.can_edit" size="sm" variant="primary" :to="`/posts/${row.item.id}/edit`" v-b-tooltip.hover :title="$t('buttons.edit')" class="mr-1">
+            <b-button v-if="row.item.can_edit" size="sm" variant="primary" :to="`/news/${row.item.slug}/edit`" v-b-tooltip.hover :title="$t('buttons.edit')" class="mr-1">
               <i class="fe fe-edit"></i>
             </b-button>
             <b-button v-if="row.item.can_delete" size="sm" variant="danger" v-b-tooltip.hover :title="$t('buttons.delete')" @click.stop="onDelete(row.item.id)">
@@ -80,8 +74,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   name: 'PostList',
   data () {
@@ -93,9 +85,7 @@ export default {
         { key: 'image', label: this.$t('validation.attributes.image') },
         { key: 'title', label: this.$t('validation.attributes.title'), sortable: true },
         { key: 'status', label: this.$t('validation.attributes.status'), 'class': 'text-center' },
-        { key: 'pinned', label: this.$t('validation.attributes.pinned'), 'class': 'text-center' },
-        { key: 'promoted', label: this.$t('validation.attributes.promoted'), 'class': 'text-center' },
-        { key: 'owner', label: this.$t('labels.author'), sortable: true },
+        { key: 'author', label: this.$t('labels.author'), sortable: true },
         { key: 'posts.created_at', label: this.$t('labels.created_at'), 'class': 'text-center', sortable: true },
         { key: 'posts.updated_at', label: this.$t('labels.updated_at'), 'class': 'text-center', sortable: true },
         { key: 'actions', label: this.$t('labels.actions'), 'class': 'nowrap' }
@@ -124,18 +114,6 @@ export default {
     },
     onBulkActionSuccess () {
       this.selected = []
-    },
-    onPinToggle (id) {
-      axios.post(this.$app.route('admin.posts.pinned', {post: id}))
-        .catch((error) => {
-          this.$app.error(error)
-        })
-    },
-    onPromoteToggle (id) {
-      axios.post(this.$app.route('admin.posts.promoted', {post: id}))
-        .catch((error) => {
-          this.$app.error(error)
-        })
     }
   }
 }

@@ -63,9 +63,9 @@ class News extends Eloquent implements HasMedia
 
     public function getStatusesAttribute() {
         return [
-            0 => 'PENDING',
-            1 => 'WAITING',
-            2 => 'APPROVED',
+            0 => 'Pending',
+            1 => 'Waiting',
+            2 => 'Published',
         ];
     }
 
@@ -131,7 +131,7 @@ class News extends Eloquent implements HasMedia
             return null;
         }
 
-        return '<a href="' . $file->getUrl() . '" target="_blank">' . $file->file_name . '</a>';
+        return $file->getUrl();
     }
 
     public function author() {

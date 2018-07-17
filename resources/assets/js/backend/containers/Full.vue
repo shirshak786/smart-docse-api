@@ -32,8 +32,8 @@
 <script>
 import nav from '@main/js/backend/_nav'
 
-import AppFooter from '@core/admin/components/Footer'
-import AppHeader from '@core/admin/components/Header'
+import AppFooter from '@core/js/admin/components/Footer'
+import AppHeader from '@core/js/admin/components/Header'
 
 export default {
   name: 'Full',

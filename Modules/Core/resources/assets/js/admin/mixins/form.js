@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export default {
-  props: ['id'],
+  props: ['id', 'slug'],
   data () {
     return {
       validation: {},
@@ -10,7 +10,7 @@ export default {
   },
   computed: {
     isNew () {
-      return this.id === undefined
+      return this.id === undefined && this.slug === undefined
     }
   },
   methods: {
@@ -64,7 +64,6 @@ export default {
       } catch (e) {
         this.pending = false
 
-        // Validation errors
         if (e.response.status === 422) {
           this.validation = e.response.data
           return
