@@ -10,6 +10,6 @@ Route::group(['middleware' => ['web','auth','can:access backend'], 'prefix' => '
     Route::name('delete')->delete('{news}','NewsController@delete');
 });
 
-Route::group(['middleware' => ['web'], 'prefix' => 'api/v1/news', 'namespace' => 'Modules\News\Http\Controllers\User','as'=>'news.'], function(){
+Route::group(['middleware' => ['api'], 'prefix' => 'api/v1/news', 'namespace' => 'Modules\News\Http\Controllers\User','as'=>'news.'], function(){
     Route::name('index')->get('/','NewsController@index');
 });
