@@ -2,7 +2,6 @@
 
 namespace Modules\User\Listeners;
 
-
 use Illuminate\Support\Facades\Log;
 use Modules\User\Events\UserCreated;
 use Modules\User\Events\UserDeleted;

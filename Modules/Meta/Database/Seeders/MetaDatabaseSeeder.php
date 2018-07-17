@@ -2,9 +2,9 @@
 
 namespace Modules\Meta\Database\Seeders;
 
+use Modules\Meta\Models\Meta;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Meta\Models\Meta;
 
 class MetaDatabaseSeeder extends Seeder
 {

@@ -7,13 +7,12 @@ use Illuminate\Routing\Route;
 use App\Http\Controllers\Controller;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
-use Mcamara\LaravelLocalization\LaravelLocalization;
-use Modules\Blog\Contracts\PostRepository;
 use Modules\Blog\Contracts\TagRepository;
+use Modules\Blog\Contracts\PostRepository;
+use Mcamara\LaravelLocalization\LaravelLocalization;
 
 class AjaxController extends Controller
 {
-
     protected $posts;
     protected $tags;
 
@@ -21,7 +20,6 @@ class AjaxController extends Controller
      * @var LaravelLocalization
      */
     protected $localization;
-
 
     public function __construct(PostRepository $posts, TagRepository $tags, LaravelLocalization $localization)
     {

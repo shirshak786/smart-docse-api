@@ -3,10 +3,10 @@
 namespace Modules\Blog\Console;
 
 use Carbon\Carbon;
+use Modules\Blog\Models\Post;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Builder;
 use Modules\Blog\Contracts\PostRepository;
-use Modules\Blog\Models\Post;
 
 class AutoPublishPostTrigger extends Command
 {

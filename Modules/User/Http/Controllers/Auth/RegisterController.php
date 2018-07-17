@@ -2,12 +2,12 @@
 
 namespace Modules\User\Http\Controllers\Auth;
 
-use Modules\User\Contracts\AccountRepository;
-use Modules\User\Models\User;
 use Illuminate\Http\Request;
+use Modules\User\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Arcanedev\NoCaptcha\Rules\CaptchaRule;
+use Modules\User\Contracts\AccountRepository;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller

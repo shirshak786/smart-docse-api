@@ -6,8 +6,8 @@ use Exception;
 use App\Mail\ExceptionOccurred;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Auth\AuthenticationException;
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Modules\Core\Exceptions\GeneralException;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {

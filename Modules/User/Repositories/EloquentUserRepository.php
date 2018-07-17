@@ -3,19 +3,19 @@
 namespace Modules\User\Repositories;
 
 use Exception;
-use Modules\Core\Repositories\EloquentBaseRepository;
-use Modules\Role\Repositories\Contracts\RoleRepository;
-use Modules\User\Models\User;
 use Illuminate\Support\Arr;
+use Modules\User\Models\User;
 use Illuminate\Support\Facades\DB;
-use Modules\Core\Exceptions\GeneralException;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Contracts\Config\Repository;
-use Modules\User\Contracts\UserRepository;
-use Mcamara\LaravelLocalization\LaravelLocalization;
 use Modules\User\Events\UserCreated;
 use Modules\User\Events\UserDeleted;
 use Modules\User\Events\UserUpdated;
+use Modules\User\Contracts\UserRepository;
+use Illuminate\Contracts\Config\Repository;
+use Modules\Core\Exceptions\GeneralException;
+use Mcamara\LaravelLocalization\LaravelLocalization;
+use Modules\Core\Repositories\EloquentBaseRepository;
+use Modules\Role\Repositories\Contracts\RoleRepository;
 
 class EloquentUserRepository extends EloquentBaseRepository implements UserRepository
 {

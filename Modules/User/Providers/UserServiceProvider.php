@@ -2,14 +2,14 @@
 
 namespace Modules\User\Providers;
 
-use Illuminate\Database\Eloquent\Relations\Relation;
+use Modules\User\Models\User;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
-use Modules\User\Contracts\AccountRepository;
 use Modules\User\Contracts\UserRepository;
-use Modules\User\Models\User;
-use Modules\User\Repositories\EloquentAccountRepository;
+use Modules\User\Contracts\AccountRepository;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Modules\User\Repositories\EloquentUserRepository;
+use Modules\User\Repositories\EloquentAccountRepository;
 
 class UserServiceProvider extends ServiceProvider
 {
@@ -31,7 +31,7 @@ class UserServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->registerFactories();
-        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../Database/Migrations');
 
         Relation::morphMap([
             'user' => User::class,
@@ -54,7 +54,6 @@ class UserServiceProvider extends ServiceProvider
             AccountRepository::class,
             EloquentAccountRepository::class
         );
-
     }
 
     /**
@@ -84,11 +83,11 @@ class UserServiceProvider extends ServiceProvider
         $sourcePath = __DIR__.'/../Resources/views';
 
         $this->publishes([
-            $sourcePath => $viewPath
-        ],'views');
+            $sourcePath => $viewPath,
+        ], 'views');
 
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
-            return $path . '/modules/user';
+            return $path.'/modules/user';
         }, \Config::get('view.paths')), [$sourcePath]), 'user');
     }
 
@@ -104,7 +103,7 @@ class UserServiceProvider extends ServiceProvider
         if (is_dir($langPath)) {
             $this->loadTranslationsFrom($langPath, 'user');
         } else {
-            $this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'user');
+            $this->loadTranslationsFrom(__DIR__.'/../Resources/lang', 'user');
         }
     }
 
@@ -116,7 +115,7 @@ class UserServiceProvider extends ServiceProvider
     public function registerFactories()
     {
         if (! app()->environment('production')) {
-            app(Factory::class)->load(__DIR__ . '/../Database/factories');
+            app(Factory::class)->load(__DIR__.'/../Database/factories');
         }
     }
 

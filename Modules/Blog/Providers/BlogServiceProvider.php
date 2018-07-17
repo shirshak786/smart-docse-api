@@ -2,14 +2,14 @@
 
 namespace Modules\Blog\Providers;
 
-use Illuminate\Database\Eloquent\Relations\Relation;
+use Modules\Blog\Models\Post;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
-use Modules\Blog\Contracts\PostRepository;
 use Modules\Blog\Contracts\TagRepository;
-use Modules\Blog\Models\Post;
-use Modules\Blog\Repositories\EloquentPostRepository;
+use Modules\Blog\Contracts\PostRepository;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Modules\Blog\Repositories\EloquentTagRepository;
+use Modules\Blog\Repositories\EloquentPostRepository;
 
 class BlogServiceProvider extends ServiceProvider
 {
@@ -31,7 +31,7 @@ class BlogServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->registerFactories();
-        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../Database/Migrations');
 
         Relation::morphMap([
              'post' => Post::class,
@@ -83,11 +83,11 @@ class BlogServiceProvider extends ServiceProvider
         $sourcePath = __DIR__.'/../Resources/views';
 
         $this->publishes([
-            $sourcePath => $viewPath
-        ],'views');
+            $sourcePath => $viewPath,
+        ], 'views');
 
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
-            return $path . '/modules/blog';
+            return $path.'/modules/blog';
         }, \Config::get('view.paths')), [$sourcePath]), 'blog');
     }
 
@@ -103,7 +103,7 @@ class BlogServiceProvider extends ServiceProvider
         if (is_dir($langPath)) {
             $this->loadTranslationsFrom($langPath, 'blog');
         } else {
-            $this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'blog');
+            $this->loadTranslationsFrom(__DIR__.'/../Resources/lang', 'blog');
         }
     }
 
@@ -115,7 +115,7 @@ class BlogServiceProvider extends ServiceProvider
     public function registerFactories()
     {
         if (! app()->environment('production')) {
-            app(Factory::class)->load(__DIR__ . '/../Database/factories');
+            app(Factory::class)->load(__DIR__.'/../Database/factories');
         }
     }
 

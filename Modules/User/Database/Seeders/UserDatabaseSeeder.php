@@ -2,12 +2,10 @@
 
 namespace Modules\User\Database\Seeders;
 
-
 use Modules\Role\Models\Role;
 use Modules\User\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-
 
 class UserDatabaseSeeder extends Seeder
 {

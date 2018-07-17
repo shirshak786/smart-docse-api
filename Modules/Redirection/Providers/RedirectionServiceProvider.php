@@ -6,8 +6,8 @@ use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
 use Modules\Redirection\Http\Middleware\Redirect;
-use Modules\Redirection\Repositories\Contracts\RedirectionRepository;
 use Modules\Redirection\Repositories\EloquentRedirectionRepository;
+use Modules\Redirection\Repositories\Contracts\RedirectionRepository;
 
 class RedirectionServiceProvider extends ServiceProvider
 {
@@ -29,7 +29,7 @@ class RedirectionServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->registerFactories();
-        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../Database/Migrations');
     }
 
     /**
@@ -74,11 +74,11 @@ class RedirectionServiceProvider extends ServiceProvider
         $sourcePath = __DIR__.'/../Resources/views';
 
         $this->publishes([
-            $sourcePath => $viewPath
-        ],'views');
+            $sourcePath => $viewPath,
+        ], 'views');
 
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
-            return $path . '/modules/redirection';
+            return $path.'/modules/redirection';
         }, \Config::get('view.paths')), [$sourcePath]), 'redirection');
     }
 
@@ -94,7 +94,7 @@ class RedirectionServiceProvider extends ServiceProvider
         if (is_dir($langPath)) {
             $this->loadTranslationsFrom($langPath, 'redirection');
         } else {
-            $this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'redirection');
+            $this->loadTranslationsFrom(__DIR__.'/../Resources/lang', 'redirection');
         }
     }
 
@@ -106,7 +106,7 @@ class RedirectionServiceProvider extends ServiceProvider
     public function registerFactories()
     {
         if (! app()->environment('production')) {
-            app(Factory::class)->load(__DIR__ . '/../Database/factories');
+            app(Factory::class)->load(__DIR__.'/../Database/factories');
         }
     }
 

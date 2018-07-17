@@ -2,8 +2,8 @@
 
 namespace Modules\News\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Modules\News\Models\News;
+use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateNewsRequest extends FormRequest
 {

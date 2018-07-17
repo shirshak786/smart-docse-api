@@ -2,16 +2,16 @@
 
 namespace Modules\Blog\Repositories;
 
-use Modules\Blog\Contracts\PostRepository;
-use Modules\Blog\Models\Post;
 use Modules\Blog\Models\Tag;
-use Modules\Core\Exceptions\GeneralException;
-use Modules\Core\Repositories\EloquentBaseRepository;
+use Modules\Blog\Models\Post;
 use Modules\User\Models\User;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Spatie\MediaLibrary\Models\Media;
+use Modules\Blog\Contracts\PostRepository;
+use Modules\Core\Exceptions\GeneralException;
+use Modules\Core\Repositories\EloquentBaseRepository;
 
 class EloquentPostRepository extends EloquentBaseRepository implements PostRepository
 {
@@ -38,7 +38,6 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
             ->orderByDesc('updated_at');
     }
 
-
     public function publishedByTag(Tag $tag)
     {
         return $this->published()->withAnyTags($tag->name);
@@ -49,12 +48,10 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
         return $this->published()->withOwner($user);
     }
 
-
     public function findBySlug($slug)
     {
         return $this->query()->whereSlug($slug)->first();
     }
-
 
     public function saveAndPublish(Post $post, array $input, UploadedFile $image = null)
     {
@@ -63,14 +60,12 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
         return $this->save($post, $input, $image);
     }
 
-
     public function saveAsDraft(Post $post, array $input, UploadedFile $image = null)
     {
         $post->status = Post::DRAFT;
 
         return $this->save($post, $input, $image);
     }
-
 
     private function save(Post $post, array $input, UploadedFile $image = null)
     {
@@ -216,6 +211,7 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
 
             throw new GeneralException(__('exceptions.backend.posts.update'));
         });
+
         return true;
     }
 

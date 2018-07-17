@@ -1,11 +1,10 @@
 <?php
 
-Route::group(['middleware' => 'web', 'prefix' => 'blog', 'namespace' => 'Modules\Blog\Http\Controllers\User'], function()
-{
+Route::group(['middleware' => 'web', 'prefix' => 'blog', 'namespace' => 'Modules\Blog\Http\Controllers\User'], function () {
     Route::get('/', 'BlogController@index');
 });
 
-Route::as('admin.')->namespace('Modules\Blog\Http\Controllers\Admin')->middleware('web')->group(function() {
+Route::as('admin.')->namespace('Modules\Blog\Http\Controllers\Admin')->middleware('web')->group(function () {
     if (config('blog.enabled')) {
         Route::group(
             ['middleware' => ['can:view own posts']],
@@ -30,8 +29,7 @@ Route::as('admin.')->namespace('Modules\Blog\Http\Controllers\Admin')->middlewar
     }
 });
 
-
-Route::namespace('Modules\Blog\Http\Controllers\User')->middleware('web')->group(function() {
+Route::namespace('Modules\Blog\Http\Controllers\User')->middleware('web')->group(function () {
     if (config('blog.enabled')) {
         Route::get('blog', 'BlogController@index')->name('blog.index');
         Route::get('blog/{post}', 'BlogController@show')->name('blog.show');

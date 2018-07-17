@@ -12,7 +12,6 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-
 use Modules\Blog\Models\Post;
 use Modules\Meta\Models\Meta;
 use Modules\User\Models\User;
