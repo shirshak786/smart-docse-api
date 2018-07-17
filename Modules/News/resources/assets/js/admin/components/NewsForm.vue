@@ -7,7 +7,7 @@
             <h3 class="card-title" slot="header">{{ isNew ? 'Create News' : 'Edit News' }}</h3>
 
             <b-form-group
-              label="title"
+              label="Title"
               label-for="title"
               horizontal
               :label-cols="2"
@@ -26,6 +26,7 @@
             <b-form-group
               label="Content"
               label-for="body"
+              required
               horizontal
               :label-cols="2"
             >
@@ -41,15 +42,32 @@
               horizontal
               :label-cols="2"
             >
-              <v-select
-                id="tags"
-                name="tags"
+              <b-select
+                id="type"
+                name="type"
                 v-model="model.type"
                 placeholder= "Select the type of news"
                 :options="options.types"
                 :multiple="false"
               >
-              </v-select>
+              </b-select>
+            </b-form-group>
+
+            <b-form-group
+              label="Status"
+              label-for="status"
+              horizontal
+              :label-cols="2"
+            >
+              <b-select
+                id="status"
+                name="status"
+                v-model="model.status"
+                placeholder= "Select the type of news"
+                :options="options.status"
+                :multiple="false"
+              >
+              </b-select>
             </b-form-group>
 
             <b-row slot="footer">
@@ -92,7 +110,8 @@ export default {
           6: 'DOCSE Fifth Semester',
           7: 'DOCSE Sixth Semester',
           8: 'DOCSE Seventh Semester',
-          9: 'DOCSE Eight Semester'
+          9: 'DOCSE Eight Semester',
+          10: 'KUCC'
         },
         status: {
           0: 'Pending',
@@ -106,6 +125,7 @@ export default {
       model: {
         title: null,
         content: null,
+        status: null,
         type: null
       }
     }

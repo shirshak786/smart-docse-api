@@ -90,6 +90,7 @@ class News extends Eloquent implements HasMedia
             7 => 'DOCSE Sixth Semester',
             8 => 'DOCSE Seventh Semester',
             9 => 'DOCSE Eight Semester',
+            10 => 'KUCC',
         ];
     }
 
