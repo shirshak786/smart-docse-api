@@ -1,6 +1,6 @@
 import axios from 'axios'
 import _ from 'lodash'
-import purify from '@core/helpers/purify'
+import purify from '@core/js/helpers/purify'
 
 function initialState () {
   return {

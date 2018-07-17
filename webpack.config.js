@@ -164,14 +164,14 @@ function getEntryConfig (name, analyzerPort, alias = {}) {
         '@fortawesome/fontawesome-free-solid$': '@fortawesome/fontawesome-free-solid/shakable.es.js',
         '@fortawesome/fontawesome-free-brands$': '@fortawesome/fontawesome-free-brands/shakable.es.js',
         '@main': path.resolve(__dirname, 'resources/assets'),
-        '@blog': path.resolve(__dirname, 'Modules/Blog/resources/assets/js'),
-        '@core': path.resolve(__dirname, 'Modules/Core/resources/assets/js'),
-        '@meta': path.resolve(__dirname, 'Modules/Meta/resources/assets/js'),
-        '@news': path.resolve(__dirname, 'Modules/News/resources/assets/js'),
-        '@redirection': path.resolve(__dirname, 'Modules/Redirection/resources/assets/js'),
-        '@role': path.resolve(__dirname, 'Modules/Role/resources/assets/js'),
-        '@seo': path.resolve(__dirname, 'Modules/SEO/resources/assets/js'),
-        '@user': path.resolve(__dirname, 'Modules/User/resources/assets/js')
+        '@blog': path.resolve(__dirname, 'Modules/Blog/resources/assets'),
+        '@core': path.resolve(__dirname, 'Modules/Core/resources/assets'),
+        '@meta': path.resolve(__dirname, 'Modules/Meta/resources/assets'),
+        '@news': path.resolve(__dirname, 'Modules/News/resources/assets'),
+        '@redirection': path.resolve(__dirname, 'Modules/Redirection/resources/assets'),
+        '@role': path.resolve(__dirname, 'Modules/Role/resources/assets'),
+        '@seo': path.resolve(__dirname, 'Modules/SEO/resources/assets'),
+        '@user': path.resolve(__dirname, 'Modules/User/resources/assets')
       }, alias)
     },
     externals: {

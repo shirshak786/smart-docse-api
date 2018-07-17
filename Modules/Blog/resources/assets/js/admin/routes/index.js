@@ -12,7 +12,7 @@ export default {
     {
       path: '/',
       name: 'posts',
-      component: require('@blog/admin/components/PostList').default,
+      component: require('@blog/js/admin/components/PostList').default,
       meta: {
         label: 'Post List'
       }
@@ -20,7 +20,7 @@ export default {
     {
       path: 'create',
       name: 'posts_create',
-      component: require('@blog/admin/components/PostForm').default,
+      component: require('@blog/js/admin/components/PostForm').default,
       meta: {
         label: 'Create Post'
       }
@@ -28,7 +28,7 @@ export default {
     {
       path: ':id/edit',
       name: 'posts_edit',
-      component: require('@blog/admin/components/PostForm').default,
+      component: require('@blog/js/admin/components/PostForm').default,
       props: true,
       meta: {
         label: 'Edit Post'

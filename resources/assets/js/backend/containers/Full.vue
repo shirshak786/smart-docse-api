@@ -58,12 +58,11 @@ export default {
       this.nav = nav(
         this.$app,
         this.$i18n,
-        this.$store.state.counters.newPostsCount,
-        this.$store.state.counters.pendingPostsCount
+        10,
+        10
       )
     },
     async fetchData () {
-      await this.$store.dispatch('LOAD_COUNTERS')
       this.initNav()
     }
   }

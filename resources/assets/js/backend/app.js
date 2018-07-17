@@ -160,7 +160,7 @@ export function createApp () {
 
   const app = new Vue({
     router,
-    store,
+    // store,
     i18n,
     render: (h) => h(App)
   })

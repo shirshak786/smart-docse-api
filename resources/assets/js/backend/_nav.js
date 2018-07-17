@@ -48,6 +48,21 @@ export default (app, i18n, newPostsCount, pendingPostsCount) => {
     },
     {
       title: true,
+      name: 'News Management',
+      access: app.user.can('view news') || app.user.can('view news')
+    },
+    {
+      name: 'News Management',
+      url: '/news',
+      icon: 'fe fe-shield',
+      access: app.user.can('view news')
+    },
+    {
+      divider: true,
+      access: true
+    },
+    {
+      title: true,
       name: i18n.t('labels.backend.sidebar.seo'),
       access: app.user.can('view metas') || app.user.can('view redirections')
     },
