@@ -17,6 +17,10 @@ class SemesterResult extends Model
         'status',
     ];
 
+    protected $casts = [
+      'result_data' => 'array',
+    ];
+
     public static function storeValidation() {
         return [
             'subject' => 'required',

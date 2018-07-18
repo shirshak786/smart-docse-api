@@ -11,6 +11,13 @@ use Modules\Result\Models\SemesterResult;
 
 class SemesterResultController extends AdminController
 {
+    public function show(SemesterResult $result)
+    {
+        $this->authorize('show', $result);
+
+        return $result;
+    }
+
     public function search(Request $request)
     {
         $requestSearchQuery = new RequestSearchQuery($request, SemesterResult::query(), [
@@ -43,10 +50,17 @@ class SemesterResultController extends AdminController
     public function store(StoreSemesterResultRequest $request)
     {
         $this->authorize('store',$this);
+
+        SemesterResult::create($request->all());
+
+        return $this->redirectResponse($request, 'The results has succesfully been created');
     }
 
     public function update(UpdateSemesterResultRequest $request)
     {
         $this->authorize('update',$this);
+        SemesterResult::make($request->all());
+
+        return $this->redirectResponse($request, 'The results has succesfully been updated');
     }
 }

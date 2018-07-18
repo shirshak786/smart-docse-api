@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\News\Providers;
+namespace Modules\Result\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Modules\Result\Models\SemesterResult;

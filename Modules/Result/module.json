@@ -6,7 +6,7 @@
     "active": 1,
     "order": 0,
     "providers": [
-        "Modules\\Result\\Providers\\ResultServiceProvider"
+        "Modules\\Result\\Providers\\ResultServiceProvider",
         "Modules\\Result\\Providers\\AuthServiceProvider"
     ],
     "aliases": {},
