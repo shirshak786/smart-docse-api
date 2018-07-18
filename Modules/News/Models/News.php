@@ -7,11 +7,11 @@ use Carbon\Carbon;
 use Modules\User\Models\User;
 use function array_key_exists;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use Illuminate\Database\Eloquent\Model;
 
 class News extends Model implements HasMedia
 {
@@ -105,7 +105,7 @@ class News extends Model implements HasMedia
     public function getTypeValueAttribute()
     {
         $types = $this->types;
-        if( array_key_exists($this->type, $types)){
+        if (array_key_exists($this->type, $types)) {
             return $types[$this->type];
         }
         throw new Exception('The Type you supplied doesn\'t exist');

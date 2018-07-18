@@ -8,6 +8,5 @@ class ContactController extends AdminController
 {
     public function store()
     {
-
     }
 }

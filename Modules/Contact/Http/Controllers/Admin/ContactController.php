@@ -3,9 +3,9 @@
 namespace Modules\Contact\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Modules\Core\Utils\RequestSearchQuery;
 use Modules\Contact\Models\Contact\Contact;
 use Modules\Core\Http\Controllers\Admin\AdminController;
-use Modules\Core\Utils\RequestSearchQuery;
 
 class ContactController extends AdminController
 {
