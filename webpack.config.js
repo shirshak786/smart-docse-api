@@ -172,6 +172,7 @@ function getEntryConfig (name, analyzerPort, alias = {}) {
         '@role': path.resolve(__dirname, 'Modules/Role/resources/assets'),
         '@seo': path.resolve(__dirname, 'Modules/SEO/resources/assets'),
         '@user': path.resolve(__dirname, 'Modules/User/resources/assets'),
+        '@result': path.resolve(__dirname, 'Modules/Result/resources/assets'),
         '@contact': path.resolve(__dirname, 'Modules/Contact/resources/assets')
       }, alias)
     },
