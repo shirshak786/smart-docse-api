@@ -2,8 +2,8 @@
 
 namespace Modules\Contact\Http\Requests;
 
-use Modules\Contact\Models\Contact\Contact;
 use Illuminate\Foundation\Http\FormRequest;
+use Modules\Contact\Models\Contact\Contact;
 
 class StoreContactRequest extends FormRequest
 {
