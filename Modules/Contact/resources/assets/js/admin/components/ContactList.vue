@@ -6,9 +6,9 @@
       </template>
       <b-datatable ref="datasource"
                    @context-changed="onContextChanged"
-                   search-route="admin.contacts.search"
-                   delete-route="admin.contacts.destroy"
-                   action-route="admin.contacts.batch_action" :actions="actions"
+                   search-route="admin.contact.search"
+                   delete-route="admin.contact.destroy"
+                   action-route="admin.contact.batch_action" :actions="actions"
                    @bulk-action-success="onBulkActionSuccess">
         <b-table ref="datatable"
                  striped
@@ -44,9 +44,14 @@
             {{ row.item.updated_at }}
           </template>
           <template slot="actions" slot-scope="row">
-            <b-button size="sm" variant="success" :href="$app.route('blog.show', { post: row.item.slug})" target="_blank" v-b-tooltip.hover :title="$t('buttons.preview')" class="mr-1">
+            <b-button size="sm" variant="success" v-b-modal.contentModel target="_blank" v-b-tooltip.hover :title="$t('buttons.preview')" class="mr-1">
               <i class="fe fe-eye"></i>
             </b-button>
+
+            <b-modal id="contentModel" title="Contents">
+              <p class="my-4">{{ row.item.content }}!</p>
+            </b-modal>
+
             <b-button v-if="row.item.can_delete" size="sm" variant="danger" v-b-tooltip.hover :title="$t('buttons.delete')" @click.stop="onDelete(row.item.id)">
               <i class="fe fe-trash"></i>
             </b-button>
@@ -58,10 +63,8 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
-  name: 'PostList',
+  name: 'ContactList',
   data () {
     return {
       isBusy: false,
@@ -71,15 +74,13 @@ export default {
         { key: 'sender_name', label: 'Sender Name', sortable: true },
         { key: 'email', label: 'Email Address', sortable: true },
         { key: 'subject', label: 'Subject', sortable: true },
+        { key: 'content', label: 'Content', sortable: false },
         { key: 'contacts.created_at', label: this.$t('labels.created_at'), 'class': 'text-center', sortable: true },
         { key: 'contacts.updated_at', label: this.$t('labels.updated_at'), 'class': 'text-center', sortable: true },
         { key: 'actions', label: this.$t('labels.actions'), 'class': 'nowrap' }
       ],
       actions: {
-        destroy: this.$t('labels.backend.contacts.actions.destroy'),
-        publish: this.$t('labels.backend.contacts.actions.publish'),
-        pin: this.$t('labels.backend.contacts.actions.pin'),
-        promote: this.$t('labels.backend.contacts.actions.promote')
+        delete: 'Delete'
       }
     }
   },
@@ -96,22 +97,10 @@ export default {
       return this.$refs.datatable.refresh()
     },
     onDelete (id) {
-      this.$refs.datasource.deleteRow({ post: id })
+      this.$refs.datasource.deleteRow({ contact: id })
     },
     onBulkActionSuccess () {
       this.selected = []
-    },
-    onPinToggle (id) {
-      axios.post(this.$app.route('admin.contacts.pinned', {post: id}))
-        .catch((error) => {
-          this.$app.error(error)
-        })
-    },
-    onPromoteToggle (id) {
-      axios.post(this.$app.route('admin.contacts.promoted', {post: id}))
-        .catch((error) => {
-          this.$app.error(error)
-        })
     }
   }
 }

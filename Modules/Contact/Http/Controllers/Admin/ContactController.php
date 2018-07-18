@@ -42,4 +42,9 @@ class ContactController extends AdminController
 
         return $requestSearchQuery->result();
     }
+
+    public function show(Contact $contact)
+    {
+        return $contact;
+    }
 }
