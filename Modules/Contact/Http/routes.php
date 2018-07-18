@@ -5,7 +5,7 @@ Route::group(['middleware' => ['web', 'auth', 'can:access backend'], 'prefix' =>
    Route::name('show')->get('{contact}', 'ContactController@show');
 });
 
-Route::group(['middleware' => 'api', 'prefix' => 'contact', 'namespace' => 'Modules\Contact\Http\Controllers\User'], function()
+Route::group(['middleware' => 'api', 'as'=>'contact.', 'prefix' => 'api/v1/contact', 'namespace' => 'Modules\Contact\Http\Controllers\User'], function()
 {
-    Route::post('/', 'ContactController@store');
+    Route::name('store')->post('/', 'ContactController@store');
 });

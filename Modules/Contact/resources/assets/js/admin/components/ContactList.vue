@@ -44,11 +44,11 @@
             {{ row.item.updated_at }}
           </template>
           <template slot="actions" slot-scope="row">
-            <b-button size="sm" variant="success" v-b-modal.contentModel target="_blank" v-b-tooltip.hover :title="$t('buttons.preview')" class="mr-1">
+            <b-button size="sm" variant="success" v-b-modal="'contentModel' + row.item.id" target="_blank" v-b-tooltip.hover :title="$t('buttons.preview')" class="mr-1">
               <i class="fe fe-eye"></i>
             </b-button>
 
-            <b-modal id="contentModel" title="Contents">
+            <b-modal :id="'contentModel'+ row.item.id" title="Contents">
               <p class="my-4">{{ row.item.content }}!</p>
             </b-modal>
 

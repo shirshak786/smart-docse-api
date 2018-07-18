@@ -1,6 +1,6 @@
 <?php
 
-namespace Module\Core\Exports;
+namespace Modules\Core\Exports;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
