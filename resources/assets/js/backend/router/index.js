@@ -47,6 +47,7 @@ export function createRouter (base, i18n) {
           require('@role/js/admin/routes').default,
           require('@meta/js/admin/routes').default,
           require('@redirection/js/admin/routes').default,
+          require('@contact/js/admin/routes').default,
           require('@news/js/admin/routes').default
         ]
       }

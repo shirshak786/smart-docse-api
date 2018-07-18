@@ -62,6 +62,12 @@ export default (app, i18n, newPostsCount, pendingPostsCount) => {
       access: true
     },
     {
+      name: 'Contact Management',
+      url: '/contacts',
+      icon: 'fe fe-shield',
+      access: app.user.can('view news')
+    },
+    {
       title: true,
       name: i18n.t('labels.backend.sidebar.seo'),
       access: app.user.can('view metas') || app.user.can('view redirections')

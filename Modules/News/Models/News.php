@@ -2,7 +2,6 @@
 
 namespace Modules\News\Models;
 
-use Eloquent;
 use Exception;
 use Carbon\Carbon;
 use Modules\User\Models\User;
@@ -12,8 +11,9 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Illuminate\Database\Eloquent\Model;
 
-class News extends Eloquent implements HasMedia
+class News extends Model implements HasMedia
 {
     use SoftDeletes;
     use HasMediaTrait;

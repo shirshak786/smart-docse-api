@@ -171,7 +171,8 @@ function getEntryConfig (name, analyzerPort, alias = {}) {
         '@redirection': path.resolve(__dirname, 'Modules/Redirection/resources/assets'),
         '@role': path.resolve(__dirname, 'Modules/Role/resources/assets'),
         '@seo': path.resolve(__dirname, 'Modules/SEO/resources/assets'),
-        '@user': path.resolve(__dirname, 'Modules/User/resources/assets')
+        '@user': path.resolve(__dirname, 'Modules/User/resources/assets'),
+        '@contact': path.resolve(__dirname, 'Modules/Contact/resources/assets')
       }, alias)
     },
     externals: {
