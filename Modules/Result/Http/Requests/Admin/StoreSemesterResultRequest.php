@@ -5,7 +5,7 @@ namespace Modules\Result\Http\Requests\Admin;
 use Illuminate\Foundation\Http\FormRequest;
 use Modules\Result\Models\SemesterResult;
 
-class StoreSemesterResult extends FormRequest
+class StoreSemesterResultRequest extends FormRequest
 {
     public function authorize()
     {

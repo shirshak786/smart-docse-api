@@ -5,6 +5,8 @@ namespace Modules\Result\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Modules\Core\Http\Controllers\Admin\AdminController;
 use Modules\Core\Utils\RequestSearchQuery;
+use Modules\Result\Http\Requests\Admin\StoreSemesterResultRequest;
+use Modules\Result\Http\Requests\Admin\UpdateSemesterResultRequest;
 use Modules\Result\Models\SemesterResult;
 
 class SemesterResultController extends AdminController
@@ -36,5 +38,15 @@ class SemesterResultController extends AdminController
         }
 
         return $requestSearchQuery->result();
+    }
+
+    public function store(StoreSemesterResultRequest $request)
+    {
+        $this->authorize('store',$this);
+    }
+
+    public function update(UpdateSemesterResultRequest $request)
+    {
+        $this->authorize('update',$this);
     }
 }
