@@ -1,6 +1,13 @@
 <?php
 
-Route::group(['middleware' => 'web', 'prefix' => 'result', 'namespace' => 'Modules\Result\Http\Controllers'], function()
+Route::group(['middleware' => 'web', 'prefix' => 'api/v1/admin/results/semester', 'namespace' => 'Modules\Result\Http\Controllers\Admin','as'=>'admin.result.semester'], function()
 {
-    Route::get('/', 'ResultController@index');
+    Route::get('search', 'SemesterResultController@search');
+    Route::post('/', 'SemesterResultController@store');
+    Route::patch('/', 'SemesterResultController@update');
+    Route::delete('/','SemesterResultController@destroy');
+});
+
+Route::group(['middleware'=>'api','prefix'=>'api/v1/results/semester', 'namespace' => 'Modules\Result\Http\Controllers\User','as'=>'result.semester'],function () {
+
 });
