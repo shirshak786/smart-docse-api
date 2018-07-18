@@ -16,7 +16,6 @@ import Switch from '@core/js/admin/components/Plugins/Switch'
 import vSelect from '@core/js/admin/components/Plugins/Select'
 
 import { createRouter } from './router'
-import store from './store'
 import { createLocales } from '../vue-i18n-config'
 
 import App from './App.vue'
@@ -165,7 +164,7 @@ export function createApp () {
     render: (h) => h(App)
   })
 
-  return {app, router, store}
+  return {app, router}
 }
 
 // Init App

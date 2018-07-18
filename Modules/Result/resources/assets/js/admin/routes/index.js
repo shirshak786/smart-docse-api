@@ -1,12 +1,12 @@
 export default {
-  path: 'result',
+  path: 'results',
   component: {
     render (c) {
       return c('router-view')
     }
   },
   meta: {
-    label: 'News'
+    label: 'Result'
   },
   children: [
     {
@@ -14,7 +14,7 @@ export default {
       name: 'result.index',
       component: require('@result/js/admin/components/SemesterResultList').default,
       meta: {
-        label: 'News List'
+        label: 'Result List'
       }
     },
     {
@@ -22,7 +22,7 @@ export default {
       name: 'result.create',
       component: require('@result/js/admin/components/SemesterResultForm').default,
       meta: {
-        label: 'Create News'
+        label: 'Create Result'
       }
     },
     {
@@ -31,7 +31,7 @@ export default {
       component: require('@result/js/admin/components/SemesterResultForm').default,
       props: true,
       meta: {
-        label: 'Edit '
+        label: 'Edit Result'
       }
     }
   ]
