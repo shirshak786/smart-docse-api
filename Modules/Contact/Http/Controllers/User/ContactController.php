@@ -17,7 +17,7 @@ class ContactController extends Controller
 
         return response()->json([
             'data' => [
-                'message' => 'The Contact has succesfully been created'
+                'message' => 'Your message has succesfully been recieved. If we need to reply we will contact you via email you supplied. Thanks'
             ]
         ])->setStatusCode(201);
     }
