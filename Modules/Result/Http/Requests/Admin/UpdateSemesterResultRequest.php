@@ -2,8 +2,8 @@
 
 namespace Modules\Result\Http\Requests\Admin;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Modules\Result\Models\SemesterResult;
+use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateSemesterResultRequest extends FormRequest
 {
