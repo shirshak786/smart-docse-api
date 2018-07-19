@@ -39,6 +39,7 @@ class News extends Model implements HasMedia
         'cover_image_thumbnail_url',
         'statuses',
         'status_value',
+        'status_label_color',
         'types',
         'type_value',
     ];
@@ -75,6 +76,15 @@ class News extends Model implements HasMedia
         ];
     }
 
+    public function getStatusesLabelColor()
+    {
+        return [
+          0 => 'danger',
+          1 => 'warning',
+          2 => 'success'
+        ];
+    }
+
     public function getStatusValueAttribute()
     {
         $status = $this->statuses;
@@ -82,6 +92,17 @@ class News extends Model implements HasMedia
         if (array_key_exists($this->status, $status)) {
             return $status[$this->status];
         }
+        throw new Exception('The Status you supplied doesn\'t exist');
+    }
+
+    public function getStatusLabelColorAttribute()
+    {
+        $colors = $this->getStatusesLabelColor();
+
+        if (array_key_exists($this->status, $colors)) {
+            return $colors[$this->status];
+        }
+
         throw new Exception('The Status you supplied doesn\'t exist');
     }
 

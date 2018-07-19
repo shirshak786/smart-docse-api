@@ -14,7 +14,6 @@ class SemesterResultController extends AdminController
     public function show(SemesterResult $result)
     {
         $this->authorize('show', $result);
-
         return $result;
     }
 
@@ -49,18 +48,26 @@ class SemesterResultController extends AdminController
 
     public function store(StoreSemesterResultRequest $request)
     {
-        $this->authorize('store',$this);
+        $this->authorize('store', SemesterResult::class);
 
-        SemesterResult::create($request->all());
+        $result = SemesterResult::create($request->all());
 
         return $this->redirectResponse($request, 'The results has succesfully been created');
     }
 
-    public function update(UpdateSemesterResultRequest $request)
+    public function update(UpdateSemesterResultRequest $request,SemesterResult $result)
     {
-        $this->authorize('update',$this);
-        SemesterResult::make($request->all());
-
+        $this->authorize('update', SemesterResult::class);
+        $result->update($request->all());
         return $this->redirectResponse($request, 'The results has succesfully been updated');
+    }
+
+    public function destroy(Request $request, SemesterResult $result)
+    {
+        $this->authorize('delete', $result);
+
+        $result->delete();
+
+        return $this->redirectResponse($request, 'The results has succesfully been deleted');
     }
 }

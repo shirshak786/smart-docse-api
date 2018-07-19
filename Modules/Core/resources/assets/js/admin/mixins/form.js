@@ -16,17 +16,21 @@ export default {
   },
   methods: {
     async fetchData () {
-      if (!this.isNew) {
-        let {data} = await axios.get(this.$app.route(`admin.${this.resourceRoute}.show`, {
-          [this.modelName]: this.id
-        }))
-        this.showData = data
-        Object.keys(data).forEach((key) => {
-          if (key in this.model) {
-            this.model[key] = data[key]
-          }
-        })
-        this.onModelChanged()
+      try {
+        if (!this.isNew) {
+          let {data} = await axios.get(this.$app.route(`admin.${this.resourceRoute}.show`, {
+            [this.modelName]: this.id
+          }))
+          this.showData = data
+          Object.keys(data).forEach((key) => {
+            if (key in this.model) {
+              this.model[key] = data[key]
+            }
+          })
+          this.onModelChanged()
+        }
+      } catch (e) {
+        throw e
       }
     },
     onModelChanged () {

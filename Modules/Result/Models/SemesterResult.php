@@ -2,6 +2,7 @@
 
 namespace Modules\Result\Models;
 
+use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Gate;
 
@@ -17,6 +18,13 @@ class SemesterResult extends Model
         'status',
     ];
 
+    protected $appends = [
+        'can_edit',
+        'can_delete',
+      'status_label',
+        'status_label_color',
+    ];
+
     protected $casts = [
       'result_data' => 'array',
     ];
@@ -26,7 +34,10 @@ class SemesterResult extends Model
             'subject' => 'required',
             'semester' => 'required|integer|min:1|max:8',
             'faculty' => 'required',
-            'result_data' => 'required|json',
+            'result_data' => 'required',
+            'result_data.*.name' => 'required',
+            'result_data.*.marks' => 'required|integer',
+            'result_data.*.roll' => 'required|integer',
             'status' => 'required'
         ];
     }
@@ -36,7 +47,10 @@ class SemesterResult extends Model
             'subject' => 'required',
             'semester' => 'required|integer|min:1|max:8',
             'faculty' => 'required',
-            'result_data' => 'required|json',
+            'result_data' => 'required',
+            'result_data.*.marks' => 'required|integer',
+            'result_data.*.roll' => 'required|integer',
+            'result_data.*.name' => 'required',
             'status' => 'required'
         ];
     }
@@ -51,5 +65,43 @@ class SemesterResult extends Model
         return Gate::allows('delete', $this);
     }
 
+    public function getStatusesAttribute()
+    {
+        return [
+            0 => 'Pending',
+            1 => 'Waiting',
+            2 => 'Published',
+        ];
+    }
 
+    public function getStatusesLabelColor()
+    {
+        return [
+            0 => 'danger',
+            1 => 'warning',
+            2 => 'success'
+        ];
+    }
+
+
+    public function getStatusLabelAttribute()
+    {
+        $status = $this->statuses;
+
+        if (array_key_exists($this->status, $status)) {
+            return $status[$this->status];
+        }
+        throw new Exception('The Status you supplied doesn\'t exist');
+    }
+
+    public function getStatusLabelColorAttribute()
+    {
+        $colors = $this->getStatusesLabelColor();
+
+        if (array_key_exists($this->status, $colors)) {
+            return $colors[$this->status];
+        }
+
+        throw new Exception('The Status you supplied doesn\'t exist');
+    }
 }

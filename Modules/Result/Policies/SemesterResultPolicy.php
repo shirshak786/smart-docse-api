@@ -27,12 +27,12 @@ class SemesterResultPolicy
         return true;
     }
 
-    public function update(User $user, SemesterResult $result)
+    public function update(User $user)
     {
         return true;
     }
 
-    public function delete(User $user, SemesterResult $result)
+    public function delete(User $user)
     {
         return true;
     }

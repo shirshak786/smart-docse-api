@@ -38,7 +38,7 @@
             <span v-else v-text="row.value"></span>
           </template>
           <template slot="semester" slot-scope="row">
-            <b-badge :variant="row.item.semester">{{ $t(row.item.semester) }}</b-badge>
+            <b-badge size="lg" variant="success">{{ $t(row.item.semester) }}</b-badge>
           </template>
           <template slot="faculty" slot-scope="row">
             <span>{{ row.item.faculty }}</span>
@@ -49,11 +49,11 @@
           <template slot="semester_result.updated_at" slot-scope="row">
             {{ row.item.updated_at }}
           </template>
-          <template slot="results.status" slot-scope="row">
-            {{ row.item.status }}
+          <template slot="status" slot-scope="row">
+            <b-badge :variant="row.item.status_label_color">{{ row.item.status_label }}</b-badge>
           </template>
           <template slot="actions" slot-scope="row">
-            <b-button size="sm" variant="success" :href="$app.route('admin.result.semester.show', { news: row.item.id})" target="_blank" v-b-tooltip.hover :title="$t('buttons.preview')" class="mr-1">
+            <b-button size="sm" variant="success" :href="$app.route('admin.result.semester.show', { result: row.item.id})" target="_blank" v-b-tooltip.hover :title="$t('buttons.preview')" class="mr-1">
               <i class="fe fe-eye"></i>
             </b-button>
             <b-button v-if="row.item.can_edit" size="sm" variant="primary" :to="`/results/${row.item.id}/edit`" v-b-tooltip.hover :title="$t('buttons.edit')" class="mr-1">
@@ -103,7 +103,11 @@ export default {
       return this.$refs.datatable.refresh()
     },
     onDelete (id) {
-      this.$refs.datasource.deleteRow({ news: id })
+      try {
+        this.$refs.datasource.deleteRow({ result: id })
+      } catch (e) {
+        throw e
+      }
     },
     onBulkActionSuccess () {
       this.selected = []
