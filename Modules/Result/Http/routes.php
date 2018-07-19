@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['middleware' => 'web', 'prefix' => 'api/v1/admin/results/semester', 'namespace' => 'Modules\Result\Http\Controllers\Admin','as'=>'admin.result.semester'], function()
+Route::group(['middleware' => 'web', 'prefix' => 'api/v1/admin/results/semester', 'namespace' => 'Modules\Result\Http\Controllers\Admin','as'=>'admin.result.semester.'], function()
 {
     Route::name('search')->get('search', 'SemesterResultController@search');
     Route::name('show')->get('{result}/show', 'SemesterResultController@search');

@@ -2,10 +2,10 @@
   <div>
     <b-card>
       <template slot="header">
-        <h3 class="card-title">List of News</h3>
-        <div class="card-options" v-if="this.$app.user.can('create news')">
-          <b-button to="/news/create" variant="success" size="sm">
-            <i class="fe fe-plus-circle"></i> Create News
+        <h3 class="card-title">List of Semester Results</h3>
+        <div class="card-options" v-if="this.$app.user.can('create results')">
+          <b-button to="/results/create" variant="success" size="sm">
+            <i class="fe fe-plus-circle"></i> Create Results
           </b-button>
         </div>
       </template>
@@ -25,7 +25,7 @@
                  :empty-filtered-text="$t('labels.datatables.no_matched_results')"
                  :fields="fields"
                  :items="dataLoadProvider"
-                 sort-by="news.created_at"
+                 sort-by="semester_results.created_at"
                  :sort-desc="true"
                  :busy.sync="isBusy"
         >
@@ -49,7 +49,7 @@
           <template slot="semester_result.updated_at" slot-scope="row">
             {{ row.item.updated_at }}
           </template>
-          <template slot="news.status" slot-scope="row">
+          <template slot="results.status" slot-scope="row">
             {{ row.item.status }}
           </template>
           <template slot="actions" slot-scope="row">
@@ -78,11 +78,11 @@ export default {
       selected: [],
       fields: [
         { key: 'checkbox' },
-        { key: 'subject', label: 'Subject' },
-        { key: 'status', label: 'Status', 'class': 'text-center' },
+        { key: 'subject', label: 'Subject', sortable: true },
         { key: 'semester', label: 'Semester', sortable: true },
         { key: 'semester_result.created_at', label: 'Created At', 'class': 'text-center', sortable: true },
         { key: 'semester_result.updated_at', label: 'Updated At', 'class': 'text-center', sortable: true },
+        { key: 'status', label: 'Status', 'class': 'text-center' },
         { key: 'actions', label: 'Actions', 'class': 'nowrap' }
       ],
       actions: {
