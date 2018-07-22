@@ -2,9 +2,9 @@
 
 namespace Modules\Result\Providers;
 
-use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Modules\Result\Models\SemesterResult;
 use Modules\Result\Policies\SemesterResultPolicy;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
 {

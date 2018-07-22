@@ -3,8 +3,8 @@
 namespace Modules\Result\Models;
 
 use Exception;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Database\Eloquent\Model;
 
 class SemesterResult extends Model
 {
@@ -29,29 +29,31 @@ class SemesterResult extends Model
       'result_data' => 'array',
     ];
 
-    public static function storeValidation() {
+    public static function storeValidation()
+    {
         return [
-            'subject' => 'required',
-            'semester' => 'required|integer|min:1|max:8',
-            'faculty' => 'required',
-            'result_data' => 'required',
-            'result_data.*.name' => 'required',
+            'subject'             => 'required',
+            'semester'            => 'required|integer|min:1|max:8',
+            'faculty'             => 'required',
+            'result_data'         => 'required',
+            'result_data.*.name'  => 'required',
             'result_data.*.marks' => 'required|integer',
-            'result_data.*.roll' => 'required|integer',
-            'status' => 'required'
+            'result_data.*.roll'  => 'required|integer',
+            'status'              => 'required',
         ];
     }
 
-    public static function updateValidation() {
+    public static function updateValidation()
+    {
         return [
-            'subject' => 'required',
-            'semester' => 'required|integer|min:1|max:8',
-            'faculty' => 'required',
-            'result_data' => 'required',
+            'subject'             => 'required',
+            'semester'            => 'required|integer|min:1|max:8',
+            'faculty'             => 'required',
+            'result_data'         => 'required',
             'result_data.*.marks' => 'required|integer',
-            'result_data.*.roll' => 'required|integer',
-            'result_data.*.name' => 'required',
-            'status' => 'required'
+            'result_data.*.roll'  => 'required|integer',
+            'result_data.*.name'  => 'required',
+            'status'              => 'required',
         ];
     }
 
@@ -79,10 +81,9 @@ class SemesterResult extends Model
         return [
             0 => 'danger',
             1 => 'warning',
-            2 => 'success'
+            2 => 'success',
         ];
     }
-
 
     public function getStatusLabelAttribute()
     {
