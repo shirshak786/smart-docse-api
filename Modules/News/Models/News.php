@@ -4,8 +4,9 @@ namespace Modules\News\Models;
 
 use Exception;
 use Carbon\Carbon;
+use Laravel\Scout\Searchable;
+use Modules\Core\Models\Traits\HasEditor;
 use Modules\User\Models\User;
-use function array_key_exists;
 use Illuminate\Support\Facades\Gate;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
@@ -15,13 +16,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class News extends Model implements HasMedia
 {
+    use Searchable;
     use SoftDeletes;
     use HasMediaTrait;
     use Sluggable;
+    use HasEditor;
 
     protected $table = 'news';
 
     protected $with = ['author'];
+
+    public $editorFields = [
+        'body',
+    ];
+
+    public $editorCollectionName = 'editor images';
+
+    public $asYouType = true;
 
     protected $fillable = [
         'title',
