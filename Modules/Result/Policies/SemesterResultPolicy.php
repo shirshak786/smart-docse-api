@@ -2,9 +2,8 @@
 
 namespace Modules\Result\Policies;
 
-use Illuminate\Auth\Access\HandlesAuthorization;
-use Modules\Result\Models\SemesterResult;
 use Modules\User\Models\User;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
 class SemesterResultPolicy
 {
@@ -36,5 +35,4 @@ class SemesterResultPolicy
     {
         return true;
     }
-
 }

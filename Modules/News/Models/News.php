@@ -5,14 +5,14 @@ namespace Modules\News\Models;
 use Exception;
 use Carbon\Carbon;
 use Laravel\Scout\Searchable;
-use Modules\Core\Models\Traits\HasEditor;
 use Modules\User\Models\User;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Database\Eloquent\Model;
+use Modules\Core\Models\Traits\HasEditor;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use Illuminate\Database\Eloquent\Model;
 
 class News extends Model implements HasMedia
 {
@@ -92,7 +92,7 @@ class News extends Model implements HasMedia
         return [
           0 => 'danger',
           1 => 'warning',
-          2 => 'success'
+          2 => 'success',
         ];
     }
 
@@ -137,7 +137,7 @@ class News extends Model implements HasMedia
     public function getTypeValueAttribute()
     {
         $types = $this->types;
-        if( array_key_exists($this->type, $types)){
+        if (array_key_exists($this->type, $types)) {
             return $types[$this->type];
         }
         throw new Exception('The Type you supplied doesn\'t exist');
