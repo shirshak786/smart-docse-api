@@ -80,12 +80,12 @@ class NewsController extends AdminController
         return $this->redirectResponse($request, 'The news has succesfully been updated');
     }
 
-    public function destroy(News $news)
+    public function destroy(News $news, Request $request)
     {
         $this->authorize('delete', $news);
 
         $news->delete();
 
-        return response(null, 204);
+        return $this->redirectResponse($request, 'The news has succesfully been deleted');
     }
 }
