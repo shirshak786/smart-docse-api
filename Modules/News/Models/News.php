@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class News extends Model implements HasMedia
 {
-    use Searchable;
+    // use Searchable;
     use SoftDeletes;
     use HasMediaTrait;
     use Sluggable;
@@ -27,7 +27,7 @@ class News extends Model implements HasMedia
     protected $with = ['author'];
 
     public $editorFields = [
-        'body',
+        'content',
     ];
 
     public $editorCollectionName = 'editor images';

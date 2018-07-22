@@ -25,6 +25,8 @@ trait HasEditor
         preg_match_all('@src="([^"]+)"@', $text, $match);
         $src = collect(array_pop($match))->unique();
 
+        dd($src);
+
         foreach ($src as $path) {
             $startPath = '/storage/tmp/';
             if (starts_with($path, $startPath)) {
@@ -43,19 +45,16 @@ trait HasEditor
 
     protected function saveImagesToMediaCollection(string $field)
     {
-        $updated = false;
         if (method_exists($this, 'isTranslatableAttribute') &&
             $this->isTranslatableAttribute($field)) {
             foreach ($this->getTranslations($field) as $locale => $text) {
                 if ($text = $this->parseTextForImages($text)) {
                     $this->setTranslation($field, $locale, $text);
-                    $updated = true;
                 }
             }
+        }else{
+            $this->parseTextForImages($this->$field);
         }
-
-        if ($updated) {
-            $this->save();
-        }
+        $this->save();
     }
 }
