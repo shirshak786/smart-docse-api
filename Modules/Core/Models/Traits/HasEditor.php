@@ -24,13 +24,11 @@ trait HasEditor
         $updated = false;
         preg_match_all('@src="([^"]+)"@', $text, $match);
         $src = collect(array_pop($match))->unique();
-
-        dd($src);
-
         foreach ($src as $path) {
             $startPath = '/storage/tmp/';
             if (starts_with($path, $startPath)) {
-                $file = Storage::disk('public')->path(str_replace('/storage', '', $path));
+                $file = Storage::disk('public')->path(str_replace('/storage/', '', $path));
+
                 $media = $this->addMedia($file)
                     ->toMediaCollection($this->editorCollectionName);
 
@@ -53,7 +51,7 @@ trait HasEditor
                 }
             }
         }else{
-            $this->parseTextForImages($this->$field);
+            $this->$field = $this->parseTextForImages($this->$field);
         }
         $this->save();
     }
