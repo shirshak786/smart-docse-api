@@ -50,7 +50,7 @@ trait HasEditor
                     $this->setTranslation($field, $locale, $text);
                 }
             }
-        }else{
+        } else {
             $this->$field = $this->parseTextForImages($this->$field);
         }
         $this->save();
