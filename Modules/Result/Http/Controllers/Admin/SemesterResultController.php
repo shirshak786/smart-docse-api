@@ -3,17 +3,18 @@
 namespace Modules\Result\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use Modules\Core\Http\Controllers\Admin\AdminController;
+use Modules\Result\Models\SemesterResult;
 use Modules\Core\Utils\RequestSearchQuery;
+use Modules\Core\Http\Controllers\Admin\AdminController;
 use Modules\Result\Http\Requests\Admin\StoreSemesterResultRequest;
 use Modules\Result\Http\Requests\Admin\UpdateSemesterResultRequest;
-use Modules\Result\Models\SemesterResult;
 
 class SemesterResultController extends AdminController
 {
     public function show(SemesterResult $result)
     {
         $this->authorize('show', $result);
+
         return $result;
     }
 
@@ -55,10 +56,11 @@ class SemesterResultController extends AdminController
         return $this->redirectResponse($request, 'The results has succesfully been created');
     }
 
-    public function update(UpdateSemesterResultRequest $request,SemesterResult $result)
+    public function update(UpdateSemesterResultRequest $request, SemesterResult $result)
     {
         $this->authorize('update', SemesterResult::class);
         $result->update($request->all());
+
         return $this->redirectResponse($request, 'The results has succesfully been updated');
     }
 
