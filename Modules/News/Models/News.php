@@ -63,7 +63,7 @@ class News extends Model implements HasMedia
           'type'               => 'required|integer',
           'status'             => 'required|integer',
           'published_date'     => 'date_format:'.config('app.date_format').'|max:191|nullable',
-          'cover_image_upload' => 'file|image|required',
+          'cover_image_upload' => 'file|image',
         ];
     }
 
