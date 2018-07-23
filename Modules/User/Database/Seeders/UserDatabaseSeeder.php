@@ -226,7 +226,6 @@ class UserDatabaseSeeder extends Seeder
         }
 
         // 1 administrator
-        /** @var User $administrator */
         $administrator = $user->create([
             'name'      => 'Administrator',
             'email'     => 'admin@example.com',
@@ -238,81 +237,5 @@ class UserDatabaseSeeder extends Seeder
         ]);
 
         $administrator->roles()->save($administratorRole);
-
-        // 1 supervisor
-        /** @var User $supervisor */
-        $supervisor = $user->create([
-            'name'      => 'Supervisor',
-            'email'     => 'supervisor@example.com',
-            'password'  => bcrypt($defaultPassword),
-            'active'    => true,
-            'confirmed' => true,
-            'locale'    => app()->getLocale(),
-            'timezone'  => config('app.timezone'),
-        ]);
-
-        $supervisor->roles()->save($supervisorRole);
-
-        // 1 demo
-        /** @var User $demo */
-        $demo = $user->create([
-            'name'      => 'Demo',
-            'email'     => 'demo@example.com',
-            'password'  => bcrypt('demo'),
-            'active'    => true,
-            'confirmed' => true,
-            'locale'    => app()->getLocale(),
-            'timezone'  => config('app.timezone'),
-        ]);
-
-        $demo->roles()->save($administratorRole);
-
-        // 1 seo consultant
-        /** @var User $seoConsultant */
-        $seoConsultant = $user->create([
-            'name'      => 'Seo consultant',
-            'email'     => 'seo@example.com',
-            'password'  => bcrypt($defaultPassword),
-            'active'    => true,
-            'confirmed' => true,
-            'locale'    => app()->getLocale(),
-            'timezone'  => config('app.timezone'),
-        ]);
-
-        $seoConsultant->roles()->save($seoConsultantRole);
-        $seoConsultant->roles()->save($editorRole);
-
-        // 1 editor
-        /** @var User $editor */
-        $editor = $user->create([
-            'name'      => 'Editor',
-            'email'     => 'editor@example.com',
-            'password'  => bcrypt($defaultPassword),
-            'active'    => true,
-            'confirmed' => true,
-            'locale'    => app()->getLocale(),
-            'timezone'  => config('app.timezone'),
-        ]);
-
-        $editor->roles()->save($editorRole);
-
-        // 5 redactors
-        for ($i = 1; $i <= 5; $i++) {
-            /** @var User $redactor */
-            $redactor = $user->create([
-                'name'      => "Redactor $i",
-                'email'     => "redactor-$i@example.com",
-                'password'  => bcrypt($defaultPassword),
-                'active'    => true,
-                'confirmed' => true,
-                'locale'    => app()->getLocale(),
-                'timezone'  => config('app.timezone'),
-            ]);
-
-            $redactor->roles()->save($redactorRole);
-        }
-
-        // 10 random client users
-        factory(User::class)->times(10)->create();
     }
 }
