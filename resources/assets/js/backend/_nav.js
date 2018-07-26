@@ -68,6 +68,12 @@ export default (app, i18n, newPostsCount, pendingPostsCount) => {
       access: app.user.can('view news')
     },
     {
+      name: 'Results Management',
+      url: '/results',
+      icon: 'fe fe-shield',
+      access: app.user.can('view results')
+    },
+    {
       title: true,
       name: 'Result Management',
       access: app.user.can('view news') || app.user.can('view news')

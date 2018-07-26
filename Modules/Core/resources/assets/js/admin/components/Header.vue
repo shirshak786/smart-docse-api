@@ -9,12 +9,12 @@
       to="#">
       <img
         class="navbar-brand-full"
-        src="@main/vendor/tabler/brand/logo.png"
+        src="@main/images/logo.png"
         height="30"
         alt="Laravel Admin">
       <img
         class="navbar-brand-minimized"
-        src="@main/vendor/tabler/brand/logo-symbol.png"
+        src="@main/images/logo.png"
         width="30"
         height="30"
         alt="Laravel Admin">
