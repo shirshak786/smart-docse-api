@@ -77,23 +77,23 @@ export default (app, i18n, newPostsCount, pendingPostsCount) => {
       url: '/results',
       icon: 'fe fe-shield',
       access: app.user.can('view news')
-    },
-    {
-      title: true,
-      name: i18n.t('labels.backend.sidebar.seo'),
-      access: app.user.can('view metas') || app.user.can('view redirections')
-    },
-    {
-      name: i18n.t('labels.backend.metas.titles.main'),
-      url: '/metas',
-      icon: 'fe fe-tag',
-      access: app.user.can('view metas')
-    },
-    {
-      name: i18n.t('labels.backend.redirections.titles.main'),
-      url: '/redirections',
-      icon: 'fe fe-fast-forward',
-      access: app.user.can('view redirections')
     }
+    // {
+    //   title: true,
+    //   name: i18n.t('labels.backend.sidebar.seo'),
+    //   access: app.user.can('view metas') || app.user.can('view redirections')
+    // },
+    // {
+    //   name: i18n.t('labels.backend.metas.titles.main'),
+    //   url: '/metas',
+    //   icon: 'fe fe-tag',
+    //   access: app.user.can('view metas')
+    // },
+    // {
+    //   name: i18n.t('labels.backend.redirections.titles.main'),
+    //   url: '/redirections',
+    //   icon: 'fe fe-fast-forward',
+    //   access: app.user.can('view redirections')
+    // }
   ]
 }
