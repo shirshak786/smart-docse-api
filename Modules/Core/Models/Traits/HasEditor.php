@@ -24,12 +24,14 @@ trait HasEditor
         $updated = false;
         preg_match_all('@src="([^"]+)"@', $text, $match);
         $src = collect(array_pop($match))->unique();
+
         foreach ($src as $path) {
             $startPath = '/storage/tmp/';
             if (starts_with($path, $startPath)) {
                 $file = Storage::disk('public')->path(str_replace('/storage/', '', $path));
 
                 $media = $this->addMedia($file)
+                    ->preservingOriginal()
                     ->toMediaCollection($this->editorCollectionName);
 
                 $imagePath = str_replace(config('app.url'), '', $media->getUrl());
@@ -37,22 +39,15 @@ trait HasEditor
                 $updated = true;
             }
         }
-
         return $updated ? $text : false;
     }
 
     protected function saveImagesToMediaCollection(string $field)
     {
-        if (method_exists($this, 'isTranslatableAttribute') &&
-            $this->isTranslatableAttribute($field)) {
-            foreach ($this->getTranslations($field) as $locale => $text) {
-                if ($text = $this->parseTextForImages($text)) {
-                    $this->setTranslation($field, $locale, $text);
-                }
-            }
-        }else{
-            $this->$field = $this->parseTextForImages($this->$field);
+        $data = $this->parseTextForImages($this->$field);
+        if( $data){
+            $this->$field = $data;
+            $this->save();
         }
-        $this->save();
-    }
+    }   
 }
