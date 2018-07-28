@@ -34,7 +34,7 @@ trait HasEditor
                     ->preservingOriginal()
                     ->toMediaCollection($this->editorCollectionName);
 
-                $imagePath = str_replace(config('app.url'), '', $media->getUrl());
+                $imagePath =  $media->getFullUrl();
                 $text = str_replace($path, $imagePath, $text);
                 $updated = true;
             }
