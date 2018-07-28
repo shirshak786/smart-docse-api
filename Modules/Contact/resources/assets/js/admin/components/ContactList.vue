@@ -2,7 +2,7 @@
   <div>
     <b-card>
       <template slot="header">
-        <h3 class="card-title">{{ $t('labels.backend.contacts.titles.index') }}</h3>
+        <h3 class="card-title">Contact Index</h3>
       </template>
       <b-datatable ref="datasource"
                    @context-changed="onContextChanged"
