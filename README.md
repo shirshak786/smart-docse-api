@@ -7,4 +7,6 @@ If you want to donate me please contact me at shirshak55@gmail.com
 
 Will update docs soon :)
 
+Desktop app at `https://github.com/shirshak786/smart-docse`
+
 Thanks :)
